@@ -1,0 +1,6505 @@
+[
+  {
+    "allowed": true,
+    "chosen_id": 4,
+    "chosen_token": "CELL_SECTION_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_SECTION_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_section_begin",
+      "sources": 0
+    },
+    "step": 1
+  },
+  {
+    "allowed": true,
+    "chosen_id": 6,
+    "chosen_token": "CELL_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "step": 2
+  },
+  {
+    "allowed": true,
+    "chosen_id": 20,
+    "chosen_token": "CELL_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "step": 3
+  },
+  {
+    "allowed": true,
+    "chosen_id": 48,
+    "chosen_token": "CELL_PTR[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_PTR[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "step": 4
+  },
+  {
+    "allowed": true,
+    "chosen_id": 21,
+    "chosen_token": "CELL_TYPE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "step": 5
+  },
+  {
+    "allowed": true,
+    "chosen_id": 315,
+    "chosen_token": "CELL_TYPE[BUF_X1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE[BUF_X1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 0,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "step": 6
+  },
+  {
+    "allowed": true,
+    "chosen_id": 7,
+    "chosen_token": "CELL_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "step": 7
+  },
+  {
+    "allowed": true,
+    "chosen_id": 6,
+    "chosen_token": "CELL_BEGIN",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_BEGIN",
+      "CELL_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "step": 8
+  },
+  {
+    "allowed": true,
+    "chosen_id": 20,
+    "chosen_token": "CELL_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "step": 9
+  },
+  {
+    "allowed": true,
+    "chosen_id": 49,
+    "chosen_token": "CELL_PTR[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_PTR[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "step": 10
+  },
+  {
+    "allowed": true,
+    "chosen_id": 21,
+    "chosen_token": "CELL_TYPE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "step": 11
+  },
+  {
+    "allowed": true,
+    "chosen_id": 315,
+    "chosen_token": "CELL_TYPE[BUF_X1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE[BUF_X1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 1,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "step": 12
+  },
+  {
+    "allowed": true,
+    "chosen_id": 7,
+    "chosen_token": "CELL_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "step": 13
+  },
+  {
+    "allowed": true,
+    "chosen_id": 6,
+    "chosen_token": "CELL_BEGIN",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_BEGIN",
+      "CELL_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "step": 14
+  },
+  {
+    "allowed": true,
+    "chosen_id": 20,
+    "chosen_token": "CELL_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_id_tag",
+      "sources": 0
+    },
+    "step": 15
+  },
+  {
+    "allowed": true,
+    "chosen_id": 50,
+    "chosen_token": "CELL_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_ptr",
+      "sources": 0
+    },
+    "step": 16
+  },
+  {
+    "allowed": true,
+    "chosen_id": 21,
+    "chosen_token": "CELL_TYPE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_tag",
+      "sources": 0
+    },
+    "step": 17
+  },
+  {
+    "allowed": true,
+    "chosen_id": 315,
+    "chosen_token": "CELL_TYPE[BUF_X1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_TYPE[BUF_X1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 2,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_type_value",
+      "sources": 0
+    },
+    "step": 18
+  },
+  {
+    "allowed": true,
+    "chosen_id": 7,
+    "chosen_token": "CELL_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_end",
+      "sources": 0
+    },
+    "step": 19
+  },
+  {
+    "allowed": true,
+    "chosen_id": 5,
+    "chosen_token": "CELL_SECTION_END",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_BEGIN",
+      "CELL_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_section_begin",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "cell_choice",
+      "sources": 0
+    },
+    "step": 20
+  },
+  {
+    "allowed": true,
+    "chosen_id": 8,
+    "chosen_token": "DEMAND_SECTION_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_SECTION_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_section_begin",
+      "sources": 0
+    },
+    "step": 21
+  },
+  {
+    "allowed": true,
+    "chosen_id": 10,
+    "chosen_token": "DEMAND_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "step": 22
+  },
+  {
+    "allowed": true,
+    "chosen_id": 22,
+    "chosen_token": "DEMAND_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "step": 23
+  },
+  {
+    "allowed": true,
+    "chosen_id": 176,
+    "chosen_token": "DEMAND_PTR[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_PTR[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "step": 24
+  },
+  {
+    "allowed": true,
+    "chosen_id": 23,
+    "chosen_token": "LOAD_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "step": 25
+  },
+  {
+    "allowed": true,
+    "chosen_id": 48,
+    "chosen_token": "CELL_PTR[0]",
+    "legal_token_count": 3,
+    "legal_tokens": [
+      "CELL_PTR[0]",
+      "CELL_PTR[1]",
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "step": 26
+  },
+  {
+    "allowed": true,
+    "chosen_id": 24,
+    "chosen_token": "LOAD_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "step": 27
+  },
+  {
+    "allowed": true,
+    "chosen_id": 305,
+    "chosen_token": "PIN[A]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[A]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 0,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "step": 28
+  },
+  {
+    "allowed": true,
+    "chosen_id": 11,
+    "chosen_token": "DEMAND_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "step": 29
+  },
+  {
+    "allowed": true,
+    "chosen_id": 10,
+    "chosen_token": "DEMAND_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "step": 30
+  },
+  {
+    "allowed": true,
+    "chosen_id": 22,
+    "chosen_token": "DEMAND_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "step": 31
+  },
+  {
+    "allowed": true,
+    "chosen_id": 177,
+    "chosen_token": "DEMAND_PTR[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_PTR[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "step": 32
+  },
+  {
+    "allowed": true,
+    "chosen_id": 23,
+    "chosen_token": "LOAD_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "step": 33
+  },
+  {
+    "allowed": true,
+    "chosen_id": 49,
+    "chosen_token": "CELL_PTR[1]",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_PTR[1]",
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "step": 34
+  },
+  {
+    "allowed": true,
+    "chosen_id": 24,
+    "chosen_token": "LOAD_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "step": 35
+  },
+  {
+    "allowed": true,
+    "chosen_id": 305,
+    "chosen_token": "PIN[A]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[A]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 1,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "step": 36
+  },
+  {
+    "allowed": true,
+    "chosen_id": 11,
+    "chosen_token": "DEMAND_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "step": 37
+  },
+  {
+    "allowed": true,
+    "chosen_id": 10,
+    "chosen_token": "DEMAND_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "step": 38
+  },
+  {
+    "allowed": true,
+    "chosen_id": 22,
+    "chosen_token": "DEMAND_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_id_tag",
+      "sources": 0
+    },
+    "step": 39
+  },
+  {
+    "allowed": true,
+    "chosen_id": 178,
+    "chosen_token": "DEMAND_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "demand_ptr",
+      "sources": 0
+    },
+    "step": 40
+  },
+  {
+    "allowed": true,
+    "chosen_id": 23,
+    "chosen_token": "LOAD_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_cell_tag",
+      "sources": 0
+    },
+    "step": 41
+  },
+  {
+    "allowed": true,
+    "chosen_id": 50,
+    "chosen_token": "CELL_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_cell_value",
+      "sources": 0
+    },
+    "step": 42
+  },
+  {
+    "allowed": true,
+    "chosen_id": 24,
+    "chosen_token": "LOAD_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "LOAD_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_pin_tag",
+      "sources": 0
+    },
+    "step": 43
+  },
+  {
+    "allowed": true,
+    "chosen_id": 305,
+    "chosen_token": "PIN[A]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[A]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 2,
+      "emitted_sources": 0,
+      "expect": "load_pin_value",
+      "sources": 0
+    },
+    "step": 44
+  },
+  {
+    "allowed": true,
+    "chosen_id": 11,
+    "chosen_token": "DEMAND_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "demand_end",
+      "sources": 0
+    },
+    "step": 45
+  },
+  {
+    "allowed": true,
+    "chosen_id": 9,
+    "chosen_token": "DEMAND_SECTION_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_section_begin",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "demand_choice",
+      "sources": 0
+    },
+    "step": 46
+  },
+  {
+    "allowed": true,
+    "chosen_id": 12,
+    "chosen_token": "SOURCE_SECTION_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_SECTION_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_section_begin",
+      "sources": 0
+    },
+    "step": 47
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 0
+    },
+    "step": 48
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 0
+    },
+    "step": 49
+  },
+  {
+    "allowed": true,
+    "chosen_id": 112,
+    "chosen_token": "SOURCE_PTR[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 0
+    },
+    "step": 50
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 0
+    },
+    "step": 51
+  },
+  {
+    "allowed": true,
+    "chosen_id": 37,
+    "chosen_token": "BOUNDARY_SOURCE",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 0
+    },
+    "step": 52
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 0
+    },
+    "step": 53
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 0
+    },
+    "step": 54
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 0
+    },
+    "step": 55
+  },
+  {
+    "allowed": true,
+    "chosen_id": 307,
+    "chosen_token": "PIN[__BOUNDARY__]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[__BOUNDARY__]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 0
+    },
+    "step": 56
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 0
+    },
+    "step": 57
+  },
+  {
+    "allowed": true,
+    "chosen_id": 112,
+    "chosen_token": "SOURCE_PTR[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 0
+    },
+    "step": 58
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 0
+    },
+    "step": 59
+  },
+  {
+    "allowed": true,
+    "chosen_id": 40,
+    "chosen_token": "BOUNDARY_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 0
+    },
+    "step": 60
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 0
+    },
+    "step": 61
+  },
+  {
+    "allowed": true,
+    "chosen_id": 43,
+    "chosen_token": "FANOUT_1",
+    "legal_token_count": 3,
+    "legal_tokens": [
+      "FANOUT_0",
+      "FANOUT_1",
+      "FANOUT_2_4"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 0
+    },
+    "step": 62
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 0
+    },
+    "step": 63
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 0
+    },
+    "step": 64
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 0
+    },
+    "step": 65
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 0
+    },
+    "step": 66
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 0
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 0
+    },
+    "step": 67
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 0
+    },
+    "step": 68
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 1
+    },
+    "step": 69
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 1
+    },
+    "step": 70
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 1
+    },
+    "step": 71
+  },
+  {
+    "allowed": true,
+    "chosen_id": 113,
+    "chosen_token": "SOURCE_PTR[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 1
+    },
+    "step": 72
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 1
+    },
+    "step": 73
+  },
+  {
+    "allowed": true,
+    "chosen_id": 37,
+    "chosen_token": "BOUNDARY_SOURCE",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 1
+    },
+    "step": 74
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 1
+    },
+    "step": 75
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 1
+    },
+    "step": 76
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 1
+    },
+    "step": 77
+  },
+  {
+    "allowed": true,
+    "chosen_id": 307,
+    "chosen_token": "PIN[__BOUNDARY__]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[__BOUNDARY__]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 1
+    },
+    "step": 78
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 1
+    },
+    "step": 79
+  },
+  {
+    "allowed": true,
+    "chosen_id": 113,
+    "chosen_token": "SOURCE_PTR[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 1
+    },
+    "step": 80
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 1
+    },
+    "step": 81
+  },
+  {
+    "allowed": true,
+    "chosen_id": 40,
+    "chosen_token": "BOUNDARY_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 1
+    },
+    "step": 82
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 1
+    },
+    "step": 83
+  },
+  {
+    "allowed": true,
+    "chosen_id": 43,
+    "chosen_token": "FANOUT_1",
+    "legal_token_count": 3,
+    "legal_tokens": [
+      "FANOUT_0",
+      "FANOUT_1",
+      "FANOUT_2_4"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 1
+    },
+    "step": 84
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 1
+    },
+    "step": 85
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 1
+    },
+    "step": 86
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 1
+    },
+    "step": 87
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 1
+    },
+    "step": 88
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 1
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 1
+    },
+    "step": 89
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 1
+    },
+    "step": 90
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 2
+    },
+    "step": 91
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 2
+    },
+    "step": 92
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 2
+    },
+    "step": 93
+  },
+  {
+    "allowed": true,
+    "chosen_id": 114,
+    "chosen_token": "SOURCE_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 2
+    },
+    "step": 94
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 2
+    },
+    "step": 95
+  },
+  {
+    "allowed": true,
+    "chosen_id": 37,
+    "chosen_token": "BOUNDARY_SOURCE",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 2
+    },
+    "step": 96
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 2
+    },
+    "step": 97
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 2
+    },
+    "step": 98
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 2
+    },
+    "step": 99
+  },
+  {
+    "allowed": true,
+    "chosen_id": 307,
+    "chosen_token": "PIN[__BOUNDARY__]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[__BOUNDARY__]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 2
+    },
+    "step": 100
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 2
+    },
+    "step": 101
+  },
+  {
+    "allowed": true,
+    "chosen_id": 114,
+    "chosen_token": "SOURCE_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 2
+    },
+    "step": 102
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 2
+    },
+    "step": 103
+  },
+  {
+    "allowed": true,
+    "chosen_id": 40,
+    "chosen_token": "BOUNDARY_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 2
+    },
+    "step": 104
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 2
+    },
+    "step": 105
+  },
+  {
+    "allowed": true,
+    "chosen_id": 43,
+    "chosen_token": "FANOUT_1",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "FANOUT_0",
+      "FANOUT_1"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 2
+    },
+    "step": 106
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 2
+    },
+    "step": 107
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 2
+    },
+    "step": 108
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 2
+    },
+    "step": 109
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 2
+    },
+    "step": 110
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 2
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 2
+    },
+    "step": 111
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 2
+    },
+    "step": 112
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 3
+    },
+    "step": 113
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 3
+    },
+    "step": 114
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 3
+    },
+    "step": 115
+  },
+  {
+    "allowed": true,
+    "chosen_id": 115,
+    "chosen_token": "SOURCE_PTR[3]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[3]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 3
+    },
+    "step": 116
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 3
+    },
+    "step": 117
+  },
+  {
+    "allowed": true,
+    "chosen_id": 36,
+    "chosen_token": "CELL_OUTPUT",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 3
+    },
+    "step": 118
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 3
+    },
+    "step": 119
+  },
+  {
+    "allowed": true,
+    "chosen_id": 48,
+    "chosen_token": "CELL_PTR[0]",
+    "legal_token_count": 3,
+    "legal_tokens": [
+      "CELL_PTR[0]",
+      "CELL_PTR[1]",
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 3
+    },
+    "step": 120
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 3
+    },
+    "step": 121
+  },
+  {
+    "allowed": true,
+    "chosen_id": 306,
+    "chosen_token": "PIN[Z]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[Z]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 3
+    },
+    "step": 122
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 3
+    },
+    "step": 123
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 3
+    },
+    "step": 124
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 3
+    },
+    "step": 125
+  },
+  {
+    "allowed": true,
+    "chosen_id": 39,
+    "chosen_token": "OUTPUT_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "OUTPUT_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 3
+    },
+    "step": 126
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 3
+    },
+    "step": 127
+  },
+  {
+    "allowed": true,
+    "chosen_id": 42,
+    "chosen_token": "FANOUT_0",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_0"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 3
+    },
+    "step": 128
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 3
+    },
+    "step": 129
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 3
+    },
+    "step": 130
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 3
+    },
+    "step": 131
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 3
+    },
+    "step": 132
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 3
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 3
+    },
+    "step": 133
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 3
+    },
+    "step": 134
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 4
+    },
+    "step": 135
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 4
+    },
+    "step": 136
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 4
+    },
+    "step": 137
+  },
+  {
+    "allowed": true,
+    "chosen_id": 116,
+    "chosen_token": "SOURCE_PTR[4]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[4]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 4
+    },
+    "step": 138
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 4
+    },
+    "step": 139
+  },
+  {
+    "allowed": true,
+    "chosen_id": 36,
+    "chosen_token": "CELL_OUTPUT",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 4
+    },
+    "step": 140
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 4
+    },
+    "step": 141
+  },
+  {
+    "allowed": true,
+    "chosen_id": 49,
+    "chosen_token": "CELL_PTR[1]",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_PTR[1]",
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 4
+    },
+    "step": 142
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 4
+    },
+    "step": 143
+  },
+  {
+    "allowed": true,
+    "chosen_id": 306,
+    "chosen_token": "PIN[Z]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[Z]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 4
+    },
+    "step": 144
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 4
+    },
+    "step": 145
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 4
+    },
+    "step": 146
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 4
+    },
+    "step": 147
+  },
+  {
+    "allowed": true,
+    "chosen_id": 39,
+    "chosen_token": "OUTPUT_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "OUTPUT_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 4
+    },
+    "step": 148
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 4
+    },
+    "step": 149
+  },
+  {
+    "allowed": true,
+    "chosen_id": 42,
+    "chosen_token": "FANOUT_0",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_0"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 4
+    },
+    "step": 150
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 4
+    },
+    "step": 151
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 4
+    },
+    "step": 152
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 4
+    },
+    "step": 153
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 4
+    },
+    "step": 154
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 4
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 4
+    },
+    "step": 155
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 4
+    },
+    "step": 156
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 5
+    },
+    "step": 157
+  },
+  {
+    "allowed": true,
+    "chosen_id": 14,
+    "chosen_token": "SOURCE_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 5
+    },
+    "step": 158
+  },
+  {
+    "allowed": true,
+    "chosen_id": 25,
+    "chosen_token": "SOURCE_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_id_tag",
+      "sources": 5
+    },
+    "step": 159
+  },
+  {
+    "allowed": true,
+    "chosen_id": 117,
+    "chosen_token": "SOURCE_PTR[5]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[5]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_ptr",
+      "sources": 5
+    },
+    "step": 160
+  },
+  {
+    "allowed": true,
+    "chosen_id": 26,
+    "chosen_token": "SOURCE_KIND",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_KIND"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_tag",
+      "sources": 5
+    },
+    "step": 161
+  },
+  {
+    "allowed": true,
+    "chosen_id": 36,
+    "chosen_token": "CELL_OUTPUT",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "CELL_OUTPUT",
+      "BOUNDARY_SOURCE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_kind_value",
+      "sources": 5
+    },
+    "step": 162
+  },
+  {
+    "allowed": true,
+    "chosen_id": 27,
+    "chosen_token": "SOURCE_CELL",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_CELL"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_tag",
+      "sources": 5
+    },
+    "step": 163
+  },
+  {
+    "allowed": true,
+    "chosen_id": 50,
+    "chosen_token": "CELL_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "CELL_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_cell_value",
+      "sources": 5
+    },
+    "step": 164
+  },
+  {
+    "allowed": true,
+    "chosen_id": 28,
+    "chosen_token": "SOURCE_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_tag",
+      "sources": 5
+    },
+    "step": 165
+  },
+  {
+    "allowed": true,
+    "chosen_id": 306,
+    "chosen_token": "PIN[Z]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "PIN[Z]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_pin_value",
+      "sources": 5
+    },
+    "step": 166
+  },
+  {
+    "allowed": true,
+    "chosen_id": 29,
+    "chosen_token": "BOUNDARY_PIN_ID",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "BOUNDARY_PIN_ID"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_tag",
+      "sources": 5
+    },
+    "step": 167
+  },
+  {
+    "allowed": true,
+    "chosen_id": 3,
+    "chosen_token": "NONE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "NONE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "boundary_pin_value",
+      "sources": 5
+    },
+    "step": 168
+  },
+  {
+    "allowed": true,
+    "chosen_id": 30,
+    "chosen_token": "SOURCE_ROLE",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_ROLE"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_tag",
+      "sources": 5
+    },
+    "step": 169
+  },
+  {
+    "allowed": true,
+    "chosen_id": 39,
+    "chosen_token": "OUTPUT_PIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "OUTPUT_PIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_role_value",
+      "sources": 5
+    },
+    "step": 170
+  },
+  {
+    "allowed": true,
+    "chosen_id": 31,
+    "chosen_token": "FANOUT_BUCKET",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_BUCKET"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_tag",
+      "sources": 5
+    },
+    "step": 171
+  },
+  {
+    "allowed": true,
+    "chosen_id": 42,
+    "chosen_token": "FANOUT_0",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "FANOUT_0"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "fanout_bucket_value",
+      "sources": 5
+    },
+    "step": 172
+  },
+  {
+    "allowed": true,
+    "chosen_id": 32,
+    "chosen_token": "MAX_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "MAX_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_tag",
+      "sources": 5
+    },
+    "step": 173
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "max_fanout_value",
+      "sources": 5
+    },
+    "step": 174
+  },
+  {
+    "allowed": true,
+    "chosen_id": 33,
+    "chosen_token": "USED_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "USED_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_tag",
+      "sources": 5
+    },
+    "step": 175
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "used_fanout_value",
+      "sources": 5
+    },
+    "step": 176
+  },
+  {
+    "allowed": true,
+    "chosen_id": 34,
+    "chosen_token": "REMAINING_FANOUT",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "REMAINING_FANOUT"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 5
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_tag",
+      "sources": 5
+    },
+    "step": 177
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "remaining_fanout_value",
+      "sources": 5
+    },
+    "step": 178
+  },
+  {
+    "allowed": true,
+    "chosen_id": 15,
+    "chosen_token": "SOURCE_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_end",
+      "sources": 6
+    },
+    "step": 179
+  },
+  {
+    "allowed": true,
+    "chosen_id": 13,
+    "chosen_token": "SOURCE_SECTION_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_net_section_begin",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_choice",
+      "sources": 6
+    },
+    "step": 180
+  },
+  {
+    "allowed": true,
+    "chosen_id": 16,
+    "chosen_token": "SOURCE_NET_SECTION_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_NET_SECTION_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "source_net_section_begin",
+      "sources": 6
+    },
+    "step": 181
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 182
+  },
+  {
+    "allowed": true,
+    "chosen_id": 112,
+    "chosen_token": "SOURCE_PTR[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": null,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 183
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 184
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 185
+  },
+  {
+    "allowed": true,
+    "chosen_id": 176,
+    "chosen_token": "DEMAND_PTR[0]",
+    "legal_token_count": 3,
+    "legal_tokens": [
+      "DEMAND_PTR[0]",
+      "DEMAND_PTR[1]",
+      "DEMAND_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 0,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 0,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "step": 186
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 187
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 188
+  },
+  {
+    "allowed": true,
+    "chosen_id": 113,
+    "chosen_token": "SOURCE_PTR[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 0,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 189
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 190
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 191
+  },
+  {
+    "allowed": true,
+    "chosen_id": 177,
+    "chosen_token": "DEMAND_PTR[1]",
+    "legal_token_count": 2,
+    "legal_tokens": [
+      "DEMAND_PTR[1]",
+      "DEMAND_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 1,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 1,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "step": 192
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 193
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 194
+  },
+  {
+    "allowed": true,
+    "chosen_id": 114,
+    "chosen_token": "SOURCE_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 1,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 195
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 196
+  },
+  {
+    "allowed": true,
+    "chosen_id": 241,
+    "chosen_token": "COUNT[1]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[1]"
+    ],
+    "state_after": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 197
+  },
+  {
+    "allowed": true,
+    "chosen_id": 178,
+    "chosen_token": "DEMAND_PTR[2]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "DEMAND_PTR[2]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 2,
+      "cells": 3,
+      "current_record_remaining": 1,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 2,
+      "expect": "load_demand_value",
+      "sources": 6
+    },
+    "step": 198
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 199
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 200
+  },
+  {
+    "allowed": true,
+    "chosen_id": 115,
+    "chosen_token": "SOURCE_PTR[3]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[3]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 2,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 201
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 202
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 3,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 203
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 204
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 205
+  },
+  {
+    "allowed": true,
+    "chosen_id": 116,
+    "chosen_token": "SOURCE_PTR[4]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[4]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 3,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 206
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 207
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 4,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 208
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 209
+  },
+  {
+    "allowed": true,
+    "chosen_id": 18,
+    "chosen_token": "SOURCE_LOAD_BEGIN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_BEGIN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 210
+  },
+  {
+    "allowed": true,
+    "chosen_id": 117,
+    "chosen_token": "SOURCE_PTR[5]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_PTR[5]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 4,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_source_value",
+      "sources": 6
+    },
+    "step": 211
+  },
+  {
+    "allowed": true,
+    "chosen_id": 35,
+    "chosen_token": "COUNT_TOKEN",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT_TOKEN"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "count_tag",
+      "sources": 6
+    },
+    "step": 212
+  },
+  {
+    "allowed": true,
+    "chosen_id": 240,
+    "chosen_token": "COUNT[0]",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "COUNT[0]"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 5,
+      "expect": "load_count_value",
+      "sources": 6
+    },
+    "step": 213
+  },
+  {
+    "allowed": true,
+    "chosen_id": 19,
+    "chosen_token": "SOURCE_LOAD_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_LOAD_END"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "load_end",
+      "sources": 6
+    },
+    "step": 214
+  },
+  {
+    "allowed": true,
+    "chosen_id": 17,
+    "chosen_token": "SOURCE_NET_SECTION_END",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "SOURCE_NET_SECTION_END"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "eos",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "load_choice",
+      "sources": 6
+    },
+    "step": 215
+  },
+  {
+    "allowed": true,
+    "chosen_id": 1,
+    "chosen_token": "EOS",
+    "legal_token_count": 1,
+    "legal_tokens": [
+      "EOS"
+    ],
+    "state_after": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "done",
+      "sources": 6
+    },
+    "state_before": {
+      "assigned_demands": 3,
+      "cells": 3,
+      "current_record_remaining": 0,
+      "current_source": 5,
+      "demands": 3,
+      "emitted_sources": 6,
+      "expect": "eos",
+      "sources": 6
+    },
+    "step": 216
+  }
+]

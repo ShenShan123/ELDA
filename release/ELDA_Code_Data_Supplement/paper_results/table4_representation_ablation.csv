@@ -1,0 +1,6 @@
+variant,removed_information,pin_slot_recoverable,full_assignment_recoverable,elda_valid
+ELDA,None,1.0,1.0,1.0
+R1 No boundary identity,Boundary endpoint identity,0.0048828125,0.0048828125,0.001953125
+R2 No per-source budget,Fanout bucket and per-source capacity,0.8857421875,0.8857421875,0.8857421875
+R3 No full-load assignment,Source-to-demand assignment,1.0,0.0,0.0
+R4 Cell-level demand,Liberty input-pin identity,0.0,1.0,0.0

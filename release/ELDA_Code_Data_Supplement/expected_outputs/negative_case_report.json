@@ -1,0 +1,114 @@
+{
+  "capacity_mismatch": {
+    "errors": {
+      "Cap": [
+        "realized_use:SOURCE_0"
+      ],
+      "Cover": [],
+      "Iface": [],
+      "ObjectComplete": [],
+      "Pin": [],
+      "SrcSem": [],
+      "TopologySafe": []
+    },
+    "expected_failure": "Cap",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "combinational_cycle": {
+    "errors": {
+      "Cap": [],
+      "Cover": [],
+      "Iface": [],
+      "ObjectComplete": [],
+      "Pin": [],
+      "SrcSem": [],
+      "TopologySafe": [
+        "self_drive_or_combinational_cycle"
+      ]
+    },
+    "expected_failure": "TopologySafe",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "incomplete_object": {
+    "errors": {
+      "Cap": [],
+      "Cover": [],
+      "Iface": [],
+      "ObjectComplete": [
+        "incomplete_or_duplicate_source_load_table"
+      ],
+      "Pin": [],
+      "SrcSem": [],
+      "TopologySafe": []
+    },
+    "expected_failure": "ObjectComplete",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "invalid_interface": {
+    "errors": {
+      "Cap": [],
+      "Cover": [],
+      "Iface": [
+        "invalid_boundary_identity:SOURCE_0"
+      ],
+      "ObjectComplete": [],
+      "Pin": [],
+      "SrcSem": [],
+      "TopologySafe": []
+    },
+    "expected_failure": "Iface",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "invalid_pin": {
+    "errors": {
+      "Cap": [],
+      "Cover": [],
+      "Iface": [],
+      "ObjectComplete": [],
+      "Pin": [
+        "invalid_load_pin:DEMAND_0"
+      ],
+      "SrcSem": [],
+      "TopologySafe": []
+    },
+    "expected_failure": "Pin",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "invalid_source_semantics": {
+    "errors": {
+      "Cap": [],
+      "Cover": [],
+      "Iface": [],
+      "ObjectComplete": [],
+      "Pin": [],
+      "SrcSem": [
+        "cell_output_semantics:SOURCE_3"
+      ],
+      "TopologySafe": []
+    },
+    "expected_failure": "SrcSem",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  },
+  "missing_coverage": {
+    "errors": {
+      "Cap": [],
+      "Cover": [
+        "demand_set_not_fully_covered"
+      ],
+      "Iface": [],
+      "ObjectComplete": [],
+      "Pin": [],
+      "SrcSem": [],
+      "TopologySafe": []
+    },
+    "expected_failure": "Cover",
+    "observed_at_expected_rule": true,
+    "overall_valid": false
+  }
+}

@@ -1,0 +1,79 @@
+# @package _global_
+
+defaults:
+  - override /datamodule: circuit_pin_slot_partition_v2
+
+datamodule:
+  # Required for public runs; see README.md. No host-specific fallback is used.
+  root: ${oc.env:ELDA_DATA_ROOT}
+  dataset_names: CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD
+  tokenizer_type: source_net_v61
+  serializer_version: source_net_v6_1_clean_compact_load_v1
+  source_clean_split_required: true
+  strict_no_cross_duplicate_split_required: true
+  expected_split_counts:
+    train: 170940
+    val: 9396
+    test: 11574
+  batch_size: 1
+  max_length: 24576
+  truncation_length: null
+  no_silent_truncate: true
+  cell_mapping_path: ${datamodule.root}/mapping_v61.txt
+  weighted_sampling: false
+  num_workers: 0
+  pin_memory: true
+
+trainer:
+  accelerator: gpu
+  devices: 1
+  strategy: auto
+  precision: bf16-true
+  max_steps: 6000
+  limit_train_batches: 1.0
+  limit_val_batches: 1
+  val_check_interval: 500
+  log_every_n_steps: 10
+  accumulate_grad_batches: 8
+  gradient_clip_val: 1.0
+  num_sanity_val_steps: 0
+
+model:
+  model_name: llama-s
+  max_position_embeddings: 24576
+  attn_implementation: sdpa
+  # Adaptive checkpointing below protects only the 9 train samples >=16384 tokens.
+  gradient_checkpointing: false
+
+sampling:
+  representation: source_net_v61
+  max_length: 24576
+  num_samples: 0
+  disable_metric_init: true
+  pin_slot_mask: false
+  # Frozen decoder interface. D1-D7 override only this value.
+  pin_slot_mask_mode: v61_d0_full
+
+train:
+  source_net_v5: false
+  source_net_v61: true
+  adaptive_gradient_checkpointing: true
+  adaptive_gradient_checkpointing_threshold: 16384
+  initialize_from_checkpoint: null
+  periodic_checkpoint_steps: 2000
+  resume_from_checkpoint: null
+  skeleton_training: false
+  grammar_mask: false
+
+logs:
+  prefix: logs/train/CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD/${model.model_name}/${seed}
+
+v61_safety:
+  source_invalid_excluded: true
+  cross_split_duplicate_risk_excluded: true
+  expected_train_count: 170940
+  expected_val_count: 9396
+  expected_test_count: 11574
+  truncation_disabled: true
+  max_sequence_length: 24576
+  tokenizer_version: source_net_v6_1_clean_compact_load_v1

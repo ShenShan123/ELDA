@@ -1,0 +1,68 @@
+# @package _global_
+defaults:
+  - _self_
+  - datamodule: planar
+  - experiment: test_planar
+  - mode: default
+
+debug: false
+seed: 0
+wandb: false
+diagnose: false
+diag_num_samples: 50
+diagnose_dump: false
+diagnose_dump_n: 3
+diag_tf_batches: 4
+diag_tf_max_tokens: 0
+diag_tf_only: false
+diag_tf_split: test
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: auto
+  precision: bf16-true
+  strategy: auto
+  devices: auto
+  default_root_dir: ${logs.path}
+  num_sanity_val_steps: 0
+
+datamodule:
+  batch_size: 64
+  pin_memory: True
+  num_workers: 0
+  max_length: -1
+  truncation_length: 2048
+
+sampling:
+  num_samples: -1
+  top_k: 10
+  temperature: 1.0
+  max_length: 11000
+  batch_size: ${eval:2 * ${datamodule.batch_size}}
+  motif_num: 1
+  min_length: 0
+  min_edges: 0
+  min_net_tokens: 0
+  net_token_target: 0
+  net_token_bias: 0.0
+  project_sequence: false
+  project_bipartite: false
+
+model:
+  _target_: elda.models.seq_models.HFSequenceModel
+  model_name: llama-s
+  attention_dropout: 0.0
+  attn_implementation: sdpa
+  pretrained_path: null
+
+logs:
+  prefix: logs/test/${datamodule.dataset_names}/${model.model_name}/${seed}
+  path: ${logs.prefix}/runs/${now:%Y-%m-%d}_${now:%H-%M-%S}
+
+# output directory, generated dynamically on each run
+hydra:
+  run:
+    dir: ${logs.path}
+  sweep:
+    dir: ${logs.prefix}/multiruns/test/${now:%Y-%m-%d}_${now:%H-%M-%S}
+    subdir: ${hydra.job.num}

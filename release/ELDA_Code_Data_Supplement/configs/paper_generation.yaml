@@ -1,0 +1,25 @@
+method: ELDA
+checkpoint: <CHECKPOINT>
+attempts: 1024
+attempt_seed_rule: 20260629 + attempt_index
+one_shot: true
+retry: false
+repair: false
+sampling:
+  top_k: 10
+  temperature: 1.0
+  max_length: 24576
+  batch_size: 1
+decoder:
+  grammar_mode: v61_d0_topology_safe
+  source_load_representation: compact
+  enabled:
+    - gale_ryser
+    - same_cell_exclusion
+    - source_budget
+    - demand_exactly_once
+    - completion_eos
+    - output_source_coverage
+    - pointer_mask
+    - self_drive_exclusion
+    - combinational_cycle_exclusion

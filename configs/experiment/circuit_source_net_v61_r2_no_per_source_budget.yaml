@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - circuit_source_net_v61_clean_compact_load
+datamodule:
+  root: ${oc.env:ELDA_R2_DATA_ROOT}
+  dataset_names: CIRCUIT_SOURCE_NET_PARTITION_V6_1_R2_NO_PER_SOURCE_BUDGET
+  tokenizer_type: source_net_v61_r2
+  serializer_version: source_net_v6_1_r2_no_per_source_budget_v1
+  cell_mapping_path: ${datamodule.root}/mapping_v61.txt
+v61_safety:
+  tokenizer_version: source_net_v6_1_r2_no_per_source_budget_v1
+logs:
+  prefix: logs/train/CIRCUIT_SOURCE_NET_PARTITION_V6_1_R2_NO_PER_SOURCE_BUDGET/${model.model_name}/${seed}

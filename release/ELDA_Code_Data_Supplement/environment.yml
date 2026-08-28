@@ -1,0 +1,16 @@
+name: elda-supplement
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11.14
+  - pip
+  - pip:
+      - torch==2.7.0
+      - torch-geometric==2.7.0
+      - transformers==4.57.6
+      - networkx==3.6.1
+      - numpy==1.26.4
+      - PyYAML==6.0.3
+      - pytest==9.1.1

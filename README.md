@@ -1,1 +1,161 @@
-# ELDA
+# ELDA: Endpoint-Level Demand Assignment for Gate-Level Generation
+
+ELDA generates materializable gate-level subcircuits with explicit Liberty
+input-pin demands, typed driver endpoints, source-to-demand assignments, and
+state-constrained autoregressive decoding.
+
+This is the public source repository for the frozen V6.1 implementation used
+in the paper. It contains the model and decoder, training configurations,
+dataset-construction code, final evaluation scripts, compact frozen result
+tables, and a real-sample minimal reproduction. Large datasets, selected
+checkpoints, 1,024-attempt runs, and routed-design outputs are distributed as
+separate, checksum-addressed artifacts; see [ARTIFACTS.md](ARTIFACTS.md).
+
+## What is included
+
+- `elda/`: model, dataset, serializer, and constrained-decoder implementation.
+- `circuit_kahypar/` and `tools/`: gate-level subcircuit extraction and data tools.
+- `configs/experiment/circuit_source_net_v61*.yaml`: ELDA and R1--R4 configs.
+- `scripts/run_source_net_v61_clean_train.sh`: guarded V6.1 training entry point.
+- `data_manifests/v61/`: path-independent frozen split counts and hashes.
+- `paper/scripts/` and `paper/reproduce_tables.sh`: supported final-table drivers.
+- `release/ELDA_Code_Data_Supplement/`: portable real-sample smoke reproduction
+  and compact paper tables.
+- `release/verify_release.py`: integrity audit for an installed full artifact bundle.
+
+The public Python namespace is `elda`. `AutoGraph` appears only where it names
+the upstream project or a scientifically distinct comparison baseline.
+
+## Installation
+
+The tested full environment is defined by `environment.yaml`:
+
+```bash
+conda env create -f environment.yaml
+conda activate elda
+cd /path/to/ELDA
+pip install -e . --no-build-isolation
+```
+
+Yosys is required for Verilog read/check. OpenROAD-flow-scripts is required
+only for routed-GDS reproduction. The lightweight supplement has its own
+environment and can be validated independently.
+
+## Fast public smoke test
+
+This uses one frozen real paper attempt and does not require the full corpus or
+checkpoint bundle:
+
+```bash
+bash release/ELDA_Code_Data_Supplement/scripts/run_tests.sh
+bash release/ELDA_Code_Data_Supplement/scripts/run_minimal_reproduction.sh
+```
+
+The second command reconstructs the ELDA object, validates it, emits Verilog,
+and runs Yosys when Yosys is available. Expected outputs and checksums are
+included in the supplement.
+
+Run the source unit tests with:
+
+```bash
+pytest -q tests
+```
+
+Data-backed tests skip when the external corpus is absent. To enable them, set
+`ELDA_DATA_ROOT` as described below.
+
+## Data and split identity
+
+Materialize the V6.1 dataset artifact and export:
+
+```bash
+export ELDA_DATA_ROOT=/path/to/CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD
+export ELDA_NANGATE45_LIBERTY=/path/to/NangateOpenCellLibrary_typical.lib
+```
+
+The dataset root contains `meta.pt`, `mapping_v61.txt`, the three source-clean
+split lists, and the referenced graph objects. The strict public training view
+contains 170,940/9,396/11,574 train/validation/test objects. Reference-dependent
+paper metrics use the development-deduplicated 11,390-object test reference.
+
+The selected best7 checkpoint predates the final family audit and retains its
+historical 171,192/9,639/11,574 lineage. Exact counts and split hashes for both
+views are recorded in `data_manifests/v61/split_summary.json`; the repository
+does not silently rewrite checkpoint provenance.
+
+`OPENROAD_FLOW_ROOT` may be used instead of `ELDA_NANGATE45_LIBERTY` when it
+points to an OpenROAD-flow-scripts `flow/` directory containing Nangate45.
+
+## Train V6.1
+
+The entry point is deliberately guarded against accidental long jobs:
+
+```bash
+START_SOURCE_NET_V61_TRAINING=1 \
+ELDA_DATA_ROOT=/path/to/V6.1 \
+ELDA_PYTHON=/path/to/python \
+scripts/run_source_net_v61_clean_train.sh \
+trainer.max_epochs=4 \
+trainer.max_steps=85596 \
+trainer.accumulate_grad_batches=8 \
+train.periodic_checkpoint_steps=0
+```
+
+R1--R4 use the corresponding experiment configs and `ELDA_R1_DATA_ROOT`
+through `ELDA_R4_DATA_ROOT`. Final paper hyperparameters and decoder-mask
+switches are also frozen under `release/ELDA_Code_Data_Supplement/configs/`.
+
+## Verify full artifacts
+
+After downloading the separate artifact bundle, either extract it over this
+checkout or pass its root explicitly:
+
+```bash
+python release/verify_release.py --artifact-root /path/to/ELDA-artifacts
+```
+
+For a metadata-only audit that does not hash checkpoint payloads:
+
+```bash
+python release/verify_release.py \
+  --artifact-root /path/to/ELDA-artifacts \
+  --skip-checkpoint-hashes
+```
+
+The verifier checks selected checkpoint hashes, exact `attempt_0000` through
+`attempt_1023` coverage, required frozen tables, and public namespace hygiene.
+
+## Reproduce paper tables
+
+Extract the paper artifact tree into `paper/results` and `paper/reports`, then:
+
+```bash
+ELDA_DATA_ROOT=/path/to/V6.1 \
+ELDA_V5_DATA_ROOT=/path/to/V5_projection_data \
+ELDA_COMMON_DATA_ROOT=/path/to/common_graph_data \
+ELDA_ORFS_ROOT=/path/to/OpenROAD-flow-scripts/flow \
+ELDA_PYTHON=/path/to/python \
+paper/reproduce_tables.sh
+```
+
+`ELDA_REPRO_SCOPE=core` reruns attempt-only ablation, repair, and assembly
+audits without recomputing dataset-dependent reference metrics. The default
+`all` scope rebuilds the supported final tables from frozen outputs and data.
+
+## Reproducibility boundary
+
+The Git repository intentionally excludes multi-gigabyte checkpoints, attempt
+directories, generated reports, and machine-specific historical queue scripts.
+This prevents opaque binaries and 124,000 generated files from entering source
+history. Nothing is deleted from the archival working tree. The compact
+supplement provides an immediately executable smoke path; the external artifact
+bundle provides exact full-paper regeneration. See [RELEASE_SCOPE.md](RELEASE_SCOPE.md)
+and [ARTIFACTS.md](ARTIFACTS.md).
+
+## Upstream attribution
+
+ELDA was developed from the BSD-3-Clause AutoGraph codebase (“Flatten Graphs
+as Sequences: Transformers are Scalable Graph Generators”). The original
+license is retained. ELDA adds the gate-level representation, corpus pipeline,
+stateful circuit constraints, materialization/evaluation tools, ablations, and
+publication artifacts described in the paper.

@@ -1,0 +1,191 @@
+{
+  "cells": [
+    {
+      "cell_dense_id": 0,
+      "cell_id": "CELL_0",
+      "cell_type": "BUF_X1"
+    },
+    {
+      "cell_dense_id": 1,
+      "cell_id": "CELL_1",
+      "cell_type": "BUF_X1"
+    },
+    {
+      "cell_dense_id": 2,
+      "cell_id": "CELL_2",
+      "cell_type": "BUF_X1"
+    }
+  ],
+  "demands": [
+    {
+      "demand_id": "DEMAND_0",
+      "load_cell_id": "CELL_0",
+      "load_pin": "A"
+    },
+    {
+      "demand_id": "DEMAND_1",
+      "load_cell_id": "CELL_1",
+      "load_pin": "A"
+    },
+    {
+      "demand_id": "DEMAND_2",
+      "load_cell_id": "CELL_2",
+      "load_pin": "A"
+    }
+  ],
+  "schema_version": "source_net_v6_1_clean_compact_load_v1",
+  "source_nets": [
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [],
+          "source_id": "SOURCE_0"
+        }
+      ],
+      "fanout": 0,
+      "source_id": "SOURCE_0"
+    },
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [
+            "DEMAND_0"
+          ],
+          "source_id": "SOURCE_1"
+        }
+      ],
+      "fanout": 1,
+      "source_id": "SOURCE_1"
+    },
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [],
+          "source_id": "SOURCE_2"
+        }
+      ],
+      "fanout": 0,
+      "source_id": "SOURCE_2"
+    },
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [
+            "DEMAND_1"
+          ],
+          "source_id": "SOURCE_3"
+        }
+      ],
+      "fanout": 1,
+      "source_id": "SOURCE_3"
+    },
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [],
+          "source_id": "SOURCE_4"
+        }
+      ],
+      "fanout": 0,
+      "source_id": "SOURCE_4"
+    },
+    {
+      "chunks": [
+        {
+          "chunk_id": 0,
+          "demand_ids": [
+            "DEMAND_2"
+          ],
+          "source_id": "SOURCE_5"
+        }
+      ],
+      "fanout": 1,
+      "source_id": "SOURCE_5"
+    }
+  ],
+  "sources": [
+    {
+      "boundary_pin_id": null,
+      "endpoint_type": "NET",
+      "fanout_bucket": "FANOUT_0",
+      "max_fanout": 0,
+      "remaining_fanout": 0,
+      "source_cell_id": "CELL_0",
+      "source_id": "SOURCE_0",
+      "source_kind": "CELL_OUTPUT",
+      "source_pin": "Z",
+      "source_role": "OUTPUT_PIN",
+      "used_fanout": 0
+    },
+    {
+      "boundary_pin_id": "BOUNDARY_PIN_1",
+      "endpoint_type": "BOUNDARY_STUB",
+      "fanout_bucket": "FANOUT_1",
+      "max_fanout": 1,
+      "remaining_fanout": 0,
+      "source_cell_id": null,
+      "source_id": "SOURCE_1",
+      "source_kind": "BOUNDARY_SOURCE",
+      "source_pin": "__BOUNDARY__",
+      "source_role": "BOUNDARY_PIN",
+      "used_fanout": 1
+    },
+    {
+      "boundary_pin_id": null,
+      "endpoint_type": "NET",
+      "fanout_bucket": "FANOUT_0",
+      "max_fanout": 0,
+      "remaining_fanout": 0,
+      "source_cell_id": "CELL_1",
+      "source_id": "SOURCE_2",
+      "source_kind": "CELL_OUTPUT",
+      "source_pin": "Z",
+      "source_role": "OUTPUT_PIN",
+      "used_fanout": 0
+    },
+    {
+      "boundary_pin_id": "BOUNDARY_PIN_3",
+      "endpoint_type": "BOUNDARY_STUB",
+      "fanout_bucket": "FANOUT_1",
+      "max_fanout": 1,
+      "remaining_fanout": 0,
+      "source_cell_id": null,
+      "source_id": "SOURCE_3",
+      "source_kind": "BOUNDARY_SOURCE",
+      "source_pin": "__BOUNDARY__",
+      "source_role": "BOUNDARY_PIN",
+      "used_fanout": 1
+    },
+    {
+      "boundary_pin_id": null,
+      "endpoint_type": "NET",
+      "fanout_bucket": "FANOUT_0",
+      "max_fanout": 0,
+      "remaining_fanout": 0,
+      "source_cell_id": "CELL_2",
+      "source_id": "SOURCE_4",
+      "source_kind": "CELL_OUTPUT",
+      "source_pin": "Z",
+      "source_role": "OUTPUT_PIN",
+      "used_fanout": 0
+    },
+    {
+      "boundary_pin_id": "BOUNDARY_PIN_5",
+      "endpoint_type": "BOUNDARY_STUB",
+      "fanout_bucket": "FANOUT_1",
+      "max_fanout": 1,
+      "remaining_fanout": 0,
+      "source_cell_id": null,
+      "source_id": "SOURCE_5",
+      "source_kind": "BOUNDARY_SOURCE",
+      "source_pin": "__BOUNDARY__",
+      "source_role": "BOUNDARY_PIN",
+      "used_fanout": 1
+    }
+  ]
+}

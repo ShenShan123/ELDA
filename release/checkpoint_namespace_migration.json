@@ -1,0 +1,55 @@
+{
+  "checkpoints": [
+    {
+      "migrated_sha256": "f147598ff2bdf5b066d2ec8a0af8e3e2a483c12c964c12d3de1d60b0a53e65dc",
+      "original_sha256": "babfa81b9e7535f8cca7f94daa9b4024684b3edfd9a67072e65030c7893fc69b",
+      "path": "logs/train/CIRCUIT_SOURCE_NET_V61_4epoch_scratch_adaptive_gc_bs1/llama-s/0/runs/2026-06-30_15-30-23/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "55bc9cf08719913c45d15da80bb81883d36e74226e995712f8733f388cc5ce27"
+    },
+    {
+      "migrated_sha256": "be46dbab40f5c05eb691b04a6e88141da38e3cef1f1a7c988e8181678cb05ffb",
+      "original_sha256": "70fe9eab6885839a4179b45d5438b24af9a80e7e485883bf55f6b247909e7596",
+      "path": "logs/train/CIRCUIT_SOURCE_NET_V61_10epoch_selection/llama-s/0/runs/2026-07-03_10-17-05/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "028661ce7ff2ba070befae0f93787f7e52b196349a3db625a1d757b35ef4ba96"
+    },
+    {
+      "migrated_sha256": "48f910fbe6a90cd1329b6791b5a653849033ada6d05299c43aa3f3074cd91b79",
+      "original_sha256": "fd60f95f8560e1c7f98b32d6c81e685a072c458d282a965e2f3543b1439aad07",
+      "path": "logs/train/V61_FINAL_R1_4epoch_scratch_adaptive_gc_bs1_parallel/llama-s/0/runs/2026-07-05_22-13-07/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "e5690b92091134a7bf67c2789443811d660b3769fa7eb5dabc1baf460efd2833"
+    },
+    {
+      "migrated_sha256": "a03c5a96d2b74848ff7e192d7bcecc72c5c4122498142400b0ea0bf4a4d512ab",
+      "original_sha256": "6b5d514846968051615bd5d18ff05e9b62674a7708ff43207f07bc71289a9881",
+      "path": "logs/train/V61_FINAL_R2_4epoch_scratch_adaptive_gc_bs1_parallel/llama-s/0/runs/2026-07-05_22-13-10/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "84b31975cf3cd1d203e33ec61c7e1a99aa693db79780e2546cf89225e01cb98c"
+    },
+    {
+      "migrated_sha256": "48b88d203a49599d01e03a04656dd1c9c985d2b1f59b36e075628818893bf078",
+      "original_sha256": "50e33f986d662d54952a5df390f8f69506f9d328c863566d0bcec6a5a8aefad6",
+      "path": "logs/train/V61_FINAL_R3_4epoch_scratch_adaptive_gc_bs1_parallel_resume_after_repair/llama-s/0/runs/2026-07-08_18-03-00/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "8ee71bad1e3abd275f3d4e8ed0abb5111fd031557fdb81df679b3f17a55894da"
+    },
+    {
+      "migrated_sha256": "f40515166ee50242f3aee0312edd8dfc7df5564f6364467457d76dc9c903b743",
+      "original_sha256": "2a4db2a12a7c66f1ad2a2b29cc70d4368909e4f5457d408e10b47b8ec283ed3a",
+      "path": "logs/train/V61_FINAL_R4_4epoch_scratch_adaptive_gc_bs1_parallel/llama-s/0/runs/2026-07-09_13-49-33/llama-s.ckpt",
+      "tensor_bytes_unchanged": true,
+      "tensor_count": 449,
+      "tensor_sha256": "96a38dfeeded8d353e61d4996d352ce5481543fe72d347d288d2b190878f8711"
+    }
+  ],
+  "schema": "elda_checkpoint_namespace_migration_v1",
+  "scope": "Lightning/Hydra metadata strings only",
+  "tensor_equivalence": "SHA-256 over paths, dtypes, shapes, and raw tensor bytes"
+}

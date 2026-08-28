@@ -1,0 +1,19 @@
+{
+  "v61_d0_topology_safe": [],
+  "v61_d1_no_gale_ryser": ["gale_ryser"],
+  "v61_d2_no_same_cell_exclusion": ["same_cell_exclusion"],
+  "v61_d3_no_source_budget_mask": ["source_budget"],
+  "v61_d4_no_demand_exactly_once_mask": ["demand_exactly_once"],
+  "v61_d5_no_completion_eos_gate": ["completion_eos"],
+  "v61_d6_no_topology_safety": ["self_drive_exclusion", "combinational_cycle_exclusion"],
+  "v61_syntax_only": [
+    "gale_ryser",
+    "same_cell_exclusion",
+    "source_budget",
+    "demand_exactly_once",
+    "completion_eos",
+    "output_source_coverage",
+    "self_drive_exclusion",
+    "combinational_cycle_exclusion"
+  ]
+}

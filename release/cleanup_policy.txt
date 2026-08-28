@@ -1,0 +1,30 @@
+Publication copy:
+  repository root
+
+Retain under logs/train:
+  CIRCUIT_SOURCE_NET_V61_4epoch_scratch_adaptive_gc_bs1
+  CIRCUIT_SOURCE_NET_V61_10epoch_selection
+  V61_FINAL_R1_4epoch_scratch_adaptive_gc_bs1_parallel
+  V61_FINAL_R2_4epoch_scratch_adaptive_gc_bs1_parallel
+  V61_FINAL_R3_4epoch_scratch_adaptive_gc_bs1_parallel_resume_after_repair
+  V61_FINAL_R4_4epoch_scratch_adaptive_gc_bs1_parallel
+
+Within each retained run, retain:
+  selected llama-s.ckpt
+  .hydra resolved configuration
+  csv_logs metrics and hyperparameters
+  train.log
+  reproducibility/final-ablation manifest when present
+
+Remove from the publication copy:
+  unrelated pre-V6.1 logs and generated outputs
+  V6.1 pilots, 6000-step screens, resume smokes, and superseded retries
+  V6.2 training artifacts
+  duplicate last and periodic checkpoints
+
+The frozen paper attempts and table inputs are retained under paper/.
+Their canonical paths and expected counts are recorded in:
+  release/final_attempts_manifest.json
+
+Superseded artifacts are kept outside the publication repository in a
+private, reversible archive.

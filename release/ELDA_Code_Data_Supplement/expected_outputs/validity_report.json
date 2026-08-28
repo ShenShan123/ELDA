@@ -1,0 +1,36 @@
+{
+  "conditions": {
+    "Cap": true,
+    "Cover": true,
+    "Iface": true,
+    "ObjectComplete": true,
+    "Pin": true,
+    "SrcSem": true,
+    "TopologySafe": true
+  },
+  "counts": {
+    "cells": 3,
+    "demands": 3,
+    "source_load_records": 6,
+    "sources": 6
+  },
+  "errors": {
+    "Cap": [],
+    "Cover": [],
+    "Iface": [],
+    "ObjectComplete": [],
+    "Pin": [],
+    "SrcSem": [],
+    "TopologySafe": []
+  },
+  "overall_valid": true,
+  "schema_version": "source_net_v6_1_clean_compact_load_v1",
+  "topology": {
+    "combinational_cycle_free": true,
+    "combinational_cyclic_scc_count": 0,
+    "combinational_largest_cyclic_scc_size": 0,
+    "combinational_self_drive_count": 0,
+    "self_drive_count": 0,
+    "unknown_topology_reference_count": 0
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "elda_final_attempts_manifest_v1",
+  "attempts_per_run": 1024,
+  "runs": [
+    {
+      "id": "ELDA",
+      "kind": "main",
+      "path": "paper/results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
+    },
+    {
+      "id": "FrequencySampler",
+      "kind": "control",
+      "path": "paper/results/source_net_v61/d2_policy_main_n1024/field_frequency/attempts"
+    },
+    {
+      "id": "ELDA_Unconstrained",
+      "kind": "control",
+      "path": "paper/results/source_net_v61/d2_policy_main_n1024/unconstrained_lm/attempts"
+    },
+    {
+      "id": "ELDA_Syntax",
+      "kind": "control",
+      "path": "paper/results/source_net_v61/d2_policy_main_n1024/syntax_only_lm/attempts"
+    },
+    {
+      "id": "R1",
+      "kind": "representation_ablation",
+      "path": "paper/results/source_net_v61/final_representation_ablation_parallel/R1/free_run_n1024_final/attempts"
+    },
+    {
+      "id": "R2",
+      "kind": "representation_ablation",
+      "path": "paper/results/source_net_v61/final_representation_ablation_parallel/R2/free_run_n1024_final/attempts"
+    },
+    {
+      "id": "R3",
+      "kind": "representation_ablation",
+      "path": "paper/results/source_net_v61/final_representation_ablation_parallel/R3/free_run_n1024_final_gpu4/attempts"
+    },
+    {
+      "id": "R4",
+      "kind": "representation_ablation",
+      "path": "paper/results/source_net_v61/final_representation_ablation_parallel/R4/free_run_n1024_final_gpu3/attempts"
+    },
+    {
+      "id": "D1",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D1_v61_d1_no_gale_ryser/free_run/attempts"
+    },
+    {
+      "id": "D2",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D2_v61_d2_no_same_cell_exclusion/free_run/attempts"
+    },
+    {
+      "id": "D3",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D3_v61_d3_no_source_budget_mask/free_run/attempts"
+    },
+    {
+      "id": "D4",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D4_v61_d4_no_demand_exactly_once_mask/free_run/attempts"
+    },
+    {
+      "id": "D5",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D5_v61_d5_no_completion_eos_gate/free_run/attempts"
+    },
+    {
+      "id": "D6",
+      "kind": "decoder_ablation",
+      "path": "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/D6_v61_d6_no_topology_safety/free_run/attempts"
+    }
+  ],
+  "required_table_artifacts": [
+    "paper/reports/final_baseline/phase10_6_main_graph_quality_table/unified_dedup11390_reference_metrics.csv",
+    "paper/reports/final_baseline/phase10_8_endpoint_fidelity_main_table/table3_and_ablation_reproducibility_audit.json",
+    "paper/results/source_net_v61/final_representation_ablation_parallel/summary_current/representation_ablation_current_summary.csv",
+    "paper/results/source_net_v61/decoder_ablation_best7epoch_final_20260706/summary_final/decoder_ablation_final_summary.csv",
+    "paper/reports/final_baseline/phase10_9_standalone_logic_usefulness/logic_usefulness_test_baseline_comparison_publication.csv",
+    "paper/results/source_net_v61/full_design_stitch/random100_medium_n1900_3500_strict_20260724/summary/table_main_mean_sd.csv"
+  ]
+}

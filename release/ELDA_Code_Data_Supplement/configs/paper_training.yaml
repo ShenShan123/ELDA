@@ -1,0 +1,48 @@
+# Sanitized frozen checkpoint-selection configuration.
+method: ELDA
+seed: 0
+representation: source_net_v61
+serializer_version: source_net_v6_1_clean_compact_load_v1
+dataset:
+  root: <DATA_ROOT>
+  final_paper_corpus_counts:
+    train: 170940
+    validation: 9396
+    test: 11574
+  max_sequence_length: 24576
+  truncation: disabled
+  batch_size: 1
+  gradient_accumulation: 8
+model:
+  family: Llama causal language model
+  size: llama-s
+  hidden_size: 768
+  layers: 12
+  attention_heads: 12
+  ffn_size: 3072
+  max_position_embeddings: 24576
+  attention_dropout: 0.0
+  attention_implementation: sdpa
+  vocabulary_size: data_dependent
+optimizer:
+  name: AdamW
+  learning_rate: 0.00006
+  betas: [0.9, 0.95]
+  weight_decay: 0.1
+  gradient_clip: 1.0
+scheduler:
+  name: cosine_with_warmup
+  warmup_steps: 1283.94
+  schedule_steps: 115554.6
+  minimum_factor: 0.1
+trainer:
+  precision: bf16-true
+  max_epochs: 6
+  max_steps: 128394
+  adaptive_gradient_checkpointing: true
+  adaptive_gradient_checkpointing_threshold: 16384
+  checkpoint_selection: best validation checkpoint across epoch selection run
+notes:
+  - The selected checkpoint was initialized from the preceding four-epoch run.
+  - The 984 MB paper checkpoint and full dataset are omitted from this supplement.
+  - Dataset counts follow the final frozen paper corpus and split audit.

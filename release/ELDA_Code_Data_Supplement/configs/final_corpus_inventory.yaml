@@ -1,0 +1,13 @@
+source_clean_gate_level_subcircuits: 191910
+splits:
+  train: 170940
+  validation: 9396
+  test_full: 11574
+reference_sets:
+  full_test: 11574
+  train_deduplicated_test: 11392
+  train_validation_deduplicated_test: 11390
+split_unit: base_design_family
+notes:
+  - Reference-dependent final metrics use the 11390-object train/validation-deduplicated test reference.
+  - Generation validity rates use all 1024 one-shot attempts.

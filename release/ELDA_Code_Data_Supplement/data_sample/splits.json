@@ -1,0 +1,7 @@
+{
+  "note": "Smoke-test manifests only; they do not replace the full frozen corpus.",
+  "train": ["sample_train_000"],
+  "validation": ["sample_validation_000"],
+  "test": ["sample_test_000"],
+  "paper_attempt_source": "frozen_final_generation_attempt_0296"
+}

@@ -1,0 +1,6 @@
+_target_: elda.datamodules.GraphDataset
+root: ${oc.env:ELDA_DATA_ROOT}
+dataset_names: CIRCUIT_PIN_SLOT_PARTITION_V2
+labeled_graph: false
+tokenizer_type: pin_slot
+truncation_length: 3072

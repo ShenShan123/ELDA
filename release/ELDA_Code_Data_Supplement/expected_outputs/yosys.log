@@ -1,0 +1,118 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <<UPSTREAM_CONTACT>>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.51+101 (git sha1 314842d2a, clang++ 18.1.8 -fPIC -O3)
+
+-- Running command `read_verilog <SUPPLEMENT_ROOT>/data_sample/cells.v; read_verilog <SUPPLEMENT_ROOT>/outputs/structural_sample.v; hierarchy -check -top elda_sample; proc; check; stat' --
+
+1. Executing Verilog-2005 frontend: <SUPPLEMENT_ROOT>/data_sample/cells.v
+Parsing Verilog input from `<SUPPLEMENT_ROOT>/data_sample/cells.v' to AST representation.
+Generating RTLIL representation for module `\BUF_X1'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: <SUPPLEMENT_ROOT>/outputs/structural_sample.v
+Parsing Verilog input from `<SUPPLEMENT_ROOT>/outputs/structural_sample.v' to AST representation.
+Generating RTLIL representation for module `\elda_sample'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \elda_sample
+Used module:     \BUF_X1
+
+3.2. Analyzing design hierarchy..
+Top module:  \elda_sample
+Used module:     \BUF_X1
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module elda_sample.
+Optimizing module BUF_X1.
+
+5. Executing CHECK pass (checking for obvious problems).
+Checking module elda_sample...
+Checking module BUF_X1...
+Found and reported 0 problems.
+
+6. Printing statistics.
+
+=== elda_sample ===
+
+   Number of wires:                  6
+   Number of wire bits:              6
+   Number of public wires:           6
+   Number of public wire bits:       6
+   Number of ports:                  6
+   Number of port bits:              6
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     BUF_X1                          3
+
+=== BUF_X1 ===
+
+   Number of wires:                  2
+   Number of wire bits:              2
+   Number of public wires:           2
+   Number of public wire bits:       2
+   Number of ports:                  2
+   Number of port bits:              2
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  0
+
+=== design hierarchy ===
+
+   elda_sample                       1
+     BUF_X1                          3
+
+   Number of wires:                 12
+   Number of wire bits:             12
+   Number of public wires:          12
+   Number of public wire bits:      12
+   Number of ports:                 12
+   Number of port bits:             12
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  0
+
+End of script. Logfile hash: 4efe33e220, CPU: user 0.00s system 0.01s, MEM: 715.46 MB peak
+Yosys 0.51+101 (git sha1 314842d2a, clang++ 18.1.8 -fPIC -O3)
+Time spent: 39% 1x opt_expr (0 sec), 24% 4x read_verilog (0 sec), ...

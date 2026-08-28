@@ -1,0 +1,33 @@
+{
+  "schema": "elda_v61_split_summary_v1",
+  "dataset_name": "CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
+  "max_sequence_length": 24576,
+  "historical_checkpoint_view": {
+    "counts": {
+      "train": 171192,
+      "validation": 9639,
+      "test": 11574
+    },
+    "purpose": "frozen best7 checkpoint lineage"
+  },
+  "strict_public_training_view": {
+    "counts": {
+      "train": 170940,
+      "validation": 9396,
+      "test": 11574
+    },
+    "split_sha256": {
+      "train": "feeaddbf9de3ad7538c814686b83c9edab2c8c878f2027f7129363e5ba54c84e",
+      "validation": "06bc12ee9cdd00cd4aef8e01ffc512668f1ad97513b4a539f98c6f14f260ba1b",
+      "test": "96e14e55dbd5fcbd7d9ce6242dcc8abe424781decca4051b144292e0463b816d"
+    },
+    "visible_design_ids": 1003,
+    "visible_gate_level_subcircuits": 191910
+  },
+  "final_evaluation_reference": {
+    "full_test_count": 11574,
+    "train_exact_endpoint_sequence_matches_removed": 182,
+    "validation_only_exact_endpoint_sequence_matches_removed": 2,
+    "retained_count": 11390
+  }
+}

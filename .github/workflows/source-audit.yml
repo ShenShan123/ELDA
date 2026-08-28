@@ -1,0 +1,23 @@
+name: source-audit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Audit public source boundary
+        run: python scripts/audit_github_release.py
+      - name: Validate lightweight supplement layout
+        run: python release/ELDA_Code_Data_Supplement/scripts/validate_package.py
+      - name: Validate shell syntax
+        run: |
+          bash -n scripts/run_source_net_v61_clean_train.sh
+          bash -n paper/reproduce_tables.sh
+          bash -n release/ELDA_Code_Data_Supplement/scripts/run_minimal_reproduction.sh

@@ -1,0 +1,60 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "E3 component closure: AutoGraph",
+      "pass": true,
+      "recomputed_r_repr": 528.8115234375,
+      "recomputed_r_struct": 347.8369140625
+    },
+    {
+      "check": "E3 component closure: G2PT",
+      "pass": true,
+      "recomputed_r_repr": 506.6240234375,
+      "recomputed_r_struct": 25.4482421875
+    },
+    {
+      "check": "E3 component closure: DiGress",
+      "pass": true,
+      "recomputed_r_repr": 455.4951171875,
+      "recomputed_r_struct": 1554.2001953125
+    },
+    {
+      "check": "E3 component closure: ELDA",
+      "pass": true,
+      "recomputed_r_repr": 0.0,
+      "recomputed_r_struct": 0.0
+    },
+    {
+      "check": "E4 assembly component closure: AutoGraph-labeled",
+      "pass": true,
+      "recomputed_a_asm_mean": 628.97
+    },
+    {
+      "check": "E4 assembly component closure: G2PT-labeled",
+      "pass": true,
+      "recomputed_a_asm_mean": 602.01
+    },
+    {
+      "check": "E4 assembly component closure: DiGress",
+      "pass": true,
+      "recomputed_a_asm_mean": 1184.42
+    },
+    {
+      "check": "E4 assembly component closure: ELDA",
+      "pass": true,
+      "recomputed_a_asm_mean": 20.799999999999997
+    },
+    {
+      "check": "dataset split-count closure",
+      "pass": true,
+      "recomputed_total": 191910
+    },
+    {
+      "check": "main graph table has seven frozen methods",
+      "pass": true,
+      "row_count": 7
+    }
+  ],
+  "scope": "Arithmetic closure over included compact frozen records; raw 1024-attempt and full-corpus artifacts are not included."
+}

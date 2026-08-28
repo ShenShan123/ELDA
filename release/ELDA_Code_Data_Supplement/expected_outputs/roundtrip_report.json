@@ -1,0 +1,129 @@
+{
+  "decoded_graph_signature": {
+    "edges": [
+      [
+        0,
+        3,
+        1,
+        "A"
+      ],
+      [
+        0,
+        6,
+        2,
+        "Z"
+      ],
+      [
+        1,
+        4,
+        1,
+        "A"
+      ],
+      [
+        1,
+        7,
+        2,
+        "Z"
+      ],
+      [
+        2,
+        5,
+        1,
+        "A"
+      ],
+      [
+        2,
+        8,
+        2,
+        "Z"
+      ]
+    ],
+    "schema_version": "source_net_v6_1_clean_compact_load_v1",
+    "x": [
+      6,
+      6,
+      6,
+      140,
+      140,
+      140,
+      139,
+      139,
+      139
+    ]
+  },
+  "graph_reconstruction_complete": true,
+  "object_equal_after_decode_reserialize": true,
+  "object_equal_after_parse": true,
+  "parser_report": {
+    "EOS_validity": true,
+    "cell_count": 3,
+    "cell_table_valid": true,
+    "control_profile_adherent": true,
+    "demand_count": 3,
+    "demand_exactly_once": true,
+    "demand_table_valid": true,
+    "same_cell_same_net_reuse": 0,
+    "section_complete": true,
+    "source_budget_violation": 0,
+    "source_count": 6,
+    "source_load_count": 6,
+    "source_load_full_coverage": true,
+    "source_table_valid": true,
+    "target_profile_consistent": true,
+    "token_decode_valid": true
+  },
+  "raw_graph_signature": {
+    "edges": [
+      [
+        0,
+        3,
+        2,
+        "Z"
+      ],
+      [
+        0,
+        4,
+        1,
+        "A"
+      ],
+      [
+        1,
+        5,
+        2,
+        "Z"
+      ],
+      [
+        1,
+        6,
+        1,
+        "A"
+      ],
+      [
+        2,
+        7,
+        2,
+        "Z"
+      ],
+      [
+        2,
+        8,
+        1,
+        "A"
+      ]
+    ],
+    "schema_version": "source_net_v6_1_clean_compact_load_v1",
+    "x": [
+      6,
+      6,
+      6,
+      139,
+      140,
+      139,
+      140,
+      139,
+      140
+    ]
+  },
+  "raw_serializer_schema": "source_net_v6_1_full_load_per_source_budget_pin_slot_v1",
+  "sequence_schema": "source_net_v6_1_clean_compact_load_v1"
+}
