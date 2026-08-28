@@ -432,12 +432,12 @@ pyrightconfig.json
 
 # Frozen split lists and PyTorch metadata are distributed with the dataset
 # artifact. The source repository keeps compact counts/hashes and vocabularies.
-/data_manifests/v61/*
-!/data_manifests/v61/README.md
-!/data_manifests/v61/split_summary.json
-!/data_manifests/v61/mapping_v61.txt
-!/data_manifests/v61/serializer_version.json
-!/data_manifests/v61/tokenizer_version.json
+/data_manifests/elda/*
+!/data_manifests/elda/README.md
+!/data_manifests/elda/split_summary.json
+!/data_manifests/elda/mapping.txt
+!/data_manifests/elda/serializer_version.json
+!/data_manifests/elda/tokenizer_version.json
 
 # Only final publication-table entry points are part of the supported public
 # API. Historical pilots, retry queues, and machine-specific recovery scripts
@@ -451,33 +451,33 @@ pyrightconfig.json
 !/paper/scripts/compute_functional_category_design_scale_table.py
 !/paper/scripts/compute_table1_canonical_novelty.py
 !/paper/scripts/compute_unified_dedup11390_reference_metrics.py
-!/paper/scripts/compute_v61_dedup_reference_sensitivity.py
-!/paper/scripts/compute_v61_endpoint_fidelity_table.py
+!/paper/scripts/compute_dedup_reference_sensitivity.py
+!/paper/scripts/compute_endpoint_fidelity_table.py
 !/paper/scripts/elda_paths.py
-!/paper/scripts/recompute_v61_policy_native_metrics.py
+!/paper/scripts/recompute_policy_native_metrics.py
 !/paper/scripts/repair_operation_accounting.py
 !/paper/scripts/summarize_random100_medium_scaffold_experiment.py
 
-# Freeze the supported V6.1 configuration surface. Earlier representation
-# prototypes and V6.2 explorations are archival, not part of this release.
+# Freeze the supported ELDA configuration surface. Earlier representation
+# prototypes and ELDA profile extension explorations are archival, not part of this release.
 /configs/datamodule/*
 !/configs/datamodule/circuit_pin_slot_partition_v2.yaml
 /configs/experiment/*
-!/configs/experiment/circuit_source_net_v61_clean_compact_load.yaml
-!/configs/experiment/circuit_source_net_v61_r1_no_boundary_identity.yaml
-!/configs/experiment/circuit_source_net_v61_r2_no_per_source_budget.yaml
-!/configs/experiment/circuit_source_net_v61_r3_no_full_load_assignment.yaml
-!/configs/experiment/circuit_source_net_v61_r4_cell_level_demand.yaml
+!/configs/experiment/elda_reference.yaml
+!/configs/experiment/elda_r1_no_boundary_identity.yaml
+!/configs/experiment/elda_r2_no_per_source_budget.yaml
+!/configs/experiment/elda_r3_no_full_load_assignment.yaml
+!/configs/experiment/elda_r4_cell_level_demand.yaml
 
 # Supported command-line surface. Historical training queues and diagnostic
 # probes remain outside the public source view.
 /scripts/*
 !/scripts/audit_github_release.py
-!/scripts/run_source_net_v61_clean_train.sh
+!/scripts/run_elda_reference_train.sh
 /tools/*
 !/tools/export_assembled_graph_netlist.py
 !/tools/preprocess_circuit_kahypar_dataset.py
-!/tools/prepare_source_net_v61_clean_dataset.py
+!/tools/prepare_elda_clean_dataset.py
 !/tools/run_source_net_v5_generated_smoke.py
 !/tools/run_source_net_v5_materialization_autopsy.py
 !/tools/run_source_net_v5_output_repair_autopsy.py

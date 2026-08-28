@@ -41,14 +41,14 @@ INPUTS = {
     "AutoGraph": CACHE / "generated_autograph_labeled_llama_s_e20_best.jsonl",
     "G2PT": CACHE / "generated_g2pt_labeled_e25_best.jsonl",
     "DiGress": CACHE / "generated_digress_full.jsonl",
-    "ELDA": CACHE / "panda_v5_generated_best7_topology_safe.jsonl",
+    "ELDA": CACHE / "elda_generated_reference.jsonl",
 }
-ELDA_REFERENCE = CACHE / "panda_v5_reference_dedup11392.jsonl"
+ELDA_REFERENCE = CACHE / "common_reference_dedup11392.jsonl"
 ELDA_NATIVE_GENERATED = (
     ROOT
     / "reports/final_baseline/phase10_6_main_graph_quality_table/"
     "unified_dedup11392_cache/"
-    "generated_source_net_v61_best7epoch_topology_safe.jsonl"
+    "generated_elda_selected checkpoint_topology_safe.jsonl"
 )
 
 
@@ -601,7 +601,7 @@ def compute_cell_inventory() -> dict[str, Any]:
         "rows": rows,
         "input_sha256": {
             "meta.pt": sha256(DATASET / "meta.pt"),
-            "mapping_v61.txt": sha256(DATASET / "mapping_v61.txt"),
+            "mapping.txt": sha256(DATASET / "mapping.txt"),
             **{
                 f"{split}_source_clean.txt": sha256(
                     DATASET / f"{split}_source_clean.txt"

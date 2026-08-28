@@ -1,5 +1,5 @@
 {
-  "schema_version": "source_net_v6_1_clean_compact_load_v1",
+  "schema_version": "elda_source_demand_v1",
   "description": "An anonymized, distributable raw graph reconstructed from a successful frozen one-shot ELDA paper attempt.",
   "x": [6, 6, 6, 139, 140, 139, 140, 139, 140],
   "edge_index": [[0, 1, 2, 0, 1, 2], [3, 5, 7, 4, 6, 8]],

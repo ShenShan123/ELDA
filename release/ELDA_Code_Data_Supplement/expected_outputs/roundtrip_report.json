@@ -38,7 +38,7 @@
         "Z"
       ]
     ],
-    "schema_version": "source_net_v6_1_clean_compact_load_v1",
+    "schema_version": "elda_source_demand_v1",
     "x": [
       6,
       6,
@@ -111,7 +111,7 @@
         "A"
       ]
     ],
-    "schema_version": "source_net_v6_1_clean_compact_load_v1",
+    "schema_version": "elda_source_demand_v1",
     "x": [
       6,
       6,
@@ -124,6 +124,6 @@
       140
     ]
   },
-  "raw_serializer_schema": "source_net_v6_1_full_load_per_source_budget_pin_slot_v1",
-  "sequence_schema": "source_net_v6_1_clean_compact_load_v1"
+  "raw_serializer_schema": "elda_source_demand_object_v1",
+  "sequence_schema": "elda_source_demand_v1"
 }

@@ -1,4 +1,4 @@
-# Frozen V6.1 Source--Demand schema
+# Frozen ELDA Source--Demand schema
 
 The sequence encodes four ordered sections after `SOS` and terminates with
 `EOS`:
@@ -15,8 +15,8 @@ The sequence encodes four ordered sections after `SOS` and terminates with
 
 Pointer and count tokens use disjoint contiguous ranges determined by
 `max_num_nodes`. Pin and cell-type tokens follow those ranges. The executable
-definitions are the frozen `CircuitSourceNetV61Tokenizer`, `serialize_v61`,
-`decode_v61`, and `SourceNetV61Grammar` included under `src/`.
+definitions are the frozen `CircuitSourceNetTokenizer`, `serialize_source_net`,
+`decode_source_net`, and `ELDAGrammar` included under `src/`.
 
 `SOURCE_KIND` values are `CELL_OUTPUT`, `BOUNDARY_SOURCE`, and
 `CONSTANT_SOURCE`. Their corresponding `SOURCE_ROLE` values are `OUTPUT_PIN`,

@@ -24,7 +24,7 @@
     "TopologySafe": []
   },
   "overall_valid": true,
-  "schema_version": "source_net_v6_1_clean_compact_load_v1",
+  "schema_version": "elda_source_demand_v1",
   "topology": {
     "combinational_cycle_free": true,
     "combinational_cyclic_scc_count": 0,

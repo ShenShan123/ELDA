@@ -40,33 +40,33 @@ def main() -> None:
 
     meta = torch.load(source / "meta.pt", map_location="cpu", weights_only=False)
     meta.update({
-        "dataset_name": "CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
+        "dataset_name": "ELDA_REFERENCE",
         "source_dataset_root": str(meta.get("source_dataset_root")),
-        "cell_mapping": str(out / "mapping_v61.txt"),
+        "cell_mapping": str(out / "mapping.txt"),
         "file_backed_partitions": True,
         "split_file_lists": split_lists,
         "clean_split_counts": counts,
         "source_invalid_excluded": True,
         "source_invalid_retained_for_all_reference_reporting": True,
-        "tokenizer_type": "source_net_v61",
-        "serializer_version": "source_net_v6_1_clean_compact_load_v1",
-        "tokenizer_version": "source_net_v6_1_clean_compact_load_v1",
+        "tokenizer_type": "elda",
+        "serializer_version": "elda_source_demand_v1",
+        "tokenizer_version": "elda_source_demand_v1",
         "max_sequence_length": 24576,
         "truncation_disabled": True,
     })
     torch.save(meta, out / "meta.pt")
-    shutil.copyfile(source / "mapping_v5.txt", out / "mapping_v61.txt")
+    shutil.copyfile(source / "mapping_v5.txt", out / "mapping.txt")
     manifest = {
         "dataset_name": meta["dataset_name"],
         "counts": counts,
         "source_root": meta["source_dataset_root"],
         "split_file_lists": split_lists,
-        "tokenizer": "V6.1 compact-load",
+        "tokenizer": "ELDA compact-load",
         "max_sequence_length": 24576,
         "truncation": "disabled",
         "source_invalid_policy": "excluded from training/validation/test clean splits; retained externally for all-reference reporting",
     }
-    (out / "v61_dataset_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (out / "elda_dataset_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     (out / "serializer_version.json").write_text(json.dumps({"serializer_version": meta["serializer_version"]}, indent=2) + "\n")
     (out / "tokenizer_version.json").write_text(json.dumps({"tokenizer_version": meta["tokenizer_version"]}, indent=2) + "\n")
     print(json.dumps(manifest, indent=2))

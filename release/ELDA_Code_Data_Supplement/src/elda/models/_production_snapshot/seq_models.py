@@ -1320,8 +1320,8 @@ class HFSequenceModel(nn.Module):
         except Exception:
             pass
         if (not getattr(self.tokenizer, "labeled_graph", False)) and bool(pin_slot_mask):
-            if bool(getattr(self.tokenizer, "is_source_net_v61_tokenizer", False)):
-                processors.append(SourceNetV61Grammar(
+            if bool(getattr(self.tokenizer, "is_source_net_tokenizer", False)):
+                processors.append(ELDAGrammar(
                     self.tokenizer,
                     batch_size,
                     input_ids.device,
@@ -1329,7 +1329,7 @@ class HFSequenceModel(nn.Module):
                 ))
                 try:
                     self.tokenizer.last_grammar_processor_created = True
-                    self.tokenizer.last_grammar_processor_name = "SourceNetV61Grammar"
+                    self.tokenizer.last_grammar_processor_name = "ELDAGrammar"
                 except Exception:
                     pass
             elif bool(getattr(self.tokenizer, "is_source_net_v5_tokenizer", False)):
@@ -1776,8 +1776,8 @@ class NetTokenBias(LogitsProcessor):
         return scores
 
 
-class SourceNetV61Grammar(LogitsProcessor):
-    """Stateful grammar for V6.1 compact-load object-table generation."""
+class ELDAGrammar(LogitsProcessor):
+    """Stateful grammar for ELDA compact-load object-table generation."""
 
     FEATURE_NAMES = (
         "gale_ryser",
@@ -1792,30 +1792,24 @@ class SourceNetV61Grammar(LogitsProcessor):
         "profile_feasibility",
     )
     ABLATION_MODES = {
-        "v61_full_load": (
+        "reference": (),
+        "d6_no_topology_safety": (
             "self_drive_exclusion", "combinational_cycle_exclusion",
         ),
-        "v61_d0_full": (
-            "self_drive_exclusion", "combinational_cycle_exclusion",
-        ),
-        "v61_d0_topology_safe": (),
-        "v61_d6_no_topology_safety": (
-            "self_drive_exclusion", "combinational_cycle_exclusion",
-        ),
-        "v61_d1_no_gale_ryser": ("gale_ryser",),
-        "v61_d2_no_same_cell_exclusion": ("same_cell_exclusion",),
-        "v61_d3_no_source_budget_mask": ("source_budget",),
-        "v61_d4_no_demand_exactly_once_mask": ("demand_exactly_once",),
-        "v61_d5_no_completion_eos_gate": ("completion_eos",),
-        "v61_d6_no_output_source_coverage": (
+        "d1_no_gale_ryser": ("gale_ryser",),
+        "d2_no_same_cell_exclusion": ("same_cell_exclusion",),
+        "d3_no_source_budget_mask": ("source_budget",),
+        "d4_no_demand_exactly_once_mask": ("demand_exactly_once",),
+        "d5_no_completion_eos_gate": ("completion_eos",),
+        "no_output_source_coverage": (
             "output_source_coverage", "self_drive_exclusion",
             "combinational_cycle_exclusion",
         ),
-        "v61_d7_no_pointer_mask": (
+        "no_pointer_mask": (
             "pointer_mask", "self_drive_exclusion",
             "combinational_cycle_exclusion",
         ),
-        "v61_syntax_only": (
+        "syntax_only": (
             "gale_ryser",
             "same_cell_exclusion",
             "source_budget",
@@ -1828,24 +1822,22 @@ class SourceNetV61Grammar(LogitsProcessor):
         # Representation R2 without its variant-specific future-source
         # feasibility solver. Keep only local pointer/pin/demand/section
         # constraints; no encoded or inferred per-source capacity is used.
-        "v61_r2_basic": (
+        "r2_basic": (
             "gale_ryser", "source_budget", "self_drive_exclusion",
             "combinational_cycle_exclusion",
         ),
-        # Short-term full-design scaffold replacement mode.  This keeps the
-        # V6.1 legality constraints active while adding optional target
-        # profile bounds supplied by the sampling script.  It is intentionally
-        # a new mode so previous D0/D1-D7 and representation ablation results
-        # remain reproducible.
-        "v61_scaffold_conditioned": (),
-        "v61_scaffold_reuse_tables": (),
-        "v62_profile_full": (),
-        "v62_profile_feasible_lm": (
+        # Full-design scaffold replacement modes. These keep the
+        # ELDA legality constraints active while adding optional target
+        # profile bounds supplied by the sampling script.
+        "scaffold_conditioned": (),
+        "scaffold_reuse_tables": (),
+        "profile_reference": (),
+        "profile_feasible_control": (
             "gale_ryser", "same_cell_exclusion", "source_budget",
             "demand_exactly_once", "completion_eos", "output_source_coverage",
             "self_drive_exclusion", "combinational_cycle_exclusion",
         ),
-        "v62_profile_only_lm": (
+        "profile_only_control": (
             "gale_ryser", "same_cell_exclusion", "source_budget",
             "demand_exactly_once", "completion_eos", "output_source_coverage",
             "self_drive_exclusion", "combinational_cycle_exclusion",
@@ -1859,20 +1851,20 @@ class SourceNetV61Grammar(LogitsProcessor):
         self.representation_variant = str(
             getattr(tokenizer, "representation_variant", "") or ""
         )
-        mode = str(mask_mode or "v61_d0_full")
+        mode = str(mask_mode or "reference")
         if mode not in self.ABLATION_MODES:
             raise ValueError(
-                f"unknown V6.1 grammar mode {mode!r}; expected one of "
+                f"unknown ELDA grammar mode {mode!r}; expected one of "
                 f"{sorted(self.ABLATION_MODES)}"
             )
         self.mask_mode = mode
         self.r2_future_feasibility = not (
             self._is_variant("r2_no_per_source_budget")
-            and mode == "v61_r2_basic"
+            and mode == "r2_basic"
         )
         self.target_profile = (
-            getattr(tokenizer, "source_net_v61_target_profile", None)
-            if mode == "v61_scaffold_conditioned" else None
+            getattr(tokenizer, "source_net_target_profile", None)
+            if mode == "scaffold_conditioned" else None
         )
         self.features = {name: True for name in self.FEATURE_NAMES}
         for name in self.ABLATION_MODES[mode]:
@@ -1880,7 +1872,7 @@ class SourceNetV61Grammar(LogitsProcessor):
         if features is not None:
             unknown = set(features) - set(self.FEATURE_NAMES)
             if unknown:
-                raise ValueError(f"unknown V6.1 grammar feature flags: {sorted(unknown)}")
+                raise ValueError(f"unknown ELDA grammar feature flags: {sorted(unknown)}")
             self.features.update({name: bool(value) for name, value in features.items()})
         self.processed = [1] * int(batch_size)
         self.states = [self._new_state() for _ in range(int(batch_size))]
@@ -1974,7 +1966,7 @@ class SourceNetV61Grammar(LogitsProcessor):
         )
 
     def _scaffold_source_table_complete(self, state):
-        if self.mask_mode != "v61_scaffold_conditioned":
+        if self.mask_mode != "scaffold_conditioned":
             return True
         target_boundary = self._target_boundary_source_count()
         if (
@@ -2164,7 +2156,7 @@ class SourceNetV61Grammar(LogitsProcessor):
         if self._is_variant("r2_no_per_source_budget"):
             return outputs_complete
         budget_complete = (
-            (self.mask_mode.startswith("v62_") and not self.features["source_budget"])
+            (self.mask_mode.startswith("profile_") and not self.features["source_budget"])
             or sum(row["max_fanout"] for row in state["sources"])
             == len(state["demands"])
         )

@@ -26,7 +26,7 @@ REPAIR_ROOT = (
 )
 ASSEMBLY_ROOT = (
     ROOT
-    / "results/source_net_v61/full_design_stitch"
+    / "results/elda/design_assembly"
     / "random100_medium_n1900_3500_strict_20260724"
 )
 PER_DESIGN = ASSEMBLY_ROOT / "summary/per_design_metrics.csv"
@@ -40,7 +40,7 @@ PROTOCOL_SOURCES = [
     ROOT / "scripts/evaluate_deterministic_repair_burden.py",
     ROOT / "scripts/run_scaffold_matching_protocol_v2.py",
     ROOT / "scripts/scaffold_endpoint_assignment.py",
-    ROOT / "scripts/scaffold_replace_v61_generated_all.py",
+    ROOT / "scripts/scaffold_replace_elda_generated_all.py",
     ROOT / "scripts/scaffold_replace_baseline_repaired_all.py",
     ROOT.parent / "tools/export_assembled_graph_netlist.py",
     ROOT / "scripts/audit_full_design_logic_survival.py",

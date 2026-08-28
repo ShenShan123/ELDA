@@ -18,9 +18,9 @@ REQUIRED = (
     "LICENSE",
     "pyproject.toml",
     "environment.yaml",
-    "elda/datamodules/data/circuit_source_net_v61_tokenizer.py",
-    "configs/experiment/circuit_source_net_v61_clean_compact_load.yaml",
-    "data_manifests/v61/split_summary.json",
+    "elda/datamodules/data/circuit_source_net_tokenizer.py",
+    "configs/experiment/elda_reference.yaml",
+    "data_manifests/elda/split_summary.json",
     "release/ELDA_Code_Data_Supplement/data_sample/paper_attempt_payload.json",
 )
 TEXT_SUFFIXES = {
@@ -56,6 +56,16 @@ def main() -> int:
         r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)"
     )
     legacy_import = re.compile(r"(?:^|\s)(?:from|import)\s+autograph(?:\.|\s|$)", re.M)
+    venue_name = "AA" + "AI"
+    review_marker = re.compile(
+        rf"\b(?:{venue_name}(?:-\d+)?|submitted\s+to|under\s+review|"
+        r"submission\s+(?:id|number)|paper\s+id)\b",
+        re.I,
+    )
+    review_audit_exempt = {
+        Path("scripts/audit_github_release.py"),
+        Path("release/ELDA_Code_Data_Supplement/scripts/audit_privacy.py"),
+    }
     for path in paths:
         relative = path.relative_to(ROOT)
         if path.is_symlink():
@@ -76,6 +86,8 @@ def main() -> int:
             errors.append(f"credential-like material: {relative}")
         if legacy_import.search(text):
             errors.append(f"legacy implementation import: {relative}")
+        if relative not in review_audit_exempt and review_marker.search(text):
+            errors.append(f"venue or submission-status marker: {relative}")
 
     if total > MAX_TOTAL_BYTES:
         errors.append(f"source view exceeds 25 MiB: {total} bytes")

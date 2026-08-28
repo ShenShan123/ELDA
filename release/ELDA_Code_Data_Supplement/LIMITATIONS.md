@@ -26,4 +26,4 @@ convention: 170,940 training, 9,396 validation, and 11,574 full-test
 subcircuits, for 191,910 source-clean objects in total. Reference-dependent
 metrics use the 11,390-object test set obtained after removing exact endpoint-
 sequence matches to either training or validation data. Historical
-intermediate manifests are not part of the submitted supplement.
+intermediate manifests are not part of this compact source package.

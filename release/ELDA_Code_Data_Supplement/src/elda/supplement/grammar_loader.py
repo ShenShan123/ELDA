@@ -1,4 +1,4 @@
-"""Load the exact production SourceNetV61Grammar without importing training code.
+"""Load the exact production ELDAGrammar without importing training code.
 
 The frozen production module contains the complete model stack and therefore
 imports training-only packages.  This loader extracts the single grammar class
@@ -17,7 +17,7 @@ import torch
 from transformers import LogitsProcessor
 
 
-def load_source_net_v61_grammar():
+def load_elda_grammar():
     snapshot = (
         Path(__file__).resolve().parents[1]
         / "models"
@@ -29,21 +29,21 @@ def load_source_net_v61_grammar():
     nodes = [
         node
         for node in tree.body
-        if isinstance(node, ast.ClassDef) and node.name == "SourceNetV61Grammar"
+        if isinstance(node, ast.ClassDef) and node.name == "ELDAGrammar"
     ]
     if len(nodes) != 1:
-        raise RuntimeError("The production snapshot must contain exactly one SourceNetV61Grammar")
+        raise RuntimeError("The production snapshot must contain exactly one ELDAGrammar")
     module = ast.Module(body=nodes, type_ignores=[])
     ast.fix_missing_locations(module)
     namespace = {
-        "__name__": "elda.models.source_net_v61_grammar_snapshot",
+        "__name__": "elda.models.elda_grammar_snapshot",
         "math": math,
         "OrderedDict": OrderedDict,
         "torch": torch,
         "LogitsProcessor": LogitsProcessor,
     }
     exec(compile(module, str(snapshot), "exec"), namespace)
-    return namespace["SourceNetV61Grammar"]
+    return namespace["ELDAGrammar"]
 
 
-SourceNetV61Grammar = load_source_net_v61_grammar()
+ELDAGrammar = load_elda_grammar()

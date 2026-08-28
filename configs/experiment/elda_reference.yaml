@@ -6,9 +6,9 @@ defaults:
 datamodule:
   # Required for public runs; see README.md. No host-specific fallback is used.
   root: ${oc.env:ELDA_DATA_ROOT}
-  dataset_names: CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD
-  tokenizer_type: source_net_v61
-  serializer_version: source_net_v6_1_clean_compact_load_v1
+  dataset_names: ELDA_REFERENCE
+  tokenizer_type: elda
+  serializer_version: elda_source_demand_v1
   source_clean_split_required: true
   strict_no_cross_duplicate_split_required: true
   expected_split_counts:
@@ -19,7 +19,7 @@ datamodule:
   max_length: 24576
   truncation_length: null
   no_silent_truncate: true
-  cell_mapping_path: ${datamodule.root}/mapping_v61.txt
+  cell_mapping_path: ${datamodule.root}/mapping.txt
   weighted_sampling: false
   num_workers: 0
   pin_memory: true
@@ -46,17 +46,17 @@ model:
   gradient_checkpointing: false
 
 sampling:
-  representation: source_net_v61
+  representation: elda
   max_length: 24576
   num_samples: 0
   disable_metric_init: true
   pin_slot_mask: false
-  # Frozen decoder interface. D1-D7 override only this value.
-  pin_slot_mask_mode: v61_d0_full
+  # Reference decoder interface. Constraint ablations override only this value.
+  pin_slot_mask_mode: reference
 
 train:
   source_net_v5: false
-  source_net_v61: true
+  elda: true
   adaptive_gradient_checkpointing: true
   adaptive_gradient_checkpointing_threshold: 16384
   initialize_from_checkpoint: null
@@ -66,9 +66,9 @@ train:
   grammar_mask: false
 
 logs:
-  prefix: logs/train/CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD/${model.model_name}/${seed}
+  prefix: logs/train/ELDA_REFERENCE/${model.model_name}/${seed}
 
-v61_safety:
+elda_safety:
   source_invalid_excluded: true
   cross_split_duplicate_risk_excluded: true
   expected_train_count: 170940
@@ -76,4 +76,4 @@ v61_safety:
   expected_test_count: 11574
   truncation_disabled: true
   max_sequence_length: 24576
-  tokenizer_version: source_net_v6_1_clean_compact_load_v1
+  tokenizer_version: elda_source_demand_v1

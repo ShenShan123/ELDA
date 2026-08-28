@@ -16,10 +16,10 @@ Yosys path.
 
 The full bundle restores these paths relative to an artifact root:
 
-- `logs/train/`: selected checkpoints and resolved run metadata;
+- `checkpoints/`: selected reference and R1--R4 checkpoints;
 - `paper/results/`: final one-shot attempts and assembly outputs;
 - `paper/reports/`: frozen reference tables and audit reports;
-- `data_manifests/v61/`: full split lists and PyTorch metadata.
+- `data_manifests/elda/`: full split lists and PyTorch metadata.
 
 Download the bundle from the archival location supplied with the paper or the
 GitHub release, verify its published archive checksum, and run:
@@ -28,7 +28,8 @@ GitHub release, verify its published archive checksum, and run:
 python release/verify_release.py --artifact-root /path/to/ELDA-artifacts
 ```
 
-The file `release/checkpoints.sha256` fixes the selected checkpoint payloads.
+The optional `release/checkpoints.sha256` manifest verifies the selected
+checkpoint payloads after download.
 `release/final_attempts_manifest.json` fixes every supported run root and its
 1,024 attempt population. No retry, resampling, or repaired replacement attempt
 is silently substituted by the verifier.

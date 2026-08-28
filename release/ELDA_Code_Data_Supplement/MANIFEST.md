@@ -7,10 +7,10 @@ does not mirror the complete repository.
 
 | Packaged file | Role | SHA-256 |
 |---|---|---|
-| `src/elda/datamodules/data/circuit_source_net_v61_schema.py` | Source--Demand graph serializer and decoder | `2bddb7dc120ab5fa59bf11874eba20fe4a949af954251807b275875c92edb79d` |
-| `src/elda/datamodules/data/circuit_source_net_v61_tokenizer.py` | Compact-load tokenizer and strict parser | `c9eb9dc64492a520426e5cdd5a5ba94a49e052a132c5974a0dfa28875d156b89` |
+| `src/elda/datamodules/data/circuit_source_net_schema.py` | Source--Demand graph serializer and decoder | `9a22dd68d79329b53479db156335c25c241b4faa37d8170751c4537c5d698285` |
+| `src/elda/datamodules/data/circuit_source_net_tokenizer.py` | Compact-load tokenizer and strict parser | `ceb326fc3f8dfed6c59a5e627c75dadfa8f950a0423352adc762fc56b7d08ca6` |
 | `src/elda/datamodules/data/batch_converter.py` | Production batch conversion | `05a27b81c8cd4f1fb9fd3081451a35d574afa43e527db9ca4ee878d939a099ba` |
-| `src/elda/models/_production_snapshot/seq_models.py` | Unmodified model source containing `SourceNetV61Grammar` | `daea4d86a1aeb3e9cbf82f75db697fe5abca2642aa67b8a5ce646623af79b30d` |
+| `src/elda/models/_production_snapshot/seq_models.py` | Frozen model source containing `ELDAGrammar` | `8616a142e9c6e5f81faaea16aba94496b9be64c5f527f55f61a15527e3c67f7a` |
 
 `grammar_loader.py` extracts the grammar class with Python AST and executes it
 with only its declared library dependencies. No grammar method is rewritten.
@@ -20,7 +20,7 @@ with only its declared library dependencies. No grammar method is rewritten.
 The two `paper_attempt_*` files are copied from successful frozen final
 generation attempt 0296. Their hashes are:
 
-- payload JSON: `ceefc5b75d0e2b1a4776022ede6b7502e9cd6170d50e68450257f0c0e26f205f`
+- payload JSON: `74bda3d4af638de2acc4138443cebc3c694b31148b6aa267124cee1588ab6b01`
 - token tensor: `2f3676358192eeba817d15e419d903aae530426f9812c6c962f72c7fb9d9d723`
 
 `raw_subcircuit.json` is a portable JSON transcription of that attempt's
@@ -56,4 +56,4 @@ The package excludes `.git`, caches, notebooks, logs with host metadata,
 complete checkpoints, full datasets, full attempt directories, PDK files, and
 unrelated historical experiments. See `LIMITATIONS.md` for scientific scope.
 The unmodified upstream BSD notice is isolated in
-`third_party/UPSTREAM_LICENSE`; the root license uses anonymous ELDA authorship.
+`third_party/UPSTREAM_LICENSE`; the root license covers ELDA contributions.

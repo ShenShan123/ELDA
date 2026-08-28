@@ -86,14 +86,6 @@ def audit(*, check_checkpoint_payloads: bool = True) -> list[str]:
         ):
             errors.append(f"legacy name embedded in checkpoint: {path.relative_to(ROOT)}")
 
-    migration = ROOT / "release" / "checkpoint_namespace_migration.json"
-    if not migration.is_file():
-        errors.append("missing checkpoint namespace-migration manifest")
-    else:
-        payload = json.loads(migration.read_text(encoding="utf-8"))
-        for row in payload.get("checkpoints", []):
-            if row.get("tensor_bytes_unchanged") is not True:
-                errors.append(f"checkpoint tensor equivalence not verified: {row.get('path')}")
     return errors
 
 

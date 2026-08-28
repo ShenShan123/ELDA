@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from elda.supplement.grammar_loader import SourceNetV61Grammar
+from elda.supplement.grammar_loader import ELDAGrammar
 from elda.supplement.validation import negative_cases, validate_payload
 from scripts.run_pipeline import configure_tokenizer
 
@@ -28,7 +28,7 @@ def test_positive_and_each_negative_rule():
 def test_exact_production_grammar_accepts_frozen_sequence():
     tok = configure_tokenizer()
     sequence = json.loads((ROOT / "expected_outputs" / "token_sequence.json").read_text())["ids"]
-    grammar = SourceNetV61Grammar(tok, batch_size=1, mask_mode="v61_d0_topology_safe")
+    grammar = ELDAGrammar(tok, batch_size=1, mask_mode="reference")
     state = grammar.states[0]
     for chosen in sequence[1:]:
         assert chosen in grammar._allowed(state)

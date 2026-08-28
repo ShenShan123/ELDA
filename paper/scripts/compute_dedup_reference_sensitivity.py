@@ -14,17 +14,17 @@ from typing import Any
 import numpy as np
 import torch
 
-from elda_paths import DATA_ROOT, ELDA_ROOT, PAPER_ROOT, V5_DATA_ROOT
+from elda_paths import DATA_ROOT, ELDA_ROOT, PAPER_ROOT, PROJECTION_DATA_ROOT
 
 ROOT = PAPER_ROOT
 ELDA = ELDA_ROOT
 DATASET = DATA_ROOT
-V5_ROOT = V5_DATA_ROOT
-ATTEMPTS = ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
+PROJECTION_ROOT = PROJECTION_DATA_ROOT
+ATTEMPTS = ROOT / "results/elda/reference/attempts"
 AUDIT = (
     ROOT
-    / "results/source_net_v61/phase4g_source_clean_manifest/strict_no_cross_duplicate_splits"
-    / "v61_object_sequence_cross_split_audit.json"
+    / "results/elda/phase4g_source_clean_manifest/strict_no_cross_duplicate_splits"
+    / "elda_object_sequence_cross_split_audit.json"
 )
 OUT = ROOT / "reports/final_baseline/phase10_6_main_graph_quality_table"
 
@@ -32,8 +32,8 @@ for import_path in (ELDA, ELDA / "tools"):
     if str(import_path) not in sys.path:
         sys.path.insert(0, str(import_path))
 
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import (  # noqa: E402
-    CircuitSourceNetV61Tokenizer,
+from elda.datamodules.data.circuit_source_net_tokenizer import (  # noqa: E402
+    CircuitSourceNetTokenizer,
 )
 from v5_source_net_common import build_v5_tokenizer  # noqa: E402
 
@@ -54,8 +54,8 @@ _TOKENIZER = None
 def worker_tokenizer():
     global _TOKENIZER
     if _TOKENIZER is None:
-        v5, _ = build_v5_tokenizer(V5_ROOT, max_length=24576)
-        tokenizer = CircuitSourceNetV61Tokenizer(
+        v5, _ = build_v5_tokenizer(PROJECTION_ROOT, max_length=24576)
+        tokenizer = CircuitSourceNetTokenizer(
             max_length=24576,
             net_id=int(v5.net_id),
             boundary_stub_id=int(v5.boundary_stub_id),
@@ -162,7 +162,7 @@ def fanout_bin(value: int) -> str:
     raise ValueError(value)
 
 
-def normalize_v61_source_type(source: dict[str, Any]) -> str:
+def normalize_source_type(source: dict[str, Any]) -> str:
     kind = str(source.get("source_kind") or source.get("endpoint_type") or "UNKNOWN").upper()
     role = str(source.get("source_role") or "").upper()
     if "BOUNDARY" in kind or "BOUNDARY" in role:
@@ -174,11 +174,11 @@ def normalize_v61_source_type(source: dict[str, Any]) -> str:
     return kind.lower()
 
 
-def v61_source_load_hist(payload: dict[str, Any]) -> Counter[tuple[str, str]]:
+def source_load_hist(payload: dict[str, Any]) -> Counter[tuple[str, str]]:
     sources = payload.get("sources", [])
     source_nets = payload.get("source_nets", [])
     source_type_by_id = {
-        str(source.get("source_id")): normalize_v61_source_type(source)
+        str(source.get("source_id")): normalize_source_type(source)
         for source in sources
     }
     fanout_by_id = {source_id: 0 for source_id in source_type_by_id}
@@ -210,7 +210,7 @@ def inspect_reference(path_text: str) -> dict[str, Any]:
     return {
         "path": path_text,
         "feature": graph_feature_payload(decoded),
-        "fanout_hist": dict(v61_source_load_hist(payload)),
+        "fanout_hist": dict(source_load_hist(payload)),
         "error": "",
     }
 
@@ -222,7 +222,7 @@ def inspect_generated(pair: tuple[str, str]) -> dict[str, Any]:
     return {
         "path": graph_path,
         "feature": graph_feature_payload(graph),
-        "fanout_hist": dict(v61_source_load_hist(payload)),
+        "fanout_hist": dict(source_load_hist(payload)),
         "error": "",
     }
 
@@ -387,7 +387,7 @@ def main() -> None:
     ]
     result = {
         "schema_version": "elda_reference_development_dedup_sensitivity_v2",
-        "method": "Source-Net V6.1 best7epoch topology-safe",
+        "method": "Source-Net ELDA selected checkpoint topology-safe",
         "reference_view": "deterministic ELDA serialization/decode for source-clean test subcircuits",
         "dedup_policy": "Remove test subcircuits whose exact ELDA object sequence has a training- or validation-split exact match.",
         "removed_test_partitions": len(remove),
@@ -397,7 +397,7 @@ def main() -> None:
         "degree_mmd_reference_population": len(dedup_rows),
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "v61_reference_dedup_sensitivity.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (OUT / "elda_reference_dedup_sensitivity.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     fields = ["Reference test set", "Test size", "Density W1", "Degree MMD", "Rel. Components W1", "LCC W1", "Type-mixing", "Fanout TV"]
     csv_rows = []
     for row in rows:
@@ -411,7 +411,7 @@ def main() -> None:
             "Type-mixing": f"{row['type_mixing_hA2_ratio']:.6f}",
             "Fanout TV": f"{row['fanout_TV']:.6f}",
         })
-    with (OUT / "v61_reference_dedup_sensitivity.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (OUT / "elda_reference_dedup_sensitivity.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(csv_rows)
@@ -424,7 +424,7 @@ def main() -> None:
     lines.extend([
         "",
         "Notes:",
-        "- Generated set is fixed: Source-Net V6.1 best7epoch topology-safe, 1024 candidates.",
+        "- Generated set is fixed: Source-Net ELDA selected checkpoint topology-safe, 1024 candidates.",
         "- Reference view uses deterministic ELDA serialization/decode, matching the generated decoded graph view.",
         "- The development-deduplicated test reference removes 184 test subcircuits: 182 with training exact endpoint-sequence matches and 2 additional validation-only matches.",
         "- All metrics, including blockwise Gaussian-kernel Degree MMD, use the full listed reference set without random reference subsampling.",
@@ -432,7 +432,7 @@ def main() -> None:
         "- Type-mixing is the generated/reference mean ratio of two-hop label homophily `h(A^2,Y)`; values closer to 1 indicate better agreement.",
         "- Fanout TV uses exact ELDA source-load demand incidence over `P(source_type, fanout_bin)`.",
     ])
-    (OUT / "v61_reference_dedup_sensitivity.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (OUT / "elda_reference_dedup_sensitivity.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))
 
 

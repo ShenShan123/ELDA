@@ -17,7 +17,7 @@ from elda_paths import PAPER_ROOT
 ROOT = PAPER_ROOT
 OUT = ROOT / "reports/final_baseline/phase10_9_standalone_logic_usefulness"
 REPAIR_ROOT = ROOT / "reports/final_baseline/deterministic_repair_burden_20260726_multiout/models"
-ELDA_ATTEMPTS = ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
+ELDA_ATTEMPTS = ROOT / "results/elda/reference/attempts"
 SEQUENTIAL_PREFIXES = ("DFF", "SDFF", "LATCH", "DLH", "DLL")
 
 sys.path.insert(0, str(ROOT / "scripts"))

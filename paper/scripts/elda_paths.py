@@ -15,19 +15,19 @@ PAPER_ROOT = Path(
 DATA_ROOT = Path(
     os.environ.get(
         "ELDA_DATA_ROOT",
-        ELDA_ROOT / "datasets/CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
+        ELDA_ROOT / "datasets/elda",
     )
 ).expanduser().resolve()
-V5_DATA_ROOT = Path(
+PROJECTION_DATA_ROOT = Path(
     os.environ.get(
-        "ELDA_V5_DATA_ROOT",
-        ELDA_ROOT / "datasets/CIRCUIT_SOURCE_NET_PARTITION_V5_0_ROLE3FIX_DUALVIEW",
+        "ELDA_PROJECTION_DATA_ROOT",
+        ELDA_ROOT / "datasets/common_cell_projection",
     )
 ).expanduser().resolve()
 COMMON_DATA_ROOT = Path(
     os.environ.get(
         "ELDA_COMMON_DATA_ROOT",
-        ELDA_ROOT / "datasets/CIRCUIT_PIN_SLOT_PARTITION_V2_1_GC_FULL",
+        ELDA_ROOT / "datasets/common_graph",
     )
 ).expanduser().resolve()
 WORK_DATA_ROOT = Path(

@@ -12,7 +12,7 @@ from typing import Any
 from elda_paths import PAPER_ROOT
 
 ROOT = PAPER_ROOT
-ATTEMPTS = ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
+ATTEMPTS = ROOT / "results/elda/reference/attempts"
 OUT = ROOT / "reports/final_baseline/phase10_9_standalone_logic_usefulness"
 SEQUENTIAL_PREFIXES = ("DFF", "SDFF", "LATCH", "DLH", "DLL")
 
@@ -266,7 +266,7 @@ def main() -> None:
         "",
         f"Attempt root: `{ATTEMPTS}`",
         "",
-        "All ratios are computed over standalone freely generated ELDA candidates from the final best7epoch topology-safe n=1024 run.",
+        "All ratios are computed over standalone freely generated ELDA candidates from the final selected checkpoint topology-safe n=1024 run.",
         "",
         "| Metric | Value | Notes |",
         "|---|---:|---|",

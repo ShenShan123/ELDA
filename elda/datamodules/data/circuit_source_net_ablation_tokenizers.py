@@ -4,11 +4,11 @@ from collections import Counter
 
 import torch
 
-from .circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
-from .circuit_source_net_v61_schema import decode_v61, serialize_v61, count_bucket
+from .circuit_source_net_tokenizer import CircuitSourceNetTokenizer
+from .circuit_source_net_schema import decode_source_net, serialize_source_net, count_bucket
 
 
-class _CircuitSourceNetV61AblationTokenizer(CircuitSourceNetV61Tokenizer):
+class _CircuitSourceNetAblationTokenizer(CircuitSourceNetTokenizer):
     """Independent, versioned token schemas for the R1-R4 representation ablations."""
 
     representation_variant = ""
@@ -115,7 +115,7 @@ class _CircuitSourceNetV61AblationTokenizer(CircuitSourceNetV61Tokenizer):
                 index += 1
             tokens = result
         else:
-            raise ValueError(f"unknown V6.1 representation variant: {self.representation_variant}")
+            raise ValueError(f"unknown ELDA representation variant: {self.representation_variant}")
         return torch.tensor(tokens, dtype=sequence.dtype)
 
     def _inflate_for_r0_parser(self, sequence) -> torch.Tensor:
@@ -250,7 +250,7 @@ class _CircuitSourceNetV61AblationTokenizer(CircuitSourceNetV61Tokenizer):
             and self.representation_variant != "r1_no_boundary_identity"
         ):
             raise ValueError(f"{self.tokenizer_version} rejected same-cell same-net reuse")
-        return decode_v61(
+        return decode_source_net(
             payload,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,
@@ -258,15 +258,15 @@ class _CircuitSourceNetV61AblationTokenizer(CircuitSourceNetV61Tokenizer):
         )
 
 
-class CircuitSourceNetV61R1NoBoundaryIdentityTokenizer(
-    _CircuitSourceNetV61AblationTokenizer
+class CircuitSourceNetR1NoBoundaryIdentityTokenizer(
+    _CircuitSourceNetAblationTokenizer
 ):
-    serializer_version = "source_net_v6_1_r1_no_boundary_identity_v1"
+    serializer_version = "elda_r1_no_boundary_identity_v1"
     tokenizer_version = serializer_version
     representation_variant = "r1_no_boundary_identity"
 
     def tokenize(self, data):
-        payload = serialize_v61(
+        payload = serialize_source_net(
             data,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,
@@ -349,27 +349,27 @@ class CircuitSourceNetV61R1NoBoundaryIdentityTokenizer(
         return sequence
 
 
-class CircuitSourceNetV61R2NoPerSourceBudgetTokenizer(
-    _CircuitSourceNetV61AblationTokenizer
+class CircuitSourceNetR2NoPerSourceBudgetTokenizer(
+    _CircuitSourceNetAblationTokenizer
 ):
-    serializer_version = "source_net_v6_1_r2_no_per_source_budget_v1"
+    serializer_version = "elda_r2_no_per_source_budget_v1"
     tokenizer_version = serializer_version
     representation_variant = "r2_no_per_source_budget"
 
 
-class CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer(
-    _CircuitSourceNetV61AblationTokenizer
+class CircuitSourceNetR3NoFullLoadAssignmentTokenizer(
+    _CircuitSourceNetAblationTokenizer
 ):
-    serializer_version = "source_net_v6_1_r3_no_full_load_assignment_v1"
+    serializer_version = "elda_r3_no_full_load_assignment_v1"
     tokenizer_version = serializer_version
     representation_variant = "r3_no_full_load_assignment"
     information_sufficient_for_strict_decode = False
 
 
-class CircuitSourceNetV61R4CellLevelDemandTokenizer(
-    _CircuitSourceNetV61AblationTokenizer
+class CircuitSourceNetR4CellLevelDemandTokenizer(
+    _CircuitSourceNetAblationTokenizer
 ):
-    serializer_version = "source_net_v6_1_r4_cell_level_demand_v1"
+    serializer_version = "elda_r4_cell_level_demand_v1"
     tokenizer_version = serializer_version
     representation_variant = "r4_cell_level_demand"
     information_sufficient_for_strict_decode = False

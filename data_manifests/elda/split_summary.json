@@ -1,6 +1,6 @@
 {
-  "schema": "elda_v61_split_summary_v1",
-  "dataset_name": "CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
+  "schema": "elda_split_summary_v1",
+  "dataset_name": "ELDA_REFERENCE",
   "max_sequence_length": 24576,
   "historical_checkpoint_view": {
     "counts": {
@@ -8,7 +8,7 @@
       "validation": 9639,
       "test": 11574
     },
-    "purpose": "frozen best7 checkpoint lineage"
+    "purpose": "selected checkpoint lineage"
   },
   "strict_public_training_view": {
     "counts": {

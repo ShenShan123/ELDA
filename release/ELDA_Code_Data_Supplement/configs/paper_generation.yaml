@@ -11,7 +11,7 @@ sampling:
   max_length: 24576
   batch_size: 1
 decoder:
-  grammar_mode: v61_d0_topology_safe
+  grammar_mode: reference
   source_load_representation: compact
   enabled:
     - gale_ryser

@@ -4,20 +4,20 @@ ELDA generates materializable gate-level subcircuits with explicit Liberty
 input-pin demands, typed driver endpoints, source-to-demand assignments, and
 state-constrained autoregressive decoding.
 
-This is the public source repository for the frozen V6.1 implementation used
+This is the public source repository for the frozen ELDA implementation used
 in the paper. It contains the model and decoder, training configurations,
 dataset-construction code, final evaluation scripts, compact frozen result
 tables, and a real-sample minimal reproduction. Large datasets, selected
 checkpoints, 1,024-attempt runs, and routed-design outputs are distributed as
-separate, checksum-addressed artifacts; see [ARTIFACTS.md](ARTIFACTS.md).
+separate versioned artifacts; see [ARTIFACTS.md](ARTIFACTS.md).
 
 ## What is included
 
 - `elda/`: model, dataset, serializer, and constrained-decoder implementation.
 - `circuit_kahypar/` and `tools/`: gate-level subcircuit extraction and data tools.
-- `configs/experiment/circuit_source_net_v61*.yaml`: ELDA and R1--R4 configs.
-- `scripts/run_source_net_v61_clean_train.sh`: guarded V6.1 training entry point.
-- `data_manifests/v61/`: path-independent frozen split counts and hashes.
+- `configs/experiment/elda_*.yaml`: reference and R1--R4 configurations.
+- `scripts/run_elda_reference_train.sh`: guarded reference-training entry point.
+- `data_manifests/elda/`: path-independent frozen split counts and hashes.
 - `paper/scripts/` and `paper/reproduce_tables.sh`: supported final-table drivers.
 - `release/ELDA_Code_Data_Supplement/`: portable real-sample smoke reproduction
   and compact paper tables.
@@ -58,7 +58,7 @@ included in the supplement.
 Run the source unit tests with:
 
 ```bash
-pytest -q tests
+python -m pytest -q tests
 ```
 
 Data-backed tests skip when the external corpus is absent. To enable them, set
@@ -66,35 +66,35 @@ Data-backed tests skip when the external corpus is absent. To enable them, set
 
 ## Data and split identity
 
-Materialize the V6.1 dataset artifact and export:
+Materialize the ELDA dataset artifact and export:
 
 ```bash
-export ELDA_DATA_ROOT=/path/to/CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD
+export ELDA_DATA_ROOT=/path/to/elda_dataset
 export ELDA_NANGATE45_LIBERTY=/path/to/NangateOpenCellLibrary_typical.lib
 ```
 
-The dataset root contains `meta.pt`, `mapping_v61.txt`, the three source-clean
+The dataset root contains `meta.pt`, `mapping.txt`, the three source-clean
 split lists, and the referenced graph objects. The strict public training view
 contains 170,940/9,396/11,574 train/validation/test objects. Reference-dependent
 paper metrics use the development-deduplicated 11,390-object test reference.
 
-The selected best7 checkpoint predates the final family audit and retains its
-historical 171,192/9,639/11,574 lineage. Exact counts and split hashes for both
-views are recorded in `data_manifests/v61/split_summary.json`; the repository
+The selected checkpoint predates the final family audit and retains its
+recorded 171,192/9,639/11,574 lineage. Exact counts and split hashes for both
+views are recorded in `data_manifests/elda/split_summary.json`; the repository
 does not silently rewrite checkpoint provenance.
 
 `OPENROAD_FLOW_ROOT` may be used instead of `ELDA_NANGATE45_LIBERTY` when it
 points to an OpenROAD-flow-scripts `flow/` directory containing Nangate45.
 
-## Train V6.1
+## Train ELDA
 
 The entry point is deliberately guarded against accidental long jobs:
 
 ```bash
-START_SOURCE_NET_V61_TRAINING=1 \
-ELDA_DATA_ROOT=/path/to/V6.1 \
+START_ELDA_TRAINING=1 \
+ELDA_DATA_ROOT=/path/to/elda_dataset \
 ELDA_PYTHON=/path/to/python \
-scripts/run_source_net_v61_clean_train.sh \
+scripts/run_elda_reference_train.sh \
 trainer.max_epochs=4 \
 trainer.max_steps=85596 \
 trainer.accumulate_grad_batches=8 \
@@ -130,8 +130,8 @@ The verifier checks selected checkpoint hashes, exact `attempt_0000` through
 Extract the paper artifact tree into `paper/results` and `paper/reports`, then:
 
 ```bash
-ELDA_DATA_ROOT=/path/to/V6.1 \
-ELDA_V5_DATA_ROOT=/path/to/V5_projection_data \
+ELDA_DATA_ROOT=/path/to/elda_dataset \
+ELDA_PROJECTION_DATA_ROOT=/path/to/common_cell_projection \
 ELDA_COMMON_DATA_ROOT=/path/to/common_graph_data \
 ELDA_ORFS_ROOT=/path/to/OpenROAD-flow-scripts/flow \
 ELDA_PYTHON=/path/to/python \

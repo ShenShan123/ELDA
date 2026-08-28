@@ -15,13 +15,13 @@ for the attempt-only repair, representation-ablation, decoder-ablation, and
 100-design assembly tables.
 
 Use the default `ELDA_REPRO_SCOPE=all` with `ELDA_DATA_ROOT`,
-`ELDA_V5_DATA_ROOT`, and `ELDA_COMMON_DATA_ROOT` set to regenerate
+`ELDA_PROJECTION_DATA_ROOT`, and `ELDA_COMMON_DATA_ROOT` set to regenerate
 reference-dependent graph, endpoint, logic-usefulness, and appendix metrics.
 
 The canonical paper outputs are:
 
 - `reports/final_baseline/phase10_8_endpoint_fidelity_main_table/`
-- `results/source_net_v61/full_design_stitch/`
+- `results/elda/design_assembly/`
   `random100_medium_n1900_3500_strict_20260724/summary/`
 - `reports/final_baseline/appendix_dataset_split_inventory_20260726/`
 - `reports/final_baseline/appendix_size_stratified_cell_inventory_20260730/`

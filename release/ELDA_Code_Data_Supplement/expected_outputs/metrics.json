@@ -3,7 +3,7 @@
   "cell_count": 3,
   "demand_count": 3,
   "mean_source_fanout": 0.5,
-  "object_sha256": "ed1eb187a0ae38fbef3a29427212f63e5bec91bd7dc53c43c9e639c7d7f6c44f",
+  "object_sha256": "b113da5873619ac538ccf8ab5b256104bcb44a3a3afc2e7759e71ed369aa3613",
   "source_count": 6,
   "source_fanout_histogram": {
     "0": 3,

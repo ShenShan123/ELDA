@@ -27,9 +27,9 @@ def edge_rows(graph: Data) -> list[tuple[int, int, int, str]]:
     pins = getattr(graph, "edge_pin_id", None)
     pin_names = list(getattr(graph, "pin_id_to_name", []))
     if roles is None or pins is None:
-        raise ValueError("V6.1 requires edge_role and edge_pin_id")
+        raise ValueError("ELDA requires edge_role and edge_pin_id")
     if int(roles.numel()) != int(edge_index.size(1)) or int(pins.numel()) != int(edge_index.size(1)):
-        raise ValueError("V6.1 edge metadata length mismatch")
+        raise ValueError("ELDA edge metadata length mismatch")
     rows = []
     for index, (src, dst) in enumerate(edge_index.t().tolist()):
         pin_id = int(pins[index].item())
@@ -38,7 +38,7 @@ def edge_rows(graph: Data) -> list[tuple[int, int, int, str]]:
     return rows
 
 
-def serialize_v61(
+def serialize_source_net(
     graph: Data,
     *,
     net_id: int,
@@ -187,7 +187,7 @@ def serialize_v61(
     demand_ids = {demand["demand_id"] for demand in demands}
     covered_slots = {(demand["load_cell_id"], demand["load_pin"]) for demand in demands}
     return {
-        "schema_version": "source_net_v6_1_full_load_per_source_budget_pin_slot_v1",
+        "schema_version": "elda_source_demand_object_v1",
         "cells": cells,
         "demands": demands,
         "sources": sources,
@@ -217,7 +217,7 @@ def serialize_v61(
     }
 
 
-def decode_v61(payload: dict, *, net_id: int, boundary_stub_id: int, cell_to_label: dict[str, int]) -> Data:
+def decode_source_net(payload: dict, *, net_id: int, boundary_stub_id: int, cell_to_label: dict[str, int]) -> Data:
     cells = list(payload["cells"])
     demands = {demand["demand_id"]: demand for demand in payload["demands"]}
     sources = {source["source_id"]: source for source in payload["sources"]}
@@ -263,14 +263,14 @@ def decode_v61(payload: dict, *, net_id: int, boundary_stub_id: int, cell_to_lab
     graph.edge_attr = graph.edge_role.clone()
     graph.edge_pin_id = torch.tensor(pins, dtype=torch.long)
     graph.pin_id_to_name = pin_names
-    graph.source_net_v61_schema_version = payload["schema_version"]
+    graph.source_net_schema_version = payload["schema_version"]
     return graph
 
 
-def tokenize_v61_payload(payload: dict, variant: str = "full") -> list[str]:
+def tokenize_source_net_payload(payload: dict, variant: str = "full") -> list[str]:
     """Canonical production-token draft used for length and grammar audits."""
     if variant not in {"full", "compact_budget", "compact_load"}:
-        raise ValueError(f"unknown V6.1 tokenization variant: {variant}")
+        raise ValueError(f"unknown ELDA tokenization variant: {variant}")
     tokens = ["SOS", "CELL_SECTION_BEGIN"]
     for cell in payload["cells"]:
         tokens.extend([

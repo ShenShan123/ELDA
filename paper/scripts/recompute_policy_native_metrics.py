@@ -13,18 +13,18 @@ from elda_paths import PAPER_ROOT
 
 ROOT = PAPER_ROOT
 OUT = ROOT / "reports/final_baseline/phase10_8_endpoint_fidelity_main_table"
-REFERENCE_CACHE = OUT / "native_v61_reference_rows_dedup11390.jsonl"
-METRICS_OUT = OUT / "v61_policy_native_graph_metrics.json"
+REFERENCE_CACHE = OUT / "native_elda_reference_rows_dedup11390.jsonl"
+METRICS_OUT = OUT / "elda_policy_native_graph_metrics.json"
 TRAIN_FINGERPRINTS = (
     ROOT
     / "reports/final_baseline/phase10_6_main_graph_quality_table"
-    / "v61_train_clean_decoded_view_fingerprints.txt"
+    / "elda_train_clean_decoded_view_fingerprints.txt"
 )
 METHODS = {
-    "ELDA_Unconstrained": ROOT / "results/source_net_v61/d2_policy_main_n1024/unconstrained_lm/attempts",
-    "ELDA_Syntax": ROOT / "results/source_net_v61/d2_policy_main_n1024/syntax_only_lm/attempts",
-    "Frequency sampler": ROOT / "results/source_net_v61/d2_policy_main_n1024/field_frequency/attempts",
-    "ELDA": ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts",
+    "ELDA_Unconstrained": ROOT / "results/elda/controls/unconstrained_lm/attempts",
+    "ELDA_Syntax": ROOT / "results/elda/controls/syntax_only_lm/attempts",
+    "Frequency sampler": ROOT / "results/elda/controls/field_frequency/attempts",
+    "ELDA": ROOT / "results/elda/reference/attempts",
 }
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -32,7 +32,7 @@ from compute_unified_dedup11390_reference_metrics import (  # noqa: E402
     dedup_reference_paths,
     structural_hash,
 )
-from compute_v61_dedup_reference_sensitivity import (  # noqa: E402
+from compute_dedup_reference_sensitivity import (  # noqa: E402
     inspect_generated,
     inspect_reference,
     summarize,
@@ -148,12 +148,12 @@ def write_distribution_table(rows: list[dict[str, Any]]) -> None:
     labels = [
         "Method", "Native object n", "Degree MMD ↓", "Rel. Components W1 ↓", "LCC W1 ↓", "Fanout TV ↓"
     ]
-    with (OUT / "table1b_v61_native_distribution.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (OUT / "table1b_elda_native_distribution.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
     lines = [
-        "# V6.1 native distribution comparison",
+        "# ELDA native distribution comparison",
         "",
         "| " + " | ".join(labels) + " |",
         "|" + "---|" * len(labels),
@@ -168,7 +168,7 @@ def write_distribution_table(rows: list[dict[str, Any]]) -> None:
         "",
         "Fanout TV is exact TV over `P(source kind, fanout bin)` and counts only load-demand endpoints.",
     ])
-    (OUT / "table1b_v61_native_distribution.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (OUT / "table1b_elda_native_distribution.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def write_pipeline_table(rows: list[dict[str, Any]]) -> None:
@@ -182,12 +182,12 @@ def write_pipeline_table(rows: list[dict[str, Any]]) -> None:
         "Source/load assignment ↑", "Native object complete ↑", "Strict valid ↑",
         "Raw Verilog ↑", "Yosys check ↑", "Main failure",
     ]
-    with (OUT / "table3_v61_native_object_pipeline.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (OUT / "table3_elda_native_object_pipeline.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
     lines = [
-        "# Native V6.1 object and materialization pipeline",
+        "# Native ELDA object and materialization pipeline",
         "",
         "| " + " | ".join(labels) + " |",
         "|" + "---|" * len(labels),
@@ -196,7 +196,7 @@ def write_pipeline_table(rows: list[dict[str, Any]]) -> None:
         lines.append("| " + " | ".join(format_value(row[field]) for field in fields) + " |")
     lines.extend([
         "",
-        "All rates use all 1,024 attempts as the denominator. Graph valid means strict V6.1 token "
+        "All rates use all 1,024 attempts as the denominator. Graph valid means strict ELDA token "
         "parse/decode. Native object complete additionally requires complete sections/EOS, valid "
         "CELL/DEMAND/SOURCE tables, full and exactly-once demand assignment, zero source-budget "
         "violation, and zero same-source reuse within a load cell.",
@@ -204,7 +204,7 @@ def write_pipeline_table(rows: list[dict[str, Any]]) -> None:
         "Raw Verilog is verify-only materialization with no repair/fallback. `Yosys check` uses the "
         "stored no-repair Yosys result; the invoked flow also performs synthesis and final check.",
     ])
-    (OUT / "table3_v61_native_object_pipeline.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (OUT / "table3_elda_native_object_pipeline.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> None:

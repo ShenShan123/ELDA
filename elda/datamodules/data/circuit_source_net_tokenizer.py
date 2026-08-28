@@ -6,12 +6,12 @@ from typing import Dict, List, Optional
 import torch
 
 from .batch_converter import BatchConverter
-from .circuit_source_net_v61_schema import decode_v61, serialize_v61
+from .circuit_source_net_schema import decode_source_net, serialize_source_net
 
 
-class CircuitSourceNetV61Tokenizer:
-    serializer_version = "source_net_v6_1_clean_compact_load_v1"
-    tokenizer_version = "source_net_v6_1_clean_compact_load_v1"
+class CircuitSourceNetTokenizer:
+    serializer_version = "elda_source_demand_v1"
+    tokenizer_version = "elda_source_demand_v1"
     include_target_profile = False
 
     def __init__(
@@ -37,7 +37,7 @@ class CircuitSourceNetV61Tokenizer:
         self.cell_to_label = {value: key for key, value in self.label_to_cell.items()}
         self.pin_specs = dict(pin_specs or {})
         self.labeled_graph = False
-        self.is_source_net_v61_tokenizer = True
+        self.is_source_net_tokenizer = True
         self.is_source_net_v5_tokenizer = False
         self.last_pointer_payload: dict = {}
         self.last_overlength = False
@@ -108,13 +108,13 @@ class CircuitSourceNetV61Tokenizer:
 
     def __len__(self):
         if self.node_type_offset is None:
-            raise ValueError("V6.1 tokenizer is not initialized")
+            raise ValueError("ELDA tokenizer is not initialized")
         return self.node_type_offset + max(1, self.num_node_types)
 
     def _bounded(self, value: int, name: str) -> int:
         value = int(value)
         if self.max_num_nodes is None or not (0 <= value <= self.max_num_nodes):
-            raise ValueError(f"{name}={value} exceeds V6.1 pointer/count range")
+            raise ValueError(f"{name}={value} exceeds ELDA pointer/count range")
         return value
 
     def _gate(self, value: int) -> int:
@@ -148,7 +148,7 @@ class CircuitSourceNetV61Tokenizer:
         try:
             return self.special_toks.index(name)
         except ValueError as exc:
-            raise ValueError(f"unsupported V6.1 static token: {value}") from exc
+            raise ValueError(f"unsupported ELDA static token: {value}") from exc
 
     def _pointer_value(self, token: int, offset: int, kind: str) -> int:
         value = int(token) - int(offset)
@@ -233,10 +233,10 @@ class CircuitSourceNetV61Tokenizer:
                     take(tag)
                     value = self.special_toks[take()]
                     if value not in {"BOOL_FALSE", "BOOL_TRUE"}:
-                        raise ValueError(f"invalid V6.2 boolean profile token: {value}")
+                        raise ValueError(f"invalid target-profile Boolean token: {value}")
                     control_profile[key] = value == "BOOL_TRUE"
             else:
-                raise ValueError(f"invalid V6.2 profile mode: {mode}")
+                raise ValueError(f"invalid target profile mode: {mode}")
             take(self.target_profile_end)
         take(self.cell_section_begin)
         cells = []
@@ -480,12 +480,12 @@ class CircuitSourceNetV61Tokenizer:
     def decode(self, sequence):
         payload, report = self.parse_tokens(sequence)
         if not report["source_load_full_coverage"]:
-            raise ValueError("V6.1 decode requires full source-load coverage")
+            raise ValueError("ELDA decode requires full source-load coverage")
         if report["source_budget_violation"]:
-            raise ValueError("V6.1 decode rejected source budget violation")
+            raise ValueError("ELDA decode rejected source budget violation")
         if report["same_cell_same_net_reuse"]:
-            raise ValueError("V6.1 decode rejected same-cell same-net input reuse")
-        return decode_v61(
+            raise ValueError("ELDA decode rejected same-cell same-net input reuse")
+        return decode_source_net(
             payload,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,
@@ -493,7 +493,7 @@ class CircuitSourceNetV61Tokenizer:
         )
 
     def _serialize_payload(self, data):
-        return serialize_v61(
+        return serialize_source_net(
             data,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,
@@ -508,7 +508,7 @@ class CircuitSourceNetV61Tokenizer:
 
     def tokenize(self, data):
         if self.node_type_offset is None:
-            raise ValueError("V6.1 tokenizer offsets are not initialized")
+            raise ValueError("ELDA tokenizer offsets are not initialized")
         payload = self._serialize_payload(data)
         source_index = {
             source["source_id"]: index for index, source in enumerate(payload["sources"])
@@ -598,7 +598,7 @@ class CircuitSourceNetV61Tokenizer:
         self.last_overlength = bool(self.max_length > 0 and int(sequence.numel()) > self.max_length)
         if self.last_overlength:
             raise RuntimeError(
-                f"V6.1 no-silent-truncation violation: length={int(sequence.numel())} "
+                f"ELDA no-silent-truncation violation: length={int(sequence.numel())} "
                 f"exceeds max_length={self.max_length}"
             )
         self.last_pointer_payload = {

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "elda-code-data-supplement"
 version = "1.0.0"
-description = "Anonymous executable supplement for endpoint-level demand assignment"
+description = "Portable executable supplement for endpoint-level demand assignment"
 requires-python = ">=3.11,<3.12"
 license = {text = "BSD-3-Clause"}
 dependencies = [

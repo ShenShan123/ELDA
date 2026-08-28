@@ -2,7 +2,7 @@
 
 The included production implementation derives from an upstream project made
 available under the BSD 3-Clause License. Its unmodified legal text is retained
-in `third_party/UPSTREAM_LICENSE`. The root `LICENSE` covers the anonymous ELDA
+in `third_party/UPSTREAM_LICENSE`. The root `LICENSE` covers the ELDA
 supplement additions. The supplement also depends on PyTorch,
 PyTorch Geometric, Transformers, NetworkX, and Yosys; those projects are not
 redistributed here and remain subject to their own licenses.

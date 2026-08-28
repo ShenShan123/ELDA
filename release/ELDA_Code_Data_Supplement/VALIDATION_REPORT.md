@@ -9,7 +9,7 @@ Yosys 0.51+101:
 bash scripts/run_minimal_reproduction.sh
 bash scripts/run_tests.sh
 python scripts/recompute_paper_audits.py
-python scripts/audit_anonymity.py .
+python scripts/audit_privacy.py .
 python scripts/audit_release_identity.py .
 python scripts/validate_package.py .
 ```
@@ -26,7 +26,7 @@ Results:
 - stable expected-output comparison: PASS;
 - pytest: 5 passed (one upstream deprecation warning);
 - compact paper-record arithmetic audit: PASS;
-- anonymity and external-link scan: PASS;
+- privacy and external-link scan: PASS;
 - ELDA release-identity and namespace scan: PASS;
 - static size, permissions, required-file, and symlink checks: PASS.
 

@@ -23,7 +23,7 @@ from elda_paths import PAPER_ROOT
 
 ROOT = PAPER_ROOT
 DEFAULT_EXPERIMENT = ROOT / (
-    "results/source_net_v61/full_design_stitch/"
+    "results/elda/design_assembly/"
     "random100_medium_n1900_3500_strict_20260724"
 )
 REPAIR_ROOT = ROOT / (
@@ -33,7 +33,7 @@ METHODS = (
     ("AutoGraph-labeled", "AutoGraph", "autograph"),
     ("G2PT-labeled", "G2PT", "g2pt"),
     ("DiGress", "DiGress", "digress"),
-    ("ELDA", "V6.1", "v61"),
+    ("ELDA", "ELDA", "elda"),
 )
 _ORFS_VALUE = os.environ.get("ELDA_ORFS_ROOT") or os.environ.get(
     "OPENROAD_FLOW_ROOT"
@@ -159,7 +159,7 @@ def scaffold_metadata_restoration_audit(experiment: dict[str, Any]) -> dict[str,
     report_locations = (
         (
             "ELDA",
-            Path("common_k1024/v61/scaffold_generated_replace_all_report.json"),
+            Path("common_k1024/elda/scaffold_generated_replace_all_report.json"),
         ),
         (
             "AutoGraph-labeled",
@@ -282,7 +282,7 @@ def selected_repair(
     selection_key: str,
     attempts: dict[str, list[dict[str, Any]]],
 ) -> dict[str, int]:
-    if selection_key == "v61":
+    if selection_key == "elda":
         return {
             "node_role_imputation": 0,
             "cell_type_imputation": 0,
@@ -508,7 +508,7 @@ def main() -> None:
             materializer_breakdown = post_stitch_operation_breakdown(
                 issues,
                 row["export"].get("verilog_metadata", {}),
-                explicit_pin_overlay_complete=(selection_key == "v61"),
+                explicit_pin_overlay_complete=(selection_key == "elda"),
             )
             materializer_completion = materializer_breakdown["completion_ops"]
             materializer_dropped = materializer_breakdown[
@@ -520,7 +520,7 @@ def main() -> None:
             demand_count = int(
                 row["native_semantic"]["required_input_pin_slot_count"]
             )
-            if selection_key == "v61":
+            if selection_key == "elda":
                 incidence_retention = 1.0
             else:
                 original_incidence = (

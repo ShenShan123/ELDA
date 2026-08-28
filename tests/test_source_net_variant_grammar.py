@@ -4,35 +4,35 @@ from pathlib import Path
 
 import torch
 
-from elda.datamodules.data.circuit_source_net_v61_ablation_tokenizers import (
-    CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-    CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-    CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-    CircuitSourceNetV61R4CellLevelDemandTokenizer,
+from elda.datamodules.data.circuit_source_net_ablation_tokenizers import (
+    CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+    CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+    CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+    CircuitSourceNetR4CellLevelDemandTokenizer,
 )
 from elda.datamodules.graph_dataset import GraphDataset
-from elda.models.seq_models import SourceNetV61Grammar
+from elda.models.seq_models import ELDAGrammar
 
 
 DATA_ROOT_VALUE = os.environ.get("ELDA_DATA_ROOT")
 
 
-class SourceNetV61VariantGrammarTest(unittest.TestCase):
+class SourceNetELDAVariantGrammarTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         if not DATA_ROOT_VALUE:
             raise unittest.SkipTest(
-                "set ELDA_DATA_ROOT to run dataset-backed V6.1 grammar tests"
+                "set ELDA_DATA_ROOT to run dataset-backed ELDA grammar tests"
             )
         data_root = Path(DATA_ROOT_VALUE).expanduser().resolve()
         dm = GraphDataset(
             root=str(data_root),
-            dataset_names="CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
-            tokenizer_type="source_net_v61",
+            dataset_names="ELDA_REFERENCE",
+            tokenizer_type="elda",
             max_length=24576,
             truncation_length=None,
             no_silent_truncate=True,
-            cell_mapping_path=str(data_root / "mapping_v61.txt"),
+            cell_mapping_path=str(data_root / "mapping.txt"),
             batch_size=1,
             num_workers=0,
         )
@@ -66,17 +66,17 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
 
     def test_oracle_sequences_are_accepted_by_matching_variant_grammar(self):
         for tokenizer_class in (
-            CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-            CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-            CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-            CircuitSourceNetV61R4CellLevelDemandTokenizer,
+            CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+            CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+            CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+            CircuitSourceNetR4CellLevelDemandTokenizer,
         ):
             with self.subTest(tokenizer=tokenizer_class.__name__):
                 tokenizer = self._tokenizer(tokenizer_class)
                 sequence = tokenizer(self.graph).tolist()
-                grammar = SourceNetV61Grammar(
+                grammar = ELDAGrammar(
                     tokenizer, batch_size=1, device="cpu",
-                    mask_mode="v61_d0_full",
+                    mask_mode="d6_no_topology_safety",
                 )
                 state = grammar.states[0]
                 for position, token in enumerate(sequence[1:], start=1):
@@ -96,7 +96,7 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
 
     def test_r3_has_empty_assignment_section(self):
         tokenizer = self._tokenizer(
-            CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer
+            CircuitSourceNetR3NoFullLoadAssignmentTokenizer
         )
         sequence = tokenizer(self.graph).tolist()
         begin = sequence.index(tokenizer.source_net_section_begin)
@@ -105,7 +105,7 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
 
     def test_r4_demand_records_are_cell_level_without_pin_tokens(self):
         tokenizer = self._tokenizer(
-            CircuitSourceNetV61R4CellLevelDemandTokenizer
+            CircuitSourceNetR4CellLevelDemandTokenizer
         )
         sequence = tokenizer(self.graph).tolist()
         begin = sequence.index(tokenizer.demand_section_begin)
@@ -115,11 +115,11 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
 
     def test_r2_basic_disables_future_feasibility_only(self):
         tokenizer = self._tokenizer(
-            CircuitSourceNetV61R2NoPerSourceBudgetTokenizer
+            CircuitSourceNetR2NoPerSourceBudgetTokenizer
         )
-        grammar = SourceNetV61Grammar(
+        grammar = ELDAGrammar(
             tokenizer, batch_size=1, device="cpu",
-            mask_mode="v61_r2_basic",
+            mask_mode="r2_basic",
         )
         self.assertFalse(grammar.r2_future_feasibility)
         self.assertFalse(grammar.features["gale_ryser"])
@@ -132,9 +132,9 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
 
     def test_topology_tail_lookahead_rejects_joint_future_cycle(self):
         tokenizer = self.base
-        grammar = SourceNetV61Grammar(
+        grammar = ELDAGrammar(
             tokenizer, batch_size=1, device="cpu",
-            mask_mode="v61_d0_topology_safe",
+            mask_mode="reference",
         )
         state = grammar._new_state()
         state["cells"] = [
@@ -177,11 +177,11 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
     def test_decoder_ablation_flags_change_state_transitions(self):
         tokenizer = self.base
 
-        d0 = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v61_d0_topology_safe"
+        d0 = ELDAGrammar(
+            tokenizer, 1, mask_mode="reference"
         )
-        d2 = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v61_d2_no_same_cell_exclusion"
+        d2 = ELDAGrammar(
+            tokenizer, 1, mask_mode="d2_no_same_cell_exclusion"
         )
         repeated_cell_capacity_state = {
             "expect": "max_fanout_value",
@@ -219,8 +219,8 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
         d2._advance(state, tokenizer.demand_offset + 1)
         self.assertNotEqual(state["expect"], "invalid")
 
-        d3 = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v61_d3_no_source_budget_mask"
+        d3 = ELDAGrammar(
+            tokenizer, 1, mask_mode="d3_no_source_budget_mask"
         )
         state = d3._new_state()
         state.update({
@@ -232,8 +232,8 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
         d3._advance(state, tokenizer.count_offset + 2)
         self.assertNotEqual(state["expect"], "invalid")
 
-        d4 = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v61_d4_no_demand_exactly_once_mask"
+        d4 = ELDAGrammar(
+            tokenizer, 1, mask_mode="d4_no_demand_exactly_once_mask"
         )
         state = d4._new_state()
         state.update({
@@ -252,8 +252,8 @@ class SourceNetV61VariantGrammarTest(unittest.TestCase):
         d4._advance(state, tokenizer.demand_offset)
         self.assertNotEqual(state["expect"], "invalid")
 
-        d5 = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v61_d5_no_completion_eos_gate"
+        d5 = ELDAGrammar(
+            tokenizer, 1, mask_mode="d5_no_completion_eos_gate"
         )
         state = d5._new_state()
         state.update({

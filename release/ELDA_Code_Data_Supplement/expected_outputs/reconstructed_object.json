@@ -33,7 +33,7 @@
       "load_pin": "A"
     }
   ],
-  "schema_version": "source_net_v6_1_clean_compact_load_v1",
+  "schema_version": "elda_source_demand_v1",
   "source_nets": [
     {
       "chunks": [

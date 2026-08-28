@@ -1,1 +1,1 @@
-"""Frozen V6.1 Source--Demand serialization implementation."""
+"""Frozen ELDA Source--Demand serialization implementation."""

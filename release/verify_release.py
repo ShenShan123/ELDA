@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the frozen ELDA V6.1 publication artifacts using the standard library."""
+"""Verify the frozen ELDA publication artifacts using the standard library."""
 
 from __future__ import annotations
 
@@ -90,7 +90,7 @@ def main() -> int:
         type=Path,
         default=ROOT,
         help=(
-            "root containing logs/train, paper/results, and paper/reports; "
+            "root containing checkpoints, paper/results, and paper/reports; "
             "defaults to the source checkout"
         ),
     )

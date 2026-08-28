@@ -202,7 +202,7 @@ class CircuitPartitionDataset(_BaseMetaCircuitDataset):
         meta_path = osp.join(root, 'meta.pt')
         meta = torch.load(meta_path, map_location='cpu', weights_only=False) if osp.exists(meta_path) else {}
         dataset_name = str(meta.get('dataset_name', ''))
-        self._source_net_v62_dataset = dataset_name == 'CIRCUIT_SOURCE_NET_PARTITION_V6_2_PROFILE'
+        self._elda_profile_dataset = dataset_name == 'ELDA_PROFILE'
         use_file_backed = (
             os.environ.get('ELDA_FILE_BACKED_PARTITIONS', '').strip() == '1'
             or dataset_name == 'CIRCUIT_PIN_SLOT_PARTITION_V2_1_GC_FULL'
@@ -249,8 +249,8 @@ class CircuitPartitionDataset(_BaseMetaCircuitDataset):
         data.edge_index = data.edge_index.to(torch.long)
         data.x = data.x.reshape(-1).to(torch.long)
         data.num_nodes = int(data.x.numel())
-        if getattr(self, '_source_net_v62_dataset', False):
-            data.source_net_v62_split = str(self.split)
+        if getattr(self, '_elda_profile_dataset', False):
+            data.elda_profile_split = str(self.split)
         if getattr(data, 'edge_attr', None) is None or data.edge_attr.numel() != data.edge_index.shape[1]:
             data.edge_attr = torch.zeros(data.edge_index.shape[1], dtype=torch.long)
         else:

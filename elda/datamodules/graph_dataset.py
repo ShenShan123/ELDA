@@ -31,13 +31,13 @@ from .data.circuit_pin_slot_v2_1_tokenizer import CircuitPinSlotV21Tokenizer, Ci
 from .data.circuit_source_net_v4_tokenizer import CircuitSourceNetV4Tokenizer
 from .data.circuit_source_net_v41_tokenizer import CircuitSourceNetV41SinkFirstTokenizer
 from .data.circuit_source_net_v5_tokenizer import CircuitSourceNetV5Tokenizer
-from .data.circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
-from .data.circuit_source_net_v62_tokenizer import CircuitSourceNetV62Tokenizer
-from .data.circuit_source_net_v61_ablation_tokenizers import (
-    CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-    CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-    CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-    CircuitSourceNetV61R4CellLevelDemandTokenizer,
+from .data.circuit_source_net_tokenizer import CircuitSourceNetTokenizer
+from .data.circuit_source_net_profile_tokenizer import CircuitSourceNetProfileTokenizer
+from .data.circuit_source_net_ablation_tokenizers import (
+    CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+    CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+    CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+    CircuitSourceNetR4CellLevelDemandTokenizer,
 )
 
 
@@ -108,7 +108,7 @@ class ProfileMixtureSampler(Sampler):
             if 0 <= index < len(self.profile_labels) and self.profile_labels[index]
         )
         self.last_epoch_report = {
-            "v62_profile_sampler_epoch": self.epoch,
+            "profile_sampler_epoch": self.epoch,
             "draw_counts": counts,
             "pool_sizes": {key: int(value.numel()) for key, value in self.pools.items()},
             "rare_complex_draw_counts": (
@@ -286,12 +286,12 @@ class GraphDataset(pl.LightningDataModule):
         'CIRCUIT_SOURCE_NET_PARTITION_V4_1_ROLE3FIX': CircuitPartitionDataset,
         'CIRCUIT_SOURCE_NET_PARTITION_V4_1_ROLE3FIX_SINKFIRST': CircuitPartitionDataset,
         'CIRCUIT_SOURCE_NET_PARTITION_V5_0_ROLE3FIX_DUALVIEW': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_2_PROFILE': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_1_R1_NO_BOUNDARY_IDENTITY': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_1_R2_NO_PER_SOURCE_BUDGET': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_1_R3_NO_FULL_LOAD_ASSIGNMENT': CircuitPartitionDataset,
-        'CIRCUIT_SOURCE_NET_PARTITION_V6_1_R4_CELL_LEVEL_DEMAND': CircuitPartitionDataset,
+        'ELDA_REFERENCE': CircuitPartitionDataset,
+        'ELDA_PROFILE': CircuitPartitionDataset,
+        'ELDA_R1_NO_BOUNDARY_IDENTITY': CircuitPartitionDataset,
+        'ELDA_R2_NO_PER_SOURCE_BUDGET': CircuitPartitionDataset,
+        'ELDA_R3_NO_FULL_LOAD_ASSIGNMENT': CircuitPartitionDataset,
+        'ELDA_R4_CELL_LEVEL_DEMAND': CircuitPartitionDataset,
         'CIRCUIT_SOURCE_NET_PARTITION_V4_1_ROLE3FIX_NETSECTION_ONLY': CircuitSourceNetV4NetsectionOnlyDataset,
         'CIRCUIT_SKELETON': CircuitSkeletonDataset,
     }
@@ -357,8 +357,8 @@ class GraphDataset(pl.LightningDataModule):
         self.overlength_threshold = int(kwargs.pop("overlength_threshold", max_length if max_length is not None else -1))
         self.overlength_guard_eager_scan = bool(kwargs.pop("overlength_guard_eager_scan", False))
         if self.tokenizer_type in {
-            "source_net_v5", "source_net_v61", "source_net_v62", "source_net_v61_r1",
-            "source_net_v61_r2", "source_net_v61_r3", "source_net_v61_r4",
+            "source_net_v5", "elda", "elda_profile", "source_net_r1",
+            "source_net_r2", "source_net_r3", "source_net_r4",
         } and self.no_silent_truncate:
             truncation_length = None
         self.tokenizer = tokenizer
@@ -427,7 +427,7 @@ class GraphDataset(pl.LightningDataModule):
             )
         if tokenizer is None and init_tokenizer:
             schema_token_specs = _resolve_schema_token_specs(self.root, self.schema_fields)
-            if self.tokenizer_type in {'pin_slot', 'pin_slot_gc', 'pin_slot_v2_1', 'pin_slot_v2_1_gc', 'source_net_v4', 'source_net_v41_sinkfirst', 'source_net_v5', 'source_net_v61', 'source_net_v62', 'source_net_v61_r1', 'source_net_v61_r2', 'source_net_v61_r3', 'source_net_v61_r4'}:
+            if self.tokenizer_type in {'pin_slot', 'pin_slot_gc', 'pin_slot_v2_1', 'pin_slot_v2_1_gc', 'source_net_v4', 'source_net_v41_sinkfirst', 'source_net_v5', 'elda', 'elda_profile', 'source_net_r1', 'source_net_r2', 'source_net_r3', 'source_net_r4'}:
                 meta_path = Path(self.root) / 'meta.pt'
                 meta = torch.load(meta_path, map_location='cpu', weights_only=False) if meta_path.exists() else {}
                 net_id = int(meta.get('net_id', 0))
@@ -439,8 +439,8 @@ class GraphDataset(pl.LightningDataModule):
                     from circuit_kahypar.pin_spec_table import CellPinSpecTable
                     table = CellPinSpecTable(allow_fallback=True)
                     if (
-                        self.tokenizer_type.startswith("source_net_v61")
-                        or self.tokenizer_type.startswith("source_net_v62")
+                        self.tokenizer_type.startswith("elda")
+                        or self.tokenizer_type.startswith("elda_profile")
                     ) and table.liberty_path is None:
                         raise FileNotFoundError(
                             "Nangate45 Liberty file not found; set "
@@ -459,13 +459,13 @@ class GraphDataset(pl.LightningDataModule):
                     pin_names.update({'__EXCESS__', '__UNKNOWN__'})
                     pin_names = sorted(pin_names)
                 except Exception:
-                    # Endpoint-complete V6.1/V6.2 serialization is defined by
+                    # Endpoint-complete ELDA/ELDA profile extension serialization is defined by
                     # the target Liberty pin vocabulary. Silently falling back
                     # to an empty vocabulary would create non-reproducible
                     # sequences and delayed grammar failures.
                     if (
-                        self.tokenizer_type.startswith("source_net_v61")
-                        or self.tokenizer_type.startswith("source_net_v62")
+                        self.tokenizer_type.startswith("elda")
+                        or self.tokenizer_type.startswith("elda_profile")
                     ):
                         raise
                     pin_names = []
@@ -477,12 +477,12 @@ class GraphDataset(pl.LightningDataModule):
                     'source_net_v4': CircuitSourceNetV4Tokenizer,
                     'source_net_v41_sinkfirst': CircuitSourceNetV41SinkFirstTokenizer,
                     'source_net_v5': CircuitSourceNetV5Tokenizer,
-                    'source_net_v61': CircuitSourceNetV61Tokenizer,
-                    'source_net_v62': CircuitSourceNetV62Tokenizer,
-                    'source_net_v61_r1': CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-                    'source_net_v61_r2': CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-                    'source_net_v61_r3': CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-                    'source_net_v61_r4': CircuitSourceNetV61R4CellLevelDemandTokenizer,
+                    'elda': CircuitSourceNetTokenizer,
+                    'elda_profile': CircuitSourceNetProfileTokenizer,
+                    'source_net_r1': CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+                    'source_net_r2': CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+                    'source_net_r3': CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+                    'source_net_r4': CircuitSourceNetR4CellLevelDemandTokenizer,
                 }[self.tokenizer_type]
                 tok_kwargs = {}
                 if tok_cls in {CircuitPinSlotGCTokenizer, CircuitPinSlotV21GCTokenizer} and self.gate_count_buckets is not None:
@@ -500,15 +500,15 @@ class GraphDataset(pl.LightningDataModule):
                     tok_kwargs['compact_demand_record'] = self.compact_demand_record
                     tok_kwargs['compact_sink_demand_record'] = self.compact_sink_demand_record
                     tok_kwargs['compact_source_net_hist'] = self.compact_source_net_hist
-                if tok_cls is CircuitSourceNetV62Tokenizer:
+                if tok_cls is CircuitSourceNetProfileTokenizer:
                     profile_path = Path(
                         self.profile_config_path
                         or meta.get('profile_config_path', '')
-                        or (Path(self.root) / 'v62_profile_config.json')
+                        or (Path(self.root) / 'profile_config.json')
                     )
                     if not profile_path.exists():
                         raise FileNotFoundError(
-                            f"V6.2_PROFILE requires frozen train-only profile config: {profile_path}"
+                            f"ELDA profile extension requires frozen train-only profile config: {profile_path}"
                         )
                     tok_kwargs['profile_config'] = json.loads(
                         profile_path.read_text(encoding='utf-8')
@@ -770,7 +770,7 @@ class GraphDataset(pl.LightningDataModule):
         if not isinstance(self.train_dataset, ConcatDataset):
             return None
         if self.profile_balanced_sampling:
-            return self._build_v62_profile_sampler()
+            return self._build_profile_sampler()
         meta, label_to_cell, medium_labels = self._resolve_partition_weighting_assets()
         if meta is None:
             return None
@@ -866,13 +866,13 @@ class GraphDataset(pl.LightningDataModule):
         print(f"[balanced_v3_sampler] {json.dumps(self._balanced_v3_sampler_report, sort_keys=True)}")
         return WeightedRandomSampler(weight_tensor, num_samples=len(weights), replacement=True)
 
-    def _build_v62_profile_sampler(self):
+    def _build_profile_sampler(self):
         path = Path(
             self.profile_sampling_rows_path
-            or (Path(self.root) / "v62_profile_rows_train.csv")
+            or (Path(self.root) / "profile_rows_train.csv")
         )
         if not path.exists():
-            raise FileNotFoundError(f"missing V6.2 profile sampling rows: {path}")
+            raise FileNotFoundError(f"missing target profile sampling rows: {path}")
         rows = {}
         with path.open("r", encoding="utf-8", newline="") as handle:
             for row in csv.DictReader(handle):
@@ -922,7 +922,7 @@ class GraphDataset(pl.LightningDataModule):
             offset += len(dataset)
         if missing:
             raise RuntimeError(
-                f"V6.2 profile sampler missing {len(missing)} train rows; examples={missing[:5]}"
+                f"target profile sampler missing {len(missing)} train rows; examples={missing[:5]}"
             )
         report = {
             "total": len(all_indices), "normal_pool": len(all_indices),
@@ -936,7 +936,7 @@ class GraphDataset(pl.LightningDataModule):
             "whole_partition_sampling": True,
         }
         self._balanced_v3_sampler_report = report
-        print(f"[v62_profile_sampler] {json.dumps(report, sort_keys=True)}")
+        print(f"[profile_sampler] {json.dumps(report, sort_keys=True)}")
         return ProfileMixtureSampler(
             len(all_indices), all_indices, rare_indices, hard_indices,
             self.profile_sampling_mixture, profile_labels=profile_labels,

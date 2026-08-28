@@ -16,10 +16,10 @@ require_dir() {
   fi
 }
 
-require_dir "$ELDA_PAPER_ROOT/results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
-require_dir "$ELDA_PAPER_ROOT/results/source_net_v61/d2_policy_main_n1024"
-require_dir "$ELDA_PAPER_ROOT/results/source_net_v61/decoder_ablation_best7epoch_final_20260706"
-require_dir "$ELDA_PAPER_ROOT/results/source_net_v61/final_representation_ablation_parallel"
+require_dir "$ELDA_PAPER_ROOT/results/elda/reference/attempts"
+require_dir "$ELDA_PAPER_ROOT/results/elda/controls"
+require_dir "$ELDA_PAPER_ROOT/results/elda/constraint_ablation"
+require_dir "$ELDA_PAPER_ROOT/results/elda/representation_ablation"
 
 run_script() {
   echo "[ELDA reproducibility] $1"
@@ -35,16 +35,16 @@ if [[ "$ELDA_REPRO_SCOPE" == "core" ]]; then
   exit 0
 fi
 
-: "${ELDA_DATA_ROOT:?set ELDA_DATA_ROOT to the V6.1 dataset root}"
-: "${ELDA_V5_DATA_ROOT:?set ELDA_V5_DATA_ROOT to the V5 projection dataset root}"
+: "${ELDA_DATA_ROOT:?set ELDA_DATA_ROOT to the ELDA dataset root}"
+: "${ELDA_PROJECTION_DATA_ROOT:?set ELDA_PROJECTION_DATA_ROOT to the common cell-level projection dataset root}"
 : "${ELDA_COMMON_DATA_ROOT:?set ELDA_COMMON_DATA_ROOT to the common graph dataset root}"
-export ELDA_DATA_ROOT ELDA_V5_DATA_ROOT ELDA_COMMON_DATA_ROOT
+export ELDA_DATA_ROOT ELDA_PROJECTION_DATA_ROOT ELDA_COMMON_DATA_ROOT
 
 # Main graph/endpoint table.
 run_script compute_table1_canonical_novelty.py
 run_script compute_unified_dedup11390_reference_metrics.py
-run_script recompute_v61_policy_native_metrics.py
-run_script compute_v61_endpoint_fidelity_table.py
+run_script recompute_policy_native_metrics.py
+run_script compute_endpoint_fidelity_table.py
 
 # Appendix tables.
 run_script compare_logic_usefulness_test_baselines.py

@@ -23,6 +23,11 @@ PATTERNS = {
         re.I,
     ),
     "email address": re.compile(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.I),
+    "publication-status marker": re.compile(
+        r"\b(?:submitted\s+to|under\s+review|"
+        r"submission\s+(?:id|number)|paper\s+id)\b",
+        re.I,
+    ),
 }
 FORBIDDEN_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 
@@ -35,7 +40,7 @@ def main():
     failures = []
     for path in sorted(root.rglob("*")):
         rel = path.relative_to(root)
-        if rel == Path("scripts/audit_anonymity.py") or rel.parts[:1] == ("outputs",):
+        if rel == Path("scripts/audit_privacy.py") or rel.parts[:1] == ("outputs",):
             continue
         if any(part in FORBIDDEN_NAMES for part in rel.parts):
             failures.append(f"forbidden path: {rel}")
@@ -55,11 +60,11 @@ def main():
                 line = text.count("\n", 0, match.start()) + 1
                 failures.append(f"{label}: {rel}:{line}")
     if failures:
-        print("Anonymity audit: FAIL")
+        print("Privacy audit: FAIL")
         for item in failures:
             print(f"  {item}")
         raise SystemExit(1)
-    print(f"Anonymity audit: PASS ({root})")
+    print(f"Privacy audit: PASS ({root})")
 
 
 if __name__ == "__main__":

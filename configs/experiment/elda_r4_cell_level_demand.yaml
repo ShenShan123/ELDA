@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - elda_reference
+datamodule:
+  root: ${oc.env:ELDA_R4_DATA_ROOT}
+  dataset_names: ELDA_R4_CELL_LEVEL_DEMAND
+  tokenizer_type: source_net_r4
+  serializer_version: elda_r4_cell_level_demand_v1
+  cell_mapping_path: ${datamodule.root}/mapping.txt
+elda_safety:
+  tokenizer_version: elda_r4_cell_level_demand_v1
+logs:
+  prefix: logs/train/ELDA_R4_CELL_LEVEL_DEMAND/${model.model_name}/${seed}

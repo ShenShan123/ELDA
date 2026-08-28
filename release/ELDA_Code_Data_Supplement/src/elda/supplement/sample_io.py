@@ -19,7 +19,7 @@ def load_raw_graph(path: str | Path) -> Data:
         edge_pin_id=torch.tensor(row["edge_pin_id"], dtype=torch.long),
     )
     graph.pin_id_to_name = list(row["pin_id_to_name"])
-    graph.source_net_v61_schema_version = row["schema_version"]
+    graph.source_net_schema_version = row["schema_version"]
     return graph
 
 
@@ -39,7 +39,7 @@ def graph_signature(graph: Data) -> dict:
     return {
         "x": [int(value) for value in graph.x.reshape(-1).tolist()],
         "edges": sorted(edges),
-        "schema_version": str(graph.source_net_v61_schema_version),
+        "schema_version": str(graph.source_net_schema_version),
     }
 
 

@@ -18,6 +18,6 @@ jobs:
         run: python release/ELDA_Code_Data_Supplement/scripts/validate_package.py
       - name: Validate shell syntax
         run: |
-          bash -n scripts/run_source_net_v61_clean_train.sh
+          bash -n scripts/run_elda_reference_train.sh
           bash -n paper/reproduce_tables.sh
           bash -n release/ELDA_Code_Data_Supplement/scripts/run_minimal_reproduction.sh

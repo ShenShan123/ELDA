@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
+from elda.datamodules.data.circuit_source_net_tokenizer import CircuitSourceNetTokenizer
 from elda.supplement.sample_io import (
     BOUNDARY_STUB_ID,
     LABEL_TO_CELL,
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def tokenizer():
-    value = CircuitSourceNetV61Tokenizer(
+    value = CircuitSourceNetTokenizer(
         max_length=24576,
         net_id=NET_ID,
         boundary_stub_id=BOUNDARY_STUB_ID,

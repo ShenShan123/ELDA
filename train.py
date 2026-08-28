@@ -56,18 +56,18 @@ def write_reproducibility_manifest(cfg):
         "val_split": dataset_root / "val_source_clean.txt",
         "test_split": dataset_root / "test_source_clean.txt",
         "dataset_manifest": (
-            dataset_root / "v61_ablation_dataset_manifest.json"
-            if (dataset_root / "v61_ablation_dataset_manifest.json").exists()
-            else dataset_root / "v61_dataset_manifest.json"
+            dataset_root / "elda_ablation_dataset_manifest.json"
+            if (dataset_root / "elda_ablation_dataset_manifest.json").exists()
+            else dataset_root / "elda_dataset_manifest.json"
         ),
     }
     source_files = [
         here() / "train.py",
         here() / "elda/models/seq_models.py",
         here() / "elda/datamodules/graph_dataset.py",
-        here() / "elda/datamodules/data/circuit_source_net_v61_schema.py",
-        here() / "elda/datamodules/data/circuit_source_net_v61_tokenizer.py",
-        here() / "elda/datamodules/data/circuit_source_net_v61_ablation_tokenizers.py",
+        here() / "elda/datamodules/data/circuit_source_net_schema.py",
+        here() / "elda/datamodules/data/circuit_source_net_tokenizer.py",
+        here() / "elda/datamodules/data/circuit_source_net_ablation_tokenizers.py",
     ]
     manifest = {
         "manifest_version": "elda_training_reproducibility_v1",

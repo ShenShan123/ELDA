@@ -4,10 +4,10 @@ from copy import deepcopy
 from collections import Counter
 from typing import Any, Mapping
 
-from .circuit_source_net_v61_schema import decode_v61, serialize_v61
+from .circuit_source_net_schema import decode_source_net, serialize_source_net
 
 
-SCHEMA_VERSION = "source_net_v6_2_profile_compact_load_v4"
+SCHEMA_VERSION = "elda_profile_source_demand_v1"
 FANOUT_BUCKETS = (
     "FANOUT_0", "FANOUT_1", "FANOUT_2_4", "FANOUT_5_8",
     "FANOUT_9_16", "FANOUT_17_PLUS",
@@ -17,12 +17,12 @@ PROFILE_BIN_NAMES = ("PROFILE_BIN_0", "PROFILE_BIN_1", "PROFILE_BIN_2", "PROFILE
 
 def _profile_bin(value: float, boundaries: list[float]) -> str:
     if len(boundaries) != 3:
-        raise ValueError(f"V6.2_PROFILE requires exactly 3 frozen train boundaries, got {boundaries}")
+        raise ValueError(f"ELDA profile extension requires exactly 3 frozen train boundaries, got {boundaries}")
     return PROFILE_BIN_NAMES[sum(float(value) > float(boundary) for boundary in boundaries)]
 
 
 def build_audit_profile(payload: Mapping[str, Any]) -> dict[str, Any]:
-    """Derive offline statistics that are never encoded in the V6.2 prefix."""
+    """Derive offline statistics that are never encoded in the ELDA profile extension prefix."""
     cells = list(payload.get("cells", []))
     demands = list(payload.get("demands", []))
     sources = list(payload.get("sources", []))
@@ -99,7 +99,7 @@ def build_control_profile(
     boundaries = dict(profile_config.get("bucket_boundaries", {}))
     required = {"cell_count", "demand_count", "source_count", "seq_ratio", "pin_complexity"}
     if set(boundaries) < required:
-        raise ValueError(f"V6.2_PROFILE config missing boundaries: {sorted(required - set(boundaries))}")
+        raise ValueError(f"ELDA profile extension config missing boundaries: {sorted(required - set(boundaries))}")
     return {
         "profile_mode": "PROFILE_COARSE",
         "cell_count_bin": _profile_bin(len(cells), boundaries["cell_count"]),
@@ -126,17 +126,17 @@ def validate_audit_profile(payload: Mapping[str, Any]) -> None:
     if profile is None:
         return
     if not isinstance(profile, Mapping):
-        raise ValueError("V6.2 audit_profile must be a mapping")
+        raise ValueError("ELDA profile extension audit_profile must be a mapping")
     actual = build_audit_profile(payload)
     for key in ("cell_count", "source_count", "demand_count"):
         if int(profile.get(key, -1)) != int(actual[key]):
-            raise ValueError(f"V6.2 audit_profile mismatch for {key}")
+            raise ValueError(f"ELDA profile extension audit_profile mismatch for {key}")
     supplied_hist = {key: int(profile.get("fanout_histogram", {}).get(key, 0)) for key in FANOUT_BUCKETS}
     if supplied_hist != actual["fanout_histogram"]:
-        raise ValueError("V6.2 audit_profile fanout histogram mismatch")
+        raise ValueError("ELDA profile extension audit_profile fanout histogram mismatch")
 
 
-def serialize_v62(
+def serialize_profiled_source_net(
     graph: Any,
     *,
     net_id: int,
@@ -146,8 +146,8 @@ def serialize_v62(
     profile_config: Mapping[str, Any],
     chunk_size: int = 32,
 ) -> dict:
-    """Build V6.2 without changing any V6.1 object or assignment identity."""
-    payload = deepcopy(serialize_v61(
+    """Build ELDA profile extension without changing any ELDA object or assignment identity."""
+    payload = deepcopy(serialize_source_net(
         graph,
         net_id=net_id,
         boundary_stub_id=boundary_stub_id,
@@ -162,13 +162,13 @@ def serialize_v62(
     return payload
 
 
-def decode_v62(payload: dict, *, net_id: int, boundary_stub_id: int, cell_to_label: dict[str, int]):
-    graph = decode_v61(
+def decode_profiled_source_net(payload: dict, *, net_id: int, boundary_stub_id: int, cell_to_label: dict[str, int]):
+    graph = decode_source_net(
         payload,
         net_id=net_id,
         boundary_stub_id=boundary_stub_id,
         cell_to_label=cell_to_label,
     )
-    graph.source_net_v62_schema_version = payload["schema_version"]
-    graph.source_net_v62_control_profile = deepcopy(payload.get("control_profile", {}))
+    graph.elda_profile_schema_version = payload["schema_version"]
+    graph.elda_profile_control_profile = deepcopy(payload.get("control_profile", {}))
     return graph

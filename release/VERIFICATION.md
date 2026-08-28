@@ -1,4 +1,4 @@
-# ELDA V6.1 release verification
+# ELDA release verification
 
 Verification date: 2026-08-28.
 
@@ -22,12 +22,12 @@ python scripts/audit_github_release.py
 ## Code and data-backed tests
 
 - Without external datasets: 21 tests passed and 11 data-backed tests skipped.
-- With the frozen V6.1 dataset and Nangate45 Liberty: 28 tests passed, 4 tests
+- With the frozen ELDA dataset and Nangate45 Liberty: 28 tests passed, 4 tests
   skipped, and all 4 R1--R4 grammar subtests passed.
-- The V6.1 and R1--R4 Hydra configurations compose using only documented
+- The ELDA and R1--R4 Hydra configurations compose using only documented
   environment-variable data roots.
-- Missing Liberty metadata now fails immediately for endpoint-complete V6.1
-  and V6.2 tokenizers instead of silently producing an empty pin vocabulary.
+- Missing Liberty metadata now fails immediately for endpoint-complete ELDA
+  tokenizers instead of silently producing an empty pin vocabulary.
 - Training/reproduction shell entry points pass `bash -n`.
 
 ## Executable supplement
@@ -52,8 +52,6 @@ bash release/ELDA_Code_Data_Supplement/scripts/run_minimal_reproduction.sh
 - ELDA, three controls, R1--R4, and D1--D6 each contain exactly the contiguous
   set `attempt_0000` through `attempt_1023`.
 - Required frozen paper tables are present in the full artifact bundle.
-- `release/checkpoint_namespace_migration.json` records metadata-only namespace
-  migration and byte-identical model/optimizer tensors.
 
 Run the complete audit after downloading the artifact bundle:
 

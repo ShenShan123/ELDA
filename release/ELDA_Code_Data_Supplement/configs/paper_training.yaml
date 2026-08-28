@@ -1,8 +1,8 @@
 # Sanitized frozen checkpoint-selection configuration.
 method: ELDA
 seed: 0
-representation: source_net_v61
-serializer_version: source_net_v6_1_clean_compact_load_v1
+representation: elda
+serializer_version: elda_source_demand_v1
 dataset:
   root: <DATA_ROOT>
   final_paper_corpus_counts:

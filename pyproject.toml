@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "elda-netlist"
 version = "1.0.0"
 authors = [
-    {name = "ELDA authors"},
+    {name = "ELDA contributors"},
 ]
 description = "Pin-aware, state-constrained autoregressive generation of materializable gate-level subcircuits"
 readme = "README.md"

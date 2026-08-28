@@ -1,1 +1,1 @@
-"""Thin, deterministic wrappers for the anonymous supplement."""
+"""Thin, deterministic wrappers for the portable supplement."""

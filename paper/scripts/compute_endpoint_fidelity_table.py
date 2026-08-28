@@ -18,7 +18,7 @@ from elda_paths import PAPER_ROOT
 ROOT = PAPER_ROOT
 OUT = ROOT / "reports/final_baseline/phase10_8_endpoint_fidelity_main_table"
 CACHE = OUT / "reference_endpoint_profile_dedup11390_v1.json"
-NATIVE_GRAPH_METRICS = OUT / "v61_policy_native_graph_metrics.json"
+NATIVE_GRAPH_METRICS = OUT / "elda_policy_native_graph_metrics.json"
 GENERIC_GRAPH_METRICS = (
     ROOT
     / "reports/final_baseline/phase10_6_main_graph_quality_table"
@@ -30,10 +30,10 @@ GENERIC_NOVELTY_REPORT = (
     / "table1_canonical_novelty_report.json"
 )
 ATTEMPT_ROOTS = {
-    "Frequency sampler": ROOT / "results/source_net_v61/d2_policy_main_n1024/field_frequency/attempts",
-    "ELDA_Unconstrained": ROOT / "results/source_net_v61/d2_policy_main_n1024/unconstrained_lm/attempts",
-    "ELDA_Syntax": ROOT / "results/source_net_v61/d2_policy_main_n1024/syntax_only_lm/attempts",
-    "ELDA": ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts",
+    "Frequency sampler": ROOT / "results/elda/controls/field_frequency/attempts",
+    "ELDA_Unconstrained": ROOT / "results/elda/controls/unconstrained_lm/attempts",
+    "ELDA_Syntax": ROOT / "results/elda/controls/syntax_only_lm/attempts",
+    "ELDA": ROOT / "results/elda/reference/attempts",
 }
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -701,7 +701,7 @@ def main() -> None:
             path.name: hashlib.sha256(path.read_bytes()).hexdigest()
             for path in (
                 Path(__file__),
-                ROOT / "scripts/recompute_v61_policy_native_metrics.py",
+                ROOT / "scripts/recompute_policy_native_metrics.py",
                 ROOT / "scripts/compute_table1_canonical_novelty.py",
                 NATIVE_GRAPH_METRICS,
                 GENERIC_GRAPH_METRICS,

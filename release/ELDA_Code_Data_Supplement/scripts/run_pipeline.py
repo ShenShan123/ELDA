@@ -14,9 +14,9 @@ from pathlib import Path
 
 import torch
 
-from elda.datamodules.data.circuit_source_net_v61_schema import serialize_v61
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
-from elda.supplement.grammar_loader import SourceNetV61Grammar
+from elda.datamodules.data.circuit_source_net_schema import serialize_source_net
+from elda.datamodules.data.circuit_source_net_tokenizer import CircuitSourceNetTokenizer
+from elda.supplement.grammar_loader import ELDAGrammar
 from elda.supplement.materialize import emit_structural_verilog, run_yosys
 from elda.supplement.metrics import sample_metrics
 from elda.supplement.sample_io import (
@@ -57,8 +57,8 @@ def library_dict() -> dict:
     }
 
 
-def configure_tokenizer() -> CircuitSourceNetV61Tokenizer:
-    tokenizer = CircuitSourceNetV61Tokenizer(
+def configure_tokenizer() -> CircuitSourceNetTokenizer:
+    tokenizer = CircuitSourceNetTokenizer(
         max_length=24576,
         append_eos=True,
         net_id=NET_ID,
@@ -109,8 +109,8 @@ def state_snapshot(state: dict) -> dict:
 
 
 def constrained_trace(tokenizer, sequence: list[int]) -> list[dict]:
-    grammar = SourceNetV61Grammar(
-        tokenizer, batch_size=1, device="cpu", mask_mode="v61_d0_topology_safe"
+    grammar = ELDAGrammar(
+        tokenizer, batch_size=1, device="cpu", mask_mode="reference"
     )
     state = grammar.states[0]
     trace = []
@@ -167,7 +167,7 @@ def main() -> int:
 
     graph = load_raw_graph(ROOT / "data_sample" / "raw_subcircuit.json")
     tokenizer = configure_tokenizer()
-    raw_payload = serialize_v61(
+    raw_payload = serialize_source_net(
         graph,
         net_id=NET_ID,
         boundary_stub_id=BOUNDARY_STUB_ID,

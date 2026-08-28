@@ -4,12 +4,12 @@ import hashlib
 import torch
 from torch_geometric.data import Data
 
-from elda.datamodules.data.circuit_source_net_v62_schema import build_audit_profile, serialize_v62
-from elda.datamodules.data.circuit_source_net_v62_tokenizer import (
-    CircuitSourceNetV62Tokenizer,
+from elda.datamodules.data.circuit_source_net_profile_schema import build_audit_profile, serialize_profiled_source_net
+from elda.datamodules.data.circuit_source_net_profile_tokenizer import (
+    CircuitSourceNetProfileTokenizer,
 )
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
-from elda.models.seq_models import SourceNetV61Grammar
+from elda.datamodules.data.circuit_source_net_tokenizer import CircuitSourceNetTokenizer
+from elda.models.seq_models import ELDAGrammar
 from elda.datamodules.graph_dataset import ProfileMixtureSampler
 
 
@@ -23,7 +23,7 @@ class _MuxPins:
     outputs = ["Z"]
 
 
-class SourceNetV62ExposureTest(unittest.TestCase):
+class SourceNetProfileExtensionTest(unittest.TestCase):
     PROFILE_CONFIG = {
         "version": "test_train_frozen_v1",
         "bucket_boundaries": {
@@ -58,12 +58,12 @@ class SourceNetV62ExposureTest(unittest.TestCase):
 
     @staticmethod
     def _tokenizer(**kwargs):
-        tokenizer = CircuitSourceNetV62Tokenizer(
+        tokenizer = CircuitSourceNetProfileTokenizer(
             net_id=99,
             boundary_stub_id=100,
             label_to_cell={0: "BUF", 1: "MUX2_X1"},
             pin_specs={"BUF": _Pins(), "MUX2_X1": _MuxPins()},
-            profile_config=SourceNetV62ExposureTest.PROFILE_CONFIG,
+            profile_config=SourceNetProfileExtensionTest.PROFILE_CONFIG,
             max_length=256,
             **kwargs,
         )
@@ -72,9 +72,9 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         tokenizer.set_num_node_and_edge_types(2, 0)
         return tokenizer
 
-    def test_serialization_adds_profile_without_changing_v61_object_semantics(self):
+    def test_serialization_adds_profile_without_changing_elda_object_semantics(self):
         graph = self._graph()
-        payload = serialize_v62(
+        payload = serialize_profiled_source_net(
             graph,
             net_id=99,
             boundary_stub_id=100,
@@ -97,7 +97,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         self.assertTrue(report["target_profile_consistent"])
         self.assertEqual(payload["control_profile"]["demand_count_bin"], "PROFILE_BIN_0")
 
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v61_d0_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="d6_no_topology_safety")
         state = grammar.states[0]
         for token in sequence.tolist()[1:]:
             self.assertIn(token, grammar._allowed(state), msg=f"state={state['expect']}")
@@ -123,19 +123,19 @@ class SourceNetV62ExposureTest(unittest.TestCase):
 
     def test_condition_dropout_is_train_only_and_supports_profile_free(self):
         graph = self._graph()
-        graph.source_net_v62_split = "train"
+        graph.elda_profile_split = "train"
         tokenizer = self._tokenizer(condition_dropout_prob=1.0)
         payload, report = tokenizer.parse_tokens(tokenizer.tokenize(graph))
         self.assertEqual(payload["control_profile"], {"profile_mode": "PROFILE_FREE"})
         self.assertTrue(report["target_profile_consistent"])
 
-        graph.source_net_v62_split = "val"
+        graph.elda_profile_split = "val"
         payload, _ = tokenizer.parse_tokens(tokenizer.tokenize(graph))
         self.assertEqual(payload["control_profile"]["profile_mode"], "PROFILE_COARSE")
 
     def test_condition_dropout_is_seed_reproducible_at_configured_rate(self):
         graph = self._graph()
-        graph.source_net_v62_split = "train"
+        graph.elda_profile_split = "train"
         tokenizer = self._tokenizer(condition_dropout_prob=0.15)
 
         def modes(seed):
@@ -156,7 +156,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         sequence = tokenizer.tokenize(self._graph()).tolist()
         mux_tag = sequence.index(tokenizer.has_mux)
         sequence[mux_tag + 1] = tokenizer.bool_true
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v61_d0_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="d6_no_topology_safety")
         state = grammar.states[0]
         failed_state = None
         for token in sequence[1:]:
@@ -169,7 +169,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
     def test_negative_complex_flag_excludes_mux_cell_token(self):
         tokenizer = self._tokenizer()
         sequence = tokenizer.tokenize(self._graph()).tolist()
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v62_profile_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="profile_reference")
         state = grammar.states[0]
         for token in sequence[1:]:
             if state["expect"] == "cell_type_value":
@@ -184,7 +184,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         sequence = tokenizer.tokenize(self._graph()).tolist()
         tag = sequence.index(tokenizer.seq_ratio_bin)
         sequence[tag + 1] = tokenizer.profile_bin_3
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v62_profile_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="profile_reference")
         state = grammar.states[0]
         for token in sequence[1:]:
             if state["expect"] == "cell_type_value":
@@ -199,7 +199,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         sequence = tokenizer.tokenize(self._graph()).tolist()
         tag = sequence.index(tokenizer.pin_complexity_bin)
         sequence[tag + 1] = tokenizer.profile_bin_3
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v62_profile_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="profile_reference")
         state = grammar.states[0]
         for token in sequence[1:]:
             if state["expect"] == "cell_type_value":
@@ -212,7 +212,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
     def test_explicit_profile_free_prefix_enters_cell_section_without_reference(self):
         tokenizer = self._tokenizer()
         prefix = tokenizer.encode_profile_prefix({"profile_mode": "PROFILE_FREE"})
-        grammar = SourceNetV61Grammar(tokenizer, 1, mask_mode="v62_profile_full")
+        grammar = ELDAGrammar(tokenizer, 1, mask_mode="profile_reference")
         state = grammar.states[0]
         for token in prefix.tolist()[1:]:
             self.assertIn(token, grammar._allowed(state))
@@ -224,13 +224,13 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         payload = tokenizer._serialize_payload(self._graph())
         profile = dict(payload["control_profile"])
         profile["pin_complexity_bin"] = "PROFILE_BIN_2"
-        with self.assertRaisesRegex(ValueError, "inactive V6.2 profile bucket"):
+        with self.assertRaisesRegex(ValueError, "inactive target profile bucket"):
             tokenizer.encode_profile_prefix(profile)
 
-    def test_v62_ablation_modes_separate_profile_and_materialization_masks(self):
+    def test_profile_ablation_modes_separate_profile_and_materialization_masks(self):
         tokenizer = self._tokenizer()
-        feasible = SourceNetV61Grammar(
-            tokenizer, 1, mask_mode="v62_profile_feasible_lm"
+        feasible = ELDAGrammar(
+            tokenizer, 1, mask_mode="profile_feasible_control"
         )
         self.assertTrue(feasible.features["profile_feasibility"])
         for feature in (
@@ -239,7 +239,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
             "self_drive_exclusion", "combinational_cycle_exclusion",
         ):
             self.assertFalse(feasible.features[feature])
-        full = SourceNetV61Grammar(tokenizer, 1, mask_mode="v62_profile_full")
+        full = ELDAGrammar(tokenizer, 1, mask_mode="profile_reference")
         self.assertTrue(all(full.features.values()))
 
     def test_profile_mixture_sampler_draws_whole_partition_indices(self):
@@ -271,8 +271,8 @@ class SourceNetV62ExposureTest(unittest.TestCase):
             {"aoi_oai": 7, "mux": 7, "rare_cell": 6},
         )
 
-    def test_v61_token_sequence_and_vocabulary_remain_frozen(self):
-        tokenizer = CircuitSourceNetV61Tokenizer(
+    def test_elda_token_sequence_and_vocabulary_remain_frozen(self):
+        tokenizer = CircuitSourceNetTokenizer(
             net_id=99, boundary_stub_id=100, label_to_cell={0: "BUF"},
             pin_specs={"BUF": _Pins()}, max_length=256,
         )
@@ -281,7 +281,7 @@ class SourceNetV62ExposureTest(unittest.TestCase):
         tokenizer.set_num_node_and_edge_types(1, 0)
         sequence = tokenizer.tokenize(self._graph())
         digest = hashlib.sha256(sequence.numpy().tobytes()).hexdigest()
-        self.assertEqual(tokenizer.tokenizer_version, "source_net_v6_1_clean_compact_load_v1")
+        self.assertEqual(tokenizer.tokenizer_version, "elda_source_demand_v1")
         self.assertNotIn("TARGET_PROFILE_BEGIN", tokenizer.special_toks)
         self.assertEqual(digest, "8c702699072f1cb814c10b7c56be4d6aee3131b1906a5db68cdfd28860408c22")
 

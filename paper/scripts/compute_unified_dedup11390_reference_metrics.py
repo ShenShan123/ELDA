@@ -16,16 +16,16 @@ from typing import Any
 import numpy as np
 import torch
 
-from elda_paths import DATA_ROOT, ELDA_ROOT, PAPER_ROOT, V5_DATA_ROOT
+from elda_paths import DATA_ROOT, ELDA_ROOT, PAPER_ROOT, PROJECTION_DATA_ROOT
 
 ROOT = PAPER_ROOT
 ELDA = ELDA_ROOT
 DATASET = DATA_ROOT
-V5_ROOT = V5_DATA_ROOT
+PROJECTION_ROOT = PROJECTION_DATA_ROOT
 AUDIT = (
     ROOT
-    / "results/source_net_v61/phase4g_source_clean_manifest/strict_no_cross_duplicate_splits"
-    / "v61_object_sequence_cross_split_audit.json"
+    / "results/elda/phase4g_source_clean_manifest/strict_no_cross_duplicate_splits"
+    / "elda_object_sequence_cross_split_audit.json"
 )
 OUT = ROOT / "reports/final_baseline/phase10_6_main_graph_quality_table"
 CACHE = OUT / "unified_dedup11390_cache_v1"
@@ -47,8 +47,8 @@ for import_path in (ELDA, ELDA / "tools"):
     if str(import_path) not in sys.path:
         sys.path.insert(0, str(import_path))
 
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import (  # noqa: E402
-    CircuitSourceNetV61Tokenizer,
+from elda.datamodules.data.circuit_source_net_tokenizer import (  # noqa: E402
+    CircuitSourceNetTokenizer,
 )
 from run_source_net_v5_output_repair_autopsy import _complete_output_nets  # noqa: E402
 from v5_source_net_common import build_v5_tokenizer  # noqa: E402
@@ -61,8 +61,8 @@ _V5_TOKENIZER = None
 def worker_tokenizer():
     global _TOKENIZER
     if _TOKENIZER is None:
-        v5, _ = build_v5_tokenizer(V5_ROOT, max_length=24576)
-        tokenizer = CircuitSourceNetV61Tokenizer(
+        v5, _ = build_v5_tokenizer(PROJECTION_ROOT, max_length=24576)
+        tokenizer = CircuitSourceNetTokenizer(
             max_length=24576,
             net_id=int(v5.net_id),
             boundary_stub_id=int(v5.boundary_stub_id),
@@ -80,7 +80,7 @@ def worker_tokenizer():
 def worker_v5_tokenizer():
     global _V5_TOKENIZER
     if _V5_TOKENIZER is None:
-        _V5_TOKENIZER, _ = build_v5_tokenizer(V5_ROOT, max_length=24576)
+        _V5_TOKENIZER, _ = build_v5_tokenizer(PROJECTION_ROOT, max_length=24576)
     return _V5_TOKENIZER
 
 
@@ -251,7 +251,7 @@ def graph_source_load_hist(graph: dict[str, Any]) -> tuple[Counter[tuple[str, st
     return hist, True
 
 
-def normalize_v61_source_type(source: dict[str, Any]) -> str:
+def normalize_source_type(source: dict[str, Any]) -> str:
     kind = str(source.get("source_kind") or source.get("endpoint_type") or "UNKNOWN").upper()
     role = str(source.get("source_role") or "").upper()
     if "BOUNDARY" in kind or "BOUNDARY" in role:
@@ -263,10 +263,10 @@ def normalize_v61_source_type(source: dict[str, Any]) -> str:
     return kind.lower()
 
 
-def v61_source_load_hist(payload: dict[str, Any]) -> Counter[tuple[str, str]]:
+def source_load_hist(payload: dict[str, Any]) -> Counter[tuple[str, str]]:
     sources = payload.get("sources", [])
     source_nets = payload.get("source_nets", [])
-    source_type_by_id = {str(s.get("source_id")): normalize_v61_source_type(s) for s in sources}
+    source_type_by_id = {str(s.get("source_id")): normalize_source_type(s) for s in sources}
     fanout_by_id = {source_id: 0 for source_id in source_type_by_id}
     for record in source_nets:
         source_id = str(record.get("source_id"))
@@ -295,7 +295,7 @@ def inspect_reference(path_text: str) -> dict[str, Any]:
     return {
         "path": path_text,
         "feature": graph_features(graph),
-        "fanout_hist": counter_to_jsonable(v61_source_load_hist(payload)),
+        "fanout_hist": counter_to_jsonable(source_load_hist(payload)),
         "error": "",
     }
 
@@ -312,14 +312,14 @@ def inspect_graph_path(path_text: str) -> dict[str, Any]:
     }
 
 
-def inspect_v61_attempt(attempt_dir: str) -> dict[str, Any]:
+def inspect_elda_attempt(attempt_dir: str) -> dict[str, Any]:
     path = Path(attempt_dir)
     graph = load_pt_graph(path / "decoded_graph.pt")
     payload = json.loads((path / "payload.json").read_text(encoding="utf-8"))
     return {
         "path": str(path / "decoded_graph.pt"),
         "feature": graph_features(graph),
-        "fanout_hist": counter_to_jsonable(v61_source_load_hist(payload)),
+        "fanout_hist": counter_to_jsonable(source_load_hist(payload)),
         "fanout_ok": True,
         "error": "",
     }
@@ -410,7 +410,7 @@ def method_paths() -> dict[str, tuple[str, list[str]]]:
 
 
 def elda_generated_decoded_graph_paths() -> list[str]:
-    attempt_root = ROOT / "results/source_net_v61/topology_safe_mask_n1024_best7epoch/attempts"
+    attempt_root = ROOT / "results/elda/reference/attempts"
     return [
         str(path / "decoded_graph.pt")
         for path in sorted(attempt_root.glob("attempt_*"))
@@ -425,8 +425,8 @@ def load_or_build_rows(cache_name: str, paths: list[str], kind: str, workers: in
         return [json.loads(line) for line in cache.read_text().splitlines() if line.strip()]
     if kind == "reference":
         func = inspect_reference
-    elif kind == "v61_attempt":
-        func = inspect_v61_attempt
+    elif kind == "elda_attempt":
+        func = inspect_elda_attempt
     else:
         func = inspect_graph_path
     rows = []
@@ -660,7 +660,7 @@ def render(rows: list[dict[str, Any]]) -> None:
         "",
         "Notes:",
         "- All rows use the same 11,390 development-deduplicated test subcircuits as the reference source.",
-        "- AutoGraph, G2PT, DiGress, and retrieval rows use the source-clean graph view. The ELDA row uses the V5-projected view of the same 11,390 reference subcircuits and V5-projected ELDA outputs, matching the ELDA evaluation protocol.",
+        "- AutoGraph, G2PT, DiGress, and retrieval rows use the source-clean graph view. The ELDA row uses the common-view view of the same 11,390 reference subcircuits and common-view ELDA outputs, matching the ELDA evaluation protocol.",
         "- Existing generated samples/checkpoints are fixed; no model is retrained or resampled.",
         "- Nearest-Profile-Retrieval is rerun against a deterministic 1024-target subset of the 11,390 development-deduplicated reference set using train-only candidates and structural-unique selection.",
         "- Rel. Components W1 = W1(C_gen, C_ref) / max(mean(C_ref), 1), where C is raw connected-component count per graph.",
@@ -690,25 +690,25 @@ def main() -> None:
         workers=8,
     )
     elda_ref_rows = load_or_build_rows("elda_v5_reference_dedup11390", elda_ref_paths, "graph", workers=16)
-    elda_gen_rows = load_or_build_rows("elda_v5_generated_best7_topology_safe", elda_gen_paths, "graph", workers=8)
+    elda_gen_rows = load_or_build_rows("elda_generated_reference", elda_gen_paths, "graph", workers=8)
     rows.append(
         summarize(
-            "Source-Net V6.1 best7epoch topology-safe (V5 projected)",
+            "Source-Net ELDA selected checkpoint topology-safe (common-view)",
             elda_ref_rows,
             elda_gen_rows,
-            reference_label="development-deduplicated ELDA test set projected through Source-Net V5 decode + canonical output completion",
+            reference_label="development-deduplicated ELDA test set projected through common cell-level projection",
         )
     )
-    print("[metrics] Source-Net V6.1 best7epoch topology-safe (V5 projected)", flush=True)
+    print("[metrics] Source-Net ELDA selected checkpoint topology-safe (common-view)", flush=True)
     retrieval_rows = rerun_retrieval(ref_rows)
     rows.append(summarize("Nearest-Profile-Retrieval structural unique (rerun on dedup targets)", ref_rows, retrieval_rows))
     result = {
         "schema_version": "unified_dedup11390_reference_metrics_v1_elda_v5_projected",
-        "reference_policy": "11,390 source-clean test subcircuits after removing exact ELDA object-sequence training or validation matches; ELDA row uses V5-projected view of the same reference subcircuits",
+        "reference_policy": "11,390 source-clean test subcircuits after removing exact ELDA object-sequence training or validation matches; ELDA row uses common-view view of the same reference subcircuits",
         "fixed_generated_samples": True,
         "retrained_models": False,
         "resampled_models": False,
-        "elda_projection_policy": "V5 tokenize/decode plus canonical output completion for both reference and generated ELDA artifacts",
+        "elda_projection_policy": "common cell-level projection for both reference and generated ELDA artifacts",
         "metrics": rows,
     }
     (OUT / "unified_dedup11392_reference_metrics.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")

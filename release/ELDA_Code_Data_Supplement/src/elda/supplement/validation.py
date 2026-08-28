@@ -1,4 +1,4 @@
-"""Structured validity report over a production V6.1 Source--Demand object."""
+"""Structured validity report over a production ELDA Source--Demand object."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from collections import Counter
 
 import networkx as nx
 
-from elda.datamodules.data.circuit_source_net_v61_schema import count_bucket
+from elda.datamodules.data.circuit_source_net_schema import count_bucket
 
 
 SEQUENTIAL_PREFIXES = ("DFF", "SDFF", "LATCH", "DLH", "DLL")

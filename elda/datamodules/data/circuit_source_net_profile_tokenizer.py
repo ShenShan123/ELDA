@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import torch
 
-from .circuit_source_net_v61_tokenizer import CircuitSourceNetV61Tokenizer
-from .circuit_source_net_v62_schema import (
+from .circuit_source_net_tokenizer import CircuitSourceNetTokenizer
+from .circuit_source_net_profile_schema import (
     PROFILE_BIN_NAMES,
     build_control_profile,
-    decode_v62,
-    serialize_v62,
+    decode_profiled_source_net,
+    serialize_profiled_source_net,
 )
 
 
-class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
-    serializer_version = "source_net_v6_2_profile_compact_load_v4"
-    tokenizer_version = "source_net_v6_2_profile_compact_load_v4"
+class CircuitSourceNetProfileTokenizer(CircuitSourceNetTokenizer):
+    serializer_version = "elda_profile_source_demand_v1"
+    tokenizer_version = "elda_profile_source_demand_v1"
     include_target_profile = True
 
     def __init__(self, **kwargs):
@@ -22,7 +22,7 @@ class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
         self.profile_mode_override = str(kwargs.pop("profile_mode_override", "") or "")
         self.profile_config = dict(kwargs.pop("profile_config", {}) or {})
         if not self.profile_config:
-            raise ValueError("V6.2_PROFILE tokenizer requires frozen train-split profile_config")
+            raise ValueError("ELDA profile extension tokenizer requires frozen train-split profile_config")
         if not 0.0 <= self.condition_dropout_prob <= 1.0:
             raise ValueError("condition_dropout_prob must be in [0, 1]")
         super().__init__(**kwargs)
@@ -35,20 +35,20 @@ class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
             "HAS_MULTI_OUTPUT_CELL", "BOOL_FALSE", "BOOL_TRUE",
             *PROFILE_BIN_NAMES,
         ]
-        # V6.2 is a new vocabulary. Appending here leaves every V6.1 token ID
-        # unchanged while placing V6.2 profile tags before pointer ranges.
+        # The optional target-profile extension uses a separate vocabulary. Appending here leaves every ELDA token ID
+        # unchanged while placing target-profile tags before pointer ranges.
         for name in profile_tokens:
             if name not in self.special_toks:
                 setattr(self, name.lower(), len(self.special_toks))
                 self.special_toks.append(name)
         self.idx_offset = len(self.special_toks)
         self._refresh_offsets()
-        # V6.2 retains the V6.1 grammar with one additional typed source field.
-        self.is_source_net_v61_tokenizer = True
-        self.is_source_net_v62_tokenizer = True
+        # ELDA profile extension retains the ELDA grammar with one additional typed source field.
+        self.is_source_net_tokenizer = True
+        self.is_elda_profile_tokenizer = True
 
     def _serialize_payload(self, data):
-        payload = serialize_v62(
+        payload = serialize_profiled_source_net(
             data,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,
@@ -57,7 +57,7 @@ class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
             profile_config=self.profile_config,
             chunk_size=max(1, self.max_num_nodes),
         )
-        split = str(getattr(data, "source_net_v62_split", ""))
+        split = str(getattr(data, "elda_profile_split", ""))
         use_free = self.profile_mode_override == "PROFILE_FREE"
         if self.profile_mode_override == "PROFILE_COARSE":
             use_free = False
@@ -98,7 +98,7 @@ class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
                 )
                 if active and str(profile[key]) not in active:
                     raise ValueError(
-                        f"inactive V6.2 profile bucket for {key}: {profile[key]}; "
+                        f"inactive target profile bucket for {key}: {profile[key]}; "
                         f"train-active={sorted(active)}"
                     )
                 tokens.extend([tag, self._static(profile[key])])
@@ -111,19 +111,19 @@ class CircuitSourceNetV62Tokenizer(CircuitSourceNetV61Tokenizer):
             ):
                 tokens.extend([tag, self._static("BOOL_TRUE" if profile[key] else "BOOL_FALSE")])
         elif mode != "PROFILE_FREE":
-            raise ValueError(f"unknown V6.2 profile mode: {mode}")
+            raise ValueError(f"unknown target profile mode: {mode}")
         tokens.append(self.target_profile_end)
         return torch.tensor(tokens, dtype=torch.long)
 
     def decode(self, sequence):
         payload, report = self.parse_tokens(sequence)
         if not report["source_load_full_coverage"]:
-            raise ValueError("V6.2 decode requires full source-load coverage")
+            raise ValueError("ELDA profile extension decode requires full source-load coverage")
         if report["source_budget_violation"]:
-            raise ValueError("V6.2 decode rejected source budget violation")
+            raise ValueError("ELDA profile extension decode rejected source budget violation")
         if report["same_cell_same_net_reuse"]:
-            raise ValueError("V6.2 decode rejected same-cell same-net input reuse")
-        return decode_v62(
+            raise ValueError("ELDA profile extension decode rejected same-cell same-net input reuse")
+        return decode_profiled_source_net(
             payload,
             net_id=self.net_id,
             boundary_stub_id=self.boundary_stub_id,

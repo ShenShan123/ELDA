@@ -4,21 +4,21 @@ from pathlib import Path
 import pytest
 import torch
 
-from elda.datamodules.data.circuit_source_net_v61_ablation_tokenizers import (
-    CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-    CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-    CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-    CircuitSourceNetV61R4CellLevelDemandTokenizer,
+from elda.datamodules.data.circuit_source_net_ablation_tokenizers import (
+    CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+    CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+    CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+    CircuitSourceNetR4CellLevelDemandTokenizer,
 )
-from elda.datamodules.data.circuit_source_net_v61_tokenizer import (
-    CircuitSourceNetV61Tokenizer,
+from elda.datamodules.data.circuit_source_net_tokenizer import (
+    CircuitSourceNetTokenizer,
 )
 
 
 DATA_ROOT_VALUE = os.environ.get("ELDA_DATA_ROOT")
 if not DATA_ROOT_VALUE:
     pytest.skip(
-        "set ELDA_DATA_ROOT to run dataset-backed V6.1 tokenizer tests",
+        "set ELDA_DATA_ROOT to run dataset-backed ELDA tokenizer tests",
         allow_module_level=True,
     )
 DATA_ROOT = Path(DATA_ROOT_VALUE).expanduser().resolve()
@@ -32,12 +32,12 @@ def _tokenizers():
 
     cfg = OmegaConf.create({
         "root": str(DATA_ROOT),
-        "dataset_names": "CIRCUIT_SOURCE_NET_PARTITION_V6_1_CLEAN_COMPACT_LOAD",
-        "tokenizer_type": "source_net_v61",
+        "dataset_names": "ELDA_REFERENCE",
+        "tokenizer_type": "elda",
         "max_length": 24576,
         "truncation_length": None,
         "no_silent_truncate": True,
-        "cell_mapping_path": str(DATA_ROOT / "mapping_v61.txt"),
+        "cell_mapping_path": str(DATA_ROOT / "mapping.txt"),
         "batch_size": 1,
         "num_workers": 0,
     })
@@ -47,10 +47,10 @@ def _tokenizers():
     base = dm.tokenizer
     variants = []
     for cls in (
-        CircuitSourceNetV61R1NoBoundaryIdentityTokenizer,
-        CircuitSourceNetV61R2NoPerSourceBudgetTokenizer,
-        CircuitSourceNetV61R3NoFullLoadAssignmentTokenizer,
-        CircuitSourceNetV61R4CellLevelDemandTokenizer,
+        CircuitSourceNetR1NoBoundaryIdentityTokenizer,
+        CircuitSourceNetR2NoPerSourceBudgetTokenizer,
+        CircuitSourceNetR3NoFullLoadAssignmentTokenizer,
+        CircuitSourceNetR4CellLevelDemandTokenizer,
     ):
         tok = cls(
             max_length=24576,
@@ -107,6 +107,6 @@ def test_r0_regression_and_r1_r4_schema_smoke():
 
     assert len({tokenizer.tokenizer_version for tokenizer in variants}) == 4
     assert all(
-        tokenizer.tokenizer_version != CircuitSourceNetV61Tokenizer.tokenizer_version
+        tokenizer.tokenizer_version != CircuitSourceNetTokenizer.tokenizer_version
         for tokenizer in variants
     )

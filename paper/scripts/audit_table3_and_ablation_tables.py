@@ -20,17 +20,17 @@ NEUTRAL_SUMMARY = (
     / "reports/final_baseline/neutral_raw_netlist_audit_20260630"
     / "neutral_raw_netlist_baseline_summary.json"
 )
-NATIVE_PIPELINE = OUT / "table3_v61_native_object_pipeline.csv"
+NATIVE_PIPELINE = OUT / "table3_elda_native_object_pipeline.csv"
 REPAIR_SUMMARY = REPAIR_ROOT / "deterministic_repair_burden_summary.json"
 INCIDENCE_SUMMARY = REPAIR_ROOT / "incidence_retention_summary.csv"
 REPRESENTATION_SUMMARY = (
     ROOT
-    / "results/source_net_v61/final_representation_ablation_parallel"
+    / "results/elda/representation_ablation"
     / "summary_current/representation_ablation_current_summary.json"
 )
 DECODER_SUMMARY = (
     ROOT
-    / "results/source_net_v61/decoder_ablation_best7epoch_final_20260706"
+    / "results/elda/constraint_ablation"
     / "summary_final/decoder_ablation_final_summary.json"
 )
 
@@ -278,14 +278,14 @@ def main() -> None:
     }
     representation_rows = []
     removed_labels = {
-        "R0 Full V6.1": "None",
+        "R0 Full ELDA": "None",
         "R1 No boundary identity": "Boundary endpoint identity",
         "R2 No per-source budget": "Fanout bucket and per-source capacity",
         "R3 No full-load assignment": "Source-to-demand assignment",
         "R4 Cell-level demand": "Liberty input-pin identity",
     }
     for variant in (
-        "R0 Full V6.1",
+        "R0 Full ELDA",
         "R1 No boundary identity",
         "R2 No per-source budget",
         "R3 No full-load assignment",
@@ -342,7 +342,7 @@ def main() -> None:
                 "assignment_complete": float(
                     row["full_load_coverage_rate"]
                 ),
-                "elda_valid": float(row["panda_valid_rate"]),
+                "elda_valid": float(row["elda_valid_rate"]),
                 "source_id": source_id,
             }
         )

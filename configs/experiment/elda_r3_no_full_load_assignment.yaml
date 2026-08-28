@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - elda_reference
+datamodule:
+  root: ${oc.env:ELDA_R3_DATA_ROOT}
+  dataset_names: ELDA_R3_NO_FULL_LOAD_ASSIGNMENT
+  tokenizer_type: source_net_r3
+  serializer_version: elda_r3_no_full_load_assignment_v1
+  cell_mapping_path: ${datamodule.root}/mapping.txt
+elda_safety:
+  tokenizer_version: elda_r3_no_full_load_assignment_v1
+logs:
+  prefix: logs/train/ELDA_R3_NO_FULL_LOAD_ASSIGNMENT/${model.model_name}/${seed}
