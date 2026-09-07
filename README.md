@@ -4,12 +4,20 @@ ELDA generates materializable gate-level subcircuits with explicit Liberty
 input-pin demands, typed driver endpoints, source-to-demand assignments, and
 state-constrained autoregressive decoding.
 
-This is the public source repository for the frozen ELDA implementation used
-in the paper. It contains the model and decoder, training configurations,
-dataset-construction code, final evaluation scripts, compact frozen result
-tables, and a real-sample minimal reproduction. Large datasets, selected
-checkpoints, 1,024-attempt runs, and routed-design outputs are distributed as
-separate versioned artifacts; see [ARTIFACTS.md](ARTIFACTS.md).
+This repository contains the model and decoder, training configurations,
+dataset-construction code, evaluation scripts, compact result tables, and a
+real-sample minimal reproduction.
+
+## Resources
+
+- Source code: [ShenShan123/ELDA](https://github.com/ShenShan123/ELDA)
+- Pretrained checkpoints: [yuey1801/ELDA-Checkpoints](https://huggingface.co/yuey1801/ELDA-Checkpoints)
+- Evaluation outputs: [yuey1801/ELDA-Artifacts](https://huggingface.co/datasets/yuey1801/ELDA-Artifacts)
+
+The two Hugging Face repositories are currently private. Collaborators can
+download them after being granted access, or use an equivalent local copy
+transferred by the project owner. Their contents and layout are described in
+[ARTIFACTS.md](ARTIFACTS.md).
 
 ## What is included
 
@@ -31,9 +39,10 @@ the upstream project or a scientifically distinct comparison baseline.
 The tested full environment is defined by `environment.yaml`:
 
 ```bash
+git clone https://github.com/ShenShan123/ELDA.git
+cd ELDA
 conda env create -f environment.yaml
 conda activate elda
-cd /path/to/ELDA
 pip install -e . --no-build-isolation
 ```
 
@@ -64,19 +73,41 @@ python -m pytest -q tests
 Data-backed tests skip when the external corpus is absent. To enable them, set
 `ELDA_DATA_ROOT` as described below.
 
+## Download checkpoints and evaluation outputs
+
+Collaborators with access to the private Hugging Face repositories can run:
+
+```bash
+hf auth login
+hf download yuey1801/ELDA-Checkpoints \
+  --local-dir /path/to/ELDA-Checkpoints
+hf download yuey1801/ELDA-Artifacts \
+  --repo-type dataset \
+  --local-dir /path/to/ELDA-Artifacts
+```
+
+The same directory layout may be copied directly between servers. Checkpoints
+are under `ELDA-Checkpoints/{ELDA,R1,R2,R3,R4}/model.ckpt`; frozen generation
+attempts and compact results are under `ELDA-Artifacts/{attempts,results}`.
+
 ## Data and split identity
 
-Materialize the ELDA dataset artifact and export:
+Point ELDA at a materialized corpus and Nangate45 Liberty file:
 
 ```bash
 export ELDA_DATA_ROOT=/path/to/elda_dataset
 export ELDA_NANGATE45_LIBERTY=/path/to/NangateOpenCellLibrary_typical.lib
 ```
 
-The dataset root contains `meta.pt`, `mapping.txt`, the three source-clean
+The dataset root must contain `meta.pt`, `mapping.txt`, the three source-clean
 split lists, and the referenced graph objects. The strict public training view
 contains 170,940/9,396/11,574 train/validation/test objects. Reference-dependent
 paper metrics use the development-deduplicated 11,390-object test reference.
+
+The current `ELDA-Artifacts` repository contains dataset manifests and
+preprocessing instructions, but not the full third-party-derived graph corpus
+or Nangate45 library. These inputs must be reconstructed from their licensed
+sources or transferred separately within an authorized collaboration.
 
 The selected checkpoint predates the final family audit and retains its
 recorded 171,192/9,639/11,574 lineage. Exact counts and split hashes for both
@@ -105,29 +136,18 @@ R1--R4 use the corresponding experiment configs and `ELDA_R1_DATA_ROOT`
 through `ELDA_R4_DATA_ROOT`. Final paper hyperparameters and decoder-mask
 switches are also frozen under `release/ELDA_Code_Data_Supplement/configs/`.
 
-## Verify full artifacts
-
-After downloading the separate artifact bundle, either extract it over this
-checkout or pass its root explicitly:
-
-```bash
-python release/verify_release.py --artifact-root /path/to/ELDA-artifacts
-```
-
-For a metadata-only audit that does not hash checkpoint payloads:
-
-```bash
-python release/verify_release.py \
-  --artifact-root /path/to/ELDA-artifacts \
-  --skip-checkpoint-hashes
-```
-
-The verifier checks selected checkpoint hashes, exact `attempt_0000` through
-`attempt_1023` coverage, required frozen tables, and public namespace hygiene.
-
 ## Reproduce paper tables
 
-Extract the paper artifact tree into `paper/results` and `paper/reports`, then:
+The quickest result check uses the compact tables in `ELDA-Artifacts`:
+
+```bash
+cp /path/to/ELDA-Artifacts/results/paper_tables/* \
+  release/ELDA_Code_Data_Supplement/paper_results/
+python release/ELDA_Code_Data_Supplement/scripts/recompute_paper_audits.py
+```
+
+For a complete rerun of the supported table drivers, prepare the paper result
+overlay described in [ARTIFACTS.md](ARTIFACTS.md), then run:
 
 ```bash
 ELDA_DATA_ROOT=/path/to/elda_dataset \
